@@ -18,17 +18,39 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Codeforces 比赛记录</title>
-    <url>/2021/11/20/codeforces-records/</url>
-    <content><![CDATA[<h3 id="CodeForces-上的比赛记录"><a href="#CodeForces-上的比赛记录" class="headerlink" title="CodeForces 上的比赛记录"></a>CodeForces 上的比赛记录</h3>]]></content>
+    <title>任务计划</title>
+    <url>/2021/11/20/missions/</url>
+    <content><![CDATA[<h2 id="每天必须完成"><a href="#每天必须完成" class="headerlink" title="每天必须完成!"></a>每天必须完成!</h2><h2 id="参考-tzc-wk-巨佬的做题记录"><a href="#参考-tzc-wk-巨佬的做题记录" class="headerlink" title="参考 tzc_wk 巨佬的做题记录"></a>参考 <a href="https://www.cnblogs.com/ET2006/p/rwjh.html"><font color=black>t</font><font color=red>zc_wk</font> 巨佬的做题记录</a></h2><h3 id="2021-11-20"><a href="#2021-11-20" class="headerlink" title="2021.11.20"></a>2021.11.20</h3><p><del>P3715</del></p>
+<h3 id="2021-11-21"><a href="#2021-11-21" class="headerlink" title="2021.11.21"></a>2021.11.21</h3><p>CF702F CF710F</p>
+]]></content>
       <tags>
-        <tag>records</tag>
+        <tag>schedules</tag>
       </tags>
   </entry>
   <entry>
-    <title>AtCoder 比赛记录</title>
-    <url>/2021/11/20/atcoder-records/</url>
-    <content><![CDATA[<h3 id="AtCoder-上的比赛记录"><a href="#AtCoder-上的比赛记录" class="headerlink" title="AtCoder 上的比赛记录"></a>AtCoder 上的比赛记录</h3>]]></content>
+    <title>SB错误</title>
+    <url>/2021/11/20/sb-mistakes/</url>
+    <content><![CDATA[<h3 id="一些sb的错误汇总"><a href="#一些sb的错误汇总" class="headerlink" title="一些sb的错误汇总"></a>一些sb的错误汇总</h3><ul>
+<li>AC自动机在做多模式匹配的时候<strong>一定要跳fail指针</strong>不然会<strong>漏遍历很多东西</strong>（AC自动机白学了）！！！(2021.11.20, P3715)</li>
+<li>写矩阵快速幂优化dp（尤其是dp[i]依赖于dp[i-2]这种）的时候一定要算好，不能重复加了(2021.11.20, P3715)</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>important</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一些tips</title>
+    <url>/2021/11/20/some-tips/</url>
+    <content><![CDATA[<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3>]]></content>
+      <tags>
+        <tag>important</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NOI系列比赛获奖记录</title>
+    <url>/2021/11/20/noi-records/</url>
+    <content><![CDATA[<h3 id="弱弱的获奖记录"><a href="#弱弱的获奖记录" class="headerlink" title="弱弱的获奖记录"></a>弱弱的获奖记录</h3>]]></content>
       <tags>
         <tag>records</tag>
       </tags>
@@ -42,35 +64,19 @@
       </tags>
   </entry>
   <entry>
-    <title>任务计划</title>
-    <url>/2021/11/20/missions/</url>
-    <content><![CDATA[<h2 id="每天必须完成"><a href="#每天必须完成" class="headerlink" title="每天必须完成!"></a>每天必须完成!</h2><h3 id="参考-tzc-wk-巨佬的做题记录"><a href="#参考-tzc-wk-巨佬的做题记录" class="headerlink" title="参考 tzc_wk 巨佬的做题记录"></a>参考 <a href="https://www.cnblogs.com/ET2006/p/rwjh.html"><font color=black>t</font><font color=red>zc_wk</font> 巨佬的做题记录</a></h3>]]></content>
-      <tags>
-        <tag>schedules</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>NOI系列比赛获奖记录</title>
-    <url>/2021/11/20/noi-records/</url>
-    <content><![CDATA[<h3 id="弱弱的获奖记录"><a href="#弱弱的获奖记录" class="headerlink" title="弱弱的获奖记录"></a>弱弱的获奖记录</h3>]]></content>
+    <title>AtCoder 比赛记录</title>
+    <url>/2021/11/20/atcoder-records/</url>
+    <content><![CDATA[<h3 id="AtCoder-上的比赛记录"><a href="#AtCoder-上的比赛记录" class="headerlink" title="AtCoder 上的比赛记录"></a>AtCoder 上的比赛记录</h3>]]></content>
       <tags>
         <tag>records</tag>
       </tags>
   </entry>
   <entry>
-    <title>一些tips</title>
-    <url>/2021/11/20/some-tips/</url>
-    <content><![CDATA[<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3>]]></content>
+    <title>Codeforces 比赛记录</title>
+    <url>/2021/11/20/codeforces-records/</url>
+    <content><![CDATA[<h3 id="CodeForces-上的比赛记录"><a href="#CodeForces-上的比赛记录" class="headerlink" title="CodeForces 上的比赛记录"></a>CodeForces 上的比赛记录</h3>]]></content>
       <tags>
-        <tag>important</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SB错误</title>
-    <url>/2021/11/20/sb-mistakes/</url>
-    <content><![CDATA[<h3 id="一些sb的错误汇总"><a href="#一些sb的错误汇总" class="headerlink" title="一些sb的错误汇总"></a>一些sb的错误汇总</h3>]]></content>
-      <tags>
-        <tag>important</tag>
+        <tag>records</tag>
       </tags>
   </entry>
 </search>
