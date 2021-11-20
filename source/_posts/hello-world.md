@@ -35,4 +35,7 @@ More info: [Generating](https://hexo.io/docs/generating.html)
 $ hexo deploy
 ```
 
+### MathJax test
+$\sum\limits_{i=1}^{n}{\binom{n}{i}}$
+
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
