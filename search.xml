@@ -1,18 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/11/20/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<h3 id="MathJax-test"><a href="#MathJax-test" class="headerlink" title="MathJax test"></a>MathJax test</h3><p>$\sum\limits_{i=1}^{n}{\binom{n}{i}}$</p>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <title>AtCoder 比赛记录</title>
+    <url>/2021/11/20/atcoder-records/</url>
+    <content><![CDATA[<h3 id="AtCoder-上的比赛记录"><a href="#AtCoder-上的比赛记录" class="headerlink" title="AtCoder 上的比赛记录"></a>AtCoder 上的比赛记录</h3>]]></content>
+      <tags>
+        <tag>records</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>任务计划</title>
+    <url>/2021/11/20/missions/</url>
+    <content><![CDATA[<h2 id="每天必须完成"><a href="#每天必须完成" class="headerlink" title="每天必须完成"></a>每天必须完成</h2>]]></content>
+      <tags>
+        <tag>schedules</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Important dates</title>
+    <url>/2021/11/20/date-records/</url>
+    <content><![CDATA[<h3 id="一些在OI中对我来说比较重要的时刻"><a href="#一些在OI中对我来说比较重要的时刻" class="headerlink" title="一些在OI中对我来说比较重要的时刻"></a>一些在OI中对我来说比较重要的时刻</h3>]]></content>
+      <tags>
+        <tag>records</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NOI系列比赛获奖记录</title>
+    <url>/2021/11/20/noi-records/</url>
+    <content><![CDATA[<h3 id="弱弱的获奖记录"><a href="#弱弱的获奖记录" class="headerlink" title="弱弱的获奖记录"></a>弱弱的获奖记录</h3>]]></content>
+      <tags>
+        <tag>records</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一些tips</title>
+    <url>/2021/11/20/some-tips/</url>
+    <content><![CDATA[<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3>]]></content>
+      <tags>
+        <tag>important</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Codeforces 比赛记录</title>
+    <url>/2021/11/20/codeforces-records/</url>
+    <content><![CDATA[<h3 id="CodeForces-上的比赛记录"><a href="#CodeForces-上的比赛记录" class="headerlink" title="CodeForces 上的比赛记录"></a>CodeForces 上的比赛记录</h3>]]></content>
+      <tags>
+        <tag>records</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SB错误</title>
+    <url>/2021/11/20/sb-mistakes/</url>
+    <content><![CDATA[<h3 id="一些sb的错误汇总"><a href="#一些sb的错误汇总" class="headerlink" title="一些sb的错误汇总"></a>一些sb的错误汇总</h3>]]></content>
+      <tags>
+        <tag>important</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于我</title>
+    <url>/2021/11/20/about-me/</url>
+    <content><![CDATA[<p><a href="https://yaoxi-std.github.io/">这里</a>是 yaoxi-std 的个人主页，<del>欢迎各位巨佬来爆踩</del>。</p>
+<p>关于我的个人信息：</p>
+<ul>
+<li>姓名：yx</li>
+<li>坐标：南京，江苏</li>
+<li>就读学校：NFLS</li>
+<li>年级：初三</li>
+</ul>
+<p><a href="https://www.luogu.com.cn/user/141573">我的洛谷账号</a></p>
+<p><a href="https://atcoder.jp/users/yaoxi_std">我的AtCoder账号</a></p>
+<p><a href="https://codeforces.com/profile/yaoxi">我的Codeforces账号</a></p>
+<p><del>很菜对不对</del></p>
 ]]></content>
   </entry>
 </search>
