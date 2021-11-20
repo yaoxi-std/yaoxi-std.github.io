@@ -1,6 +1,6 @@
 # yaoxi-std.github.io
 
-![yaoxi-std 的个人博客](http://yaoxi-std.github.io/)
+[yaoxi-std 的个人博客](http://yaoxi-std.github.io/)
 
 ### 分支说明
 
