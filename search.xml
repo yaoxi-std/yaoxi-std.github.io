@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关于我</title>
+    <url>/2021/11/20/about-me/</url>
+    <content><![CDATA[<p><a href="https://yaoxi-std.github.io/">这里</a>是 yaoxi-std 的个人主页，<del>欢迎各位巨佬来爆踩</del>。</p>
+<p>关于我的个人信息：</p>
+<ul>
+<li>姓名：yx</li>
+<li>坐标：南京，江苏</li>
+<li>就读学校：NFLS</li>
+<li>年级：初三</li>
+</ul>
+<p><a href="https://www.luogu.com.cn/user/141573">我的洛谷账号</a></p>
+<p><a href="https://atcoder.jp/users/yaoxi_std">我的AtCoder账号</a></p>
+<p><a href="https://codeforces.com/profile/yaoxi">我的Codeforces账号</a></p>
+<p><del>很菜对不对</del></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Codeforces 比赛记录</title>
+    <url>/2021/11/20/codeforces-records/</url>
+    <content><![CDATA[<h3 id="CodeForces-上的比赛记录"><a href="#CodeForces-上的比赛记录" class="headerlink" title="CodeForces 上的比赛记录"></a>CodeForces 上的比赛记录</h3>]]></content>
+      <tags>
+        <tag>records</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AtCoder 比赛记录</title>
     <url>/2021/11/20/atcoder-records/</url>
     <content><![CDATA[<h3 id="AtCoder-上的比赛记录"><a href="#AtCoder-上的比赛记录" class="headerlink" title="AtCoder 上的比赛记录"></a>AtCoder 上的比赛记录</h3>]]></content>
@@ -9,19 +34,19 @@
       </tags>
   </entry>
   <entry>
-    <title>任务计划</title>
-    <url>/2021/11/20/missions/</url>
-    <content><![CDATA[<h2 id="每天必须完成"><a href="#每天必须完成" class="headerlink" title="每天必须完成"></a>每天必须完成</h2>]]></content>
-      <tags>
-        <tag>schedules</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Important dates</title>
     <url>/2021/11/20/date-records/</url>
     <content><![CDATA[<h3 id="一些在OI中对我来说比较重要的时刻"><a href="#一些在OI中对我来说比较重要的时刻" class="headerlink" title="一些在OI中对我来说比较重要的时刻"></a>一些在OI中对我来说比较重要的时刻</h3>]]></content>
       <tags>
         <tag>records</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>任务计划</title>
+    <url>/2021/11/20/missions/</url>
+    <content><![CDATA[<h2 id="每天必须完成"><a href="#每天必须完成" class="headerlink" title="每天必须完成!"></a>每天必须完成!</h2><h3 id="参考-tzc-wk-巨佬的做题记录"><a href="#参考-tzc-wk-巨佬的做题记录" class="headerlink" title="参考 tzc_wk 巨佬的做题记录"></a>参考 <a href="https://www.cnblogs.com/ET2006/p/rwjh.html"><font color=black>t</font><font color=red>zc_wk</font> 巨佬的做题记录</a></h3>]]></content>
+      <tags>
+        <tag>schedules</tag>
       </tags>
   </entry>
   <entry>
@@ -41,36 +66,11 @@
       </tags>
   </entry>
   <entry>
-    <title>Codeforces 比赛记录</title>
-    <url>/2021/11/20/codeforces-records/</url>
-    <content><![CDATA[<h3 id="CodeForces-上的比赛记录"><a href="#CodeForces-上的比赛记录" class="headerlink" title="CodeForces 上的比赛记录"></a>CodeForces 上的比赛记录</h3>]]></content>
-      <tags>
-        <tag>records</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SB错误</title>
     <url>/2021/11/20/sb-mistakes/</url>
     <content><![CDATA[<h3 id="一些sb的错误汇总"><a href="#一些sb的错误汇总" class="headerlink" title="一些sb的错误汇总"></a>一些sb的错误汇总</h3>]]></content>
       <tags>
         <tag>important</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>关于我</title>
-    <url>/2021/11/20/about-me/</url>
-    <content><![CDATA[<p><a href="https://yaoxi-std.github.io/">这里</a>是 yaoxi-std 的个人主页，<del>欢迎各位巨佬来爆踩</del>。</p>
-<p>关于我的个人信息：</p>
-<ul>
-<li>姓名：yx</li>
-<li>坐标：南京，江苏</li>
-<li>就读学校：NFLS</li>
-<li>年级：初三</li>
-</ul>
-<p><a href="https://www.luogu.com.cn/user/141573">我的洛谷账号</a></p>
-<p><a href="https://atcoder.jp/users/yaoxi_std">我的AtCoder账号</a></p>
-<p><a href="https://codeforces.com/profile/yaoxi">我的Codeforces账号</a></p>
-<p><del>很菜对不对</del></p>
-]]></content>
   </entry>
 </search>
