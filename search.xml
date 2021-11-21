@@ -21,7 +21,8 @@
     <title>任务计划</title>
     <url>/2021/11/20/missions/</url>
     <content><![CDATA[<h2 id="每天必须完成"><a href="#每天必须完成" class="headerlink" title="每天必须完成!"></a>每天必须完成!</h2><h2 id="参考-tzc-wk-巨佬的做题记录"><a href="#参考-tzc-wk-巨佬的做题记录" class="headerlink" title="参考 tzc_wk 巨佬的做题记录"></a>参考 <a href="https://www.cnblogs.com/ET2006/p/rwjh.html"><font color=black>t</font><font color=red>zc_wk</font> 巨佬的做题记录</a></h2><h3 id="2021-11-20"><a href="#2021-11-20" class="headerlink" title="2021.11.20"></a>2021.11.20</h3><p><del>P3715</del></p>
-<h3 id="2021-11-21"><a href="#2021-11-21" class="headerlink" title="2021.11.21"></a>2021.11.21</h3><p>CF702F CF710F</p>
+<h3 id="2021-11-21"><a href="#2021-11-21" class="headerlink" title="2021.11.21"></a>2021.11.21</h3><p>CF702F <del>CF710F毒瘤卡常卡空间</del></p>
+<h3 id="2021-11-22"><a href="#2021-11-22" class="headerlink" title="2021.11.22"></a>2021.11.22</h3><p>Gym101480C</p>
 ]]></content>
       <tags>
         <tag>schedules</tag>
@@ -61,6 +62,25 @@
     <content><![CDATA[<h3 id="一些在OI中对我来说比较重要的时刻"><a href="#一些在OI中对我来说比较重要的时刻" class="headerlink" title="一些在OI中对我来说比较重要的时刻"></a>一些在OI中对我来说比较重要的时刻</h3>]]></content>
       <tags>
         <tag>records</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>校内训练</title>
+    <url>/2021/11/21/school-contests/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="60586c55ae09f1b4f764406e8b5f9f05a77f4c16b4276892d46b537f0385f915">78d5c44c561fb30929ade6a6b24a4a497ac1e7c29e9bdaabdc10b1f66e111c34e7b730325fb555f68c14384322cb11c6cb4b09e602f310ba207c39efccff6b55331c166db8d297d090b9c57f8f96fde8cc2b69d584abfcb32df766ace5ed2825dda6a9e628f1525cb7d67528406d9a5401ec861bccdcddbde80558144a135628200f8ec0ae60d4f5838d16a938c8dbc5d6e786086cae7c1a5b920c53fdea2e1253a148399d6df66e63e81fd3b4374fa5</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>school</tag>
       </tags>
   </entry>
   <entry>
