@@ -2,6 +2,7 @@
 title: 关于我
 date: 2021-11-20
 top: 10000
+comments: false
 ---
 
 [这里](https://yaoxi-std.github.io/)是 yaoxi-std 的个人主页，~~欢迎各位巨佬来爆踩~~。
