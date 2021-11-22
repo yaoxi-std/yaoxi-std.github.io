@@ -2,6 +2,7 @@
 title: CF702F T-Shirts 题解
 date: 2021-11-22 16:24:42
 tags: solutions
+category: 题解
 ---
 
 ## CF702F T-Shirts 题解
