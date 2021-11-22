@@ -8,11 +8,17 @@ comments: false
 
 ## 每天必须完成!
 
-## 参考 [<font color=black>t</font><font color=red>zc_wk</font> 巨佬的做题记录](https://www.cnblogs.com/ET2006/p/rwjh.html)
+### 参考 [<font color=black>t</font><font color=red>zc_wk</font> 巨佬的做题记录](https://www.cnblogs.com/ET2006/p/rwjh.html)
 
 ### 2021.11.20
 ~~P3715~~
 ### 2021.11.21
-~~CF702F毒瘤数据结构一调一下午~~ ~~CF710F毒瘤卡常卡空间~~
+~~{% post_link 'sol-cf702f' 'CF702F' %}毒瘤数据结构一调一下午~~
+~~CF710F毒瘤卡常卡空间~~
 ### 2021.11.22
-Gym101480C
+~~{% post_link 'sol-p4632' 'P4632' %}~~
+Gym101480C (未完成)
+
+### 2021.11.23
+P6144
+CF575A
