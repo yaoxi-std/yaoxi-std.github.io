@@ -20,5 +20,5 @@ comments: false
 Gym101480C (未完成)
 
 ### 2021.11.23
-P6144
+~~{% post_link 'sol-p6144' 'P6144' %}~~
 CF575A
