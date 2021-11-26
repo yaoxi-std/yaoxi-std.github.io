@@ -26,7 +26,7 @@
 <h3 id="2021-11-23-Tue"><a href="#2021-11-23-Tue" class="headerlink" title="2021.11.23 (Tue)"></a>2021.11.23 (Tue)</h3><p><del><a href="/2021/11/23/sol-p6144/" title="P6144">P6144</a></del></p>
 <h3 id="2021-11-24-Wed"><a href="#2021-11-24-Wed" class="headerlink" title="2021.11.24 (Wed)"></a>2021.11.24 (Wed)</h3><p><del><a href="/2021/11/24/sol-cf575a/" title="CF575A">CF575A</a></del></p>
 <h3 id="2021-11-25-Thur"><a href="#2021-11-25-Thur" class="headerlink" title="2021.11.25 (Thur)"></a>2021.11.25 (Thur)</h3><p><del><a href="/2021/11/25/sol-p7154/" title="P7154">P7154</a></del> P7155</p>
-<h3 id="2021-11-26-Fri"><a href="#2021-11-26-Fri" class="headerlink" title="2021.11.26 (Fri)"></a>2021.11.26 (Fri)</h3><p>P3233 CF639F</p>
+<h3 id="2021-11-26-Fri"><a href="#2021-11-26-Fri" class="headerlink" title="2021.11.26 (Fri)"></a>2021.11.26 (Fri)</h3><p><del><a href="/2021/11/26/sol-bzoj2720/" title="BZOJ2720">BZOJ2720</a></del> P3233 CF639F</p>
 <h3 id="2021-11-27-Sat"><a href="#2021-11-27-Sat" class="headerlink" title="2021.11.27 (Sat)"></a>2021.11.27 (Sat)</h3><p>P4606 CF1320E LOJ6184</p>
 <h3 id="2021-11-28-Sun"><a href="#2021-11-28-Sun" class="headerlink" title="2021.11.28 (Sun)"></a>2021.11.28 (Sun)</h3><p>P3803 P4721 P4238</p>
 ]]></content>
@@ -109,6 +109,50 @@
 ]]></content>
       <tags>
         <tag>records</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>BZOJ2720 列队春游 题解</title>
+    <url>/2021/11/26/sol-bzoj2720/</url>
+    <content><![CDATA[<h2 id="BZOJ2720-列队春游-题解"><a href="#BZOJ2720-列队春游-题解" class="headerlink" title="BZOJ2720 列队春游 题解"></a>BZOJ2720 列队春游 题解</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a href="https://darkbzoj.tk/problem/2720">题目链接</a></p>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>对于这种全排列的题目发现不太好用$dp$。仔细观察发现对于每个人的期望视野都是独立的，可以直接相加，所以直接算$E(c)$表示有$c$个人的高度小于该同学时该同学的期望视野。答案显然$\sum\limits_{i=1}^{n}{E(c_i)}$。</p>
+<p>考虑如何求$E(c)$。根据期望公式易得$E(c) = \sum\limits_{i=1}^{c}{i \cdot P(i)}$。</p>
+<p>但是$P(i)$不好求而$P(\ge i)$相对好求，于是继续观察这个等式，发现每个$P(i)$都被计算了恰好$i$次，所以$E(c)$就可以表示为如下：</p>
+<script type="math/tex; mode=display">
+    E(c) = \sum_{i=1}^{c}{P(\ge i)}</script><p>这样就只需要考虑概率而不需要考虑期望了。</p>
+<p>接下来考虑$P(\ge i)$。既然视野$\ge i$，那么至少要有$i-1$个高度$\lt h$的人站在前面，于是$P(\ge i)$表示如下：</p>
+<script type="math/tex; mode=display">
+    \begin{align}
+        P(\ge i) &= \frac{n-i+1}{n} \cdot \frac{c^{\underline{i-1}}}{(n-1)^{\underline{i-1}}} \\
+        &= \frac{n-i+1}{n} \cdot \frac{c!(n-i)!}{(n-1)!(c-i+1)!} \\
+        &= \frac{c!}{n!} \cdot \frac{(n-i+1)!}{(c-i+1)!}
+    \end{align}</script><p>于是将该式代入到$E(c)$中得到：</p>
+<script type="math/tex; mode=display">
+    \begin{align}
+        E(c) &= \sum_{i=1}^{c}{i \cdot P(i)} \\
+        &= \sum_{i=1}^{c}{P(\ge i)} \\
+        &= \sum_{i=1}^{c}{\frac{c!}{n!} \cdot \frac{(n-i+1)!}{(c-i+1)!}} \\
+        &= \frac{c!}{n!}\sum_{i=1}^{c}{\frac{(n-i+1)!}{(c-i+1)!}} \\
+        &= \frac{c!(n-c)!}{n!}\sum_{i=1}^{c}{\binom{n-i+1}{c-i+1}} \\
+        &= \frac{c!(n-c)!}{n!}\sum_{i=0}^{c-1}{\binom{n-c+i+1}{i+1}}
+    \end{align}</script><p>由于$\sum\limits_{i=0}^{k}{\binom{n+i}{m+i}} = \binom{n+k+1}{m+k}$（易证），所以可以进一步将$E(c)$的$\Sigma$优化掉。</p>
+<script type="math/tex; mode=display">
+    \begin{align}
+        E(c) &= \frac{c!(n-c)!}{n!}\sum_{i=0}^{c-1}{\binom{n-c+i+1}{i+1}} \\
+        &= \frac{c!(n-c)!}{n!} \cdot \binom{n+1}{c} \\
+        &= \frac{c!(n-c)!}{n!} \cdot \frac{(n+1)!}{c!(n-c+1)!} \\
+        &= \frac{n+1}{n-c+1}
+    \end{align}</script><p>所以得到结论</p>
+<script type="math/tex; mode=display">
+    E(c) = \frac{n+1}{n-c+1}</script><p>于是最终的答案就变成了</p>
+<script type="math/tex; mode=display">
+    ans = \sum_{i=1}^{n}{\frac{n+1}{n-c+1}}</script><p>$O(n)$求解即可。</p>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file:           BZOJ2720.cpp</span></span><br><span class="line"><span class="comment"> * @author:         yaoxi-std</span></span><br><span class="line"><span class="comment"> * @url:            https://darkbzoj.tk/problem/2720</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// #pragma GCC optimize (&quot;O2&quot;)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> resetIO(x) \</span></span><br><span class="line"><span class="meta">    freopen(#x <span class="meta-string">&quot;.in&quot;</span>, <span class="meta-string">&quot;r&quot;</span>, stdin), freopen(#x <span class="meta-string">&quot;.out&quot;</span>, <span class="meta-string">&quot;w&quot;</span>, stdout)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> debug(fmt, ...) \</span></span><br><span class="line"><span class="meta">    fprintf(stderr, <span class="meta-string">&quot;[%s:%d] &quot;</span> fmt <span class="meta-string">&quot;\n&quot;</span>, __FILE__, __LINE__, ##__VA_ARGS__)</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> _<span class="title">Tp</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> _Tp&amp; <span class="title">read</span><span class="params">(_Tp &amp;x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> sign = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">double</span> tmp = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>())</span><br><span class="line">        sign |= (ch == <span class="string">&#x27;-&#x27;</span>);</span><br><span class="line">    <span class="keyword">for</span> (x = <span class="number">0</span>; <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>())</span><br><span class="line">        x = x * <span class="number">10</span> + (ch ^ <span class="number">48</span>);</span><br><span class="line">    <span class="keyword">if</span> (ch == <span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> (ch = <span class="built_in">getchar</span>(); <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>())</span><br><span class="line">            tmp /= <span class="number">10.0</span>, x += tmp * (ch ^ <span class="number">48</span>);</span><br><span class="line">    <span class="keyword">return</span> sign ? (x = -x) : x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> _<span class="title">Tp</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(_Tp x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="built_in">putchar</span>(<span class="string">&#x27;-&#x27;</span>), x = -x;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">9</span>)</span><br><span class="line">        <span class="built_in">write</span>(x / <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">putchar</span>((x % <span class="number">10</span>) ^ <span class="number">48</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INFL = <span class="number">0x3f3f3f3f3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">using</span> ldb = <span class="keyword">long</span> <span class="keyword">double</span>;</span><br><span class="line"><span class="keyword">int</span> n, h[MAXN], cnt[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">read</span>(n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        ++cnt[<span class="built_in">read</span>(h[i])];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">1000</span>; ++i)</span><br><span class="line">        cnt[i] += cnt[i - <span class="number">1</span>];</span><br><span class="line">    ldb ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        ans += (ldb)(n + <span class="number">1</span>) / (n - cnt[h[i] - <span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.2Lf\n&quot;</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>solutions</tag>
       </tags>
   </entry>
   <entry>
