@@ -28,7 +28,7 @@
 <meta property="og:description" content="BZOJ2720 列队春游 题解题面题目链接 解法对于这种全排列的题目发现不太好用$dp$。仔细观察发现对于每个人的期望视野都是独立的，可以直接相加，所以直接算$E(c)$表示有$c$个人的高度小于该同学时该同学的期望视野。答案显然$\sum\limits_{i&#x3D;1}^{n}{E(c_i)}$。 考虑如何求$E(c)$。根据期望公式易得$E(c) &#x3D; \sum\limits_{i&#x3D;1}^{c}{i">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-26T09:15:39.000Z">
-<meta property="article:modified_time" content="2021-11-26T11:20:56.204Z">
+<meta property="article:modified_time" content="2021-11-26T11:25:46.165Z">
 <meta property="article:author" content="yaoxi-std">
 <meta property="article:tag" content="solutions">
 <meta name="twitter:card" content="summary">
@@ -228,7 +228,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-11-26 17:15:39 / 修改时间：19:20:56" itemprop="dateCreated datePublished" datetime="2021-11-26T17:15:39+08:00">2021-11-26</time>
+              <time title="创建时间：2021-11-26 17:15:39 / 修改时间：19:25:46" itemprop="dateCreated datePublished" datetime="2021-11-26T17:15:39+08:00">2021-11-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,7 +259,7 @@
     E(c) = \sum_{i=1}^{c}{P(\ge i)}</script><p>这样就只需要考虑概率而不需要考虑期望了。</p>
 <p>接下来考虑$P(\ge i)$。既然视野$\ge i$，那么至少要有$i-1$个高度$\lt h$的人站在前面，于是$P(\ge i)$表示如下：</p>
 <script type="math/tex; mode=display">
-    \begin{align}
+\begin{align}
         P(\ge i) &= \frac{n-i+1}{n} \cdot \frac{c^{\underline{i-1}}}{(n-1)^{\underline{i-1}}} \\
         &= \frac{n-i+1}{n} \cdot \frac{c!(n-i)!}{(n-1)!(c-i+1)!} \\
         &= \frac{c!}{n!} \cdot \frac{(n-i+1)!}{(c-i+1)!}
@@ -305,7 +305,10 @@
     <a href="/2021/11/25/sol-p3715/" rel="prev" title="P3715 魔法咒语 题解">
       <i class="fa fa-chevron-left"></i> P3715 魔法咒语 题解
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/11/26/sol-p7155/" rel="next" title="P7155 Spaceship P 题解">
+      P7155 Spaceship P 题解 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -379,7 +382,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
