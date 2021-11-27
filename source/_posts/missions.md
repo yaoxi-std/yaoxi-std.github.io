@@ -42,4 +42,4 @@ LOJ6184 CF639F
 CF1320E
 
 ### 待写的题解
-{% post_link 'sol-p3715' 'P3715' %}
+$\emptyset$
