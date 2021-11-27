@@ -24,16 +24,22 @@ comments: false
 ~~{% post_link 'sol-cf575a' 'CF575A' %}~~
 
 ### 2021.11.25 (Thur)
-~~{% post_link 'sol-p7154' 'P7154' %}~~ P7155
+~~{% post_link 'sol-p7154' 'P7154' %}~~ ~~{% post_link 'sol-p7155' 'P7155' %}~~
 
 ### 2021.11.26 (Fri)
-~~{% post_link 'sol-bzoj2720' 'BZOJ2720' %}~~ P3233 CF639F
+~~{% post_link 'sol-bzoj2720' 'BZOJ2720' %}~~
 
 ### 2021.11.27 (Sat)
-P4606 CF1320E LOJ6184
+~~{% post_link 'sol-p2495' 'P2495' %}~~ ~~{% post_link 'sol-p3233' 'P3233' %}~~ P4606
 
 ### 2021.11.28 (Sun)
 P3803 P4721 P4238
 
+### 2021.11.29 (Mon)
+LOJ6184 CF639F
+
+### 2021.11.30 (Tue)
+CF1320E
+
 ### 待写的题解
-{% post_link 'sol-p3715' 'P3715' %} {% post_link 'sol-p7154' 'P7154' %}
+{% post_link 'sol-p3715' 'P3715' %}
