@@ -844,7 +844,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-11-27 19:45:37 / 修改时间：20:28:56" itemprop="dateCreated datePublished" datetime="2021-11-27T19:45:37+08:00">2021-11-27</time>
+              <time title="创建时间：2021-11-27 19:45:37 / 修改时间：22:12:58" itemprop="dateCreated datePublished" datetime="2021-11-27T19:45:37+08:00">2021-11-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -871,7 +871,7 @@
 <h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p><strong>以下所有的“关键点”都表示题目中的议事处</strong></p>
 <p>看完这题题解后去学习了虚树<del>（然后day2上午模拟赛考了道类似虚树但不用建$lca$的题目）</del></p>
 <p>于是看到$\sum m \le 3 \times 10^5$ 直接建立虚树（然而如果没学过虚树就看不出来了）。</p>
-<p>用<code>pair&lt;int, int&gt;</code>储存树上节点到达最近关键点的距离和关键点编号以便于比较。先对虚树上的节点做一遍换根$dp$，方程显然是$dp_u = \min\limits_{v,w}{dp_v + w}$其中$v, w$分别为子节点和到子节点的距离。之后为了方便表述设<strong>$f_u$表示<code>dp[u].first</code>,$g_u$表示<code>dp[u].second</code></strong>。</p>
+<p>用<code>pair&lt;int, int&gt;</code>储存树上节点到达最近关键点的距离和关键点编号以便于比较。先对虚树上的节点做一遍换根$dp$，方程显然是$dp_u = \min\limits_{v,w}{dp_v + w}$其中$v, w$分别为子节点和到子节点的距离。之后为了方便表述设<strong>$f_u$表示<code>dp[u].first</code>，$g_u$表示<code>dp[u].second</code></strong>。</p>
 <p>接下来考虑不在虚树上的节点。首先如果虚树上某节点的一个原树上子节点的子树中都没有虚树上的节点，那么该子树中的的所有节点的最近关键点都应当与该虚树节点相同。形式化地，若对于虚树上的节点$u$有节点$u \to v_{real}$使得不存在$v_{real} \to \cdots \to x$在虚树上，那么$g_x = g_u$，即$cnt_{g_u} += siz_{v_{real}}$。如在下图中的节点中$v=6,v=7,v=10$都满足该种情况（加粗节点表示虚树节点）。</p>
 <p><img src="sol-p3233-1.png" alt="虚树"></p>
 <p>其次是在虚树的链上的点。不妨将例如上图中的节点$9$计算到节点$4$中（因为$g_4$一定等于$g_9$），考虑一条链$fa \to u$，若$g_{fa} = g_u$则链上节点全部加到$g_u$中（同样设$v_{real}$表示$fa$在原树中的$u$方向的子节点，相当于$cnt_{g_u} += siz_{v_{real}} - siz_u$），否则倍增找到深度最小的满足取$g_u$更优的点$cur$，显然$cnt_{g_u} += siz_{cur} - siz_u$，$cnt_{g_{fa}} += siz_{v_{real}} - siz_{cur}$。</p>
