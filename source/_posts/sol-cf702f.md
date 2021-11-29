@@ -158,7 +158,7 @@ struct splay_tree {
         return cur;
     }
     void erase(node k) {
-        if (!find(k)) debug("???");
+        find(k);
         if (!ch[rt][0] && !ch[rt][1]) {
             clear(rt);
             rt = 0;
