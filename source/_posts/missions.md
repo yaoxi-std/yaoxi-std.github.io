@@ -8,7 +8,7 @@ comments: false
 
 ## 每天都不会成为$\emptyset$
 
-### 参考 [<font color=black>t</font><font color=red>zc_wk</font> 巨佬的做题记录](https://www.cnblogs.com/ET2006/p/rwjh.html)
+### 参考 [<font color=black>t</font><font color=red>zc_wk</font> 的做题记录](https://www.cnblogs.com/ET2006/p/rwjh.html)
 
 ### 2021.11.20 (Sat)
 ~~{% post_link 'sol-p3715' 'P3715' %}~~
@@ -30,16 +30,19 @@ comments: false
 ~~{% post_link 'sol-bzoj2720' 'BZOJ2720' %}~~
 
 ### 2021.11.27 (Sat)
-~~{% post_link 'sol-p2495' 'P2495' %}~~ ~~{% post_link 'sol-p3233' 'P3233' %}~~ P4606
+~~{% post_link 'sol-p2495' 'P2495' %}~~ ~~{% post_link 'sol-p3233' 'P3233' %}~~
 
 ### 2021.11.28 (Sun)
-P3803 P4721 P4238
+~~{% post_link 'sol-p3803' 'P3803' %}~~ P4721
 
 ### 2021.11.29 (Mon)
-LOJ6184 CF639F
+LOJ6184 ~~{% post_link 'sol-p4606' 'P4606' %}~~
 
 ### 2021.11.30 (Tue)
 CF1320E
+
+### 2021.12.1 (Wed)
+P4238 CF639F
 
 ### 待写的题解
 $\emptyset$
