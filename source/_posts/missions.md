@@ -36,13 +36,22 @@ comments: false
 ~~{% post_link 'sol-p3803' 'P3803' %}~~ P4721
 
 ### 2021.11.29 (Mon)
-LOJ6184 ~~{% post_link 'sol-p4606' 'P4606' %}~~
+~~{% post_link 'sol-p4606' 'P4606' %}~~
 
 ### 2021.11.30 (Tue)
-CF1320E
+P4238
 
 ### 2021.12.1 (Wed)
-P4238 CF639F
+~~{% post_link 'sol-cf1320e' 'CF1320E' %}~~
+
+### 2021.12.2 (Thur)
+~~{% post_link 'sol-cf639f' 'CF639F' %}~~
+
+### 2021.12.3 (Fri)
+LOJ6184
+
+### 2021.12.4 (Sat)
+~~{% post_link 'sol-cf526g' 'CF526G' %}~~
 
 ### 待写的题解
 $\emptyset$
