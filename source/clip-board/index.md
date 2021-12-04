@@ -156,44 +156,63 @@ signed main() {
 
 **不要抄板子，要自己写，只是防止自己忘记**
 
-#### FFT
+#### {% post_link 'sol-p3803' 'FFT && NTT' %}
 
 ```cpp
-#include <cmath>
-#include <complex>
-
+const int MOD = 998244353;
+// const int MOD = 1004535809; // 备用
 using comp = std::complex<double>;
-
-const int MAXN = 1 << 20;
-
-comp tmp[MAXN];
-
-/*
- * 做 FFT
- * n 必须是 2^k 形式
- * rev = 1 时为 FFT, rev = -1 时为 IFFT
- */
-void fft(comp *f, int n, int rev) {
-    if (n == 1)
-        return;
-    for (int i = 0; i < n; ++i)
-        tmp[i] = f[i];
-    for (int i = 0; i < n; ++i) {
+int rev[MAXN];
+void change(comp *f, int len) {
+    for (int i = 0; i < len; ++i) {
+        rev[i] = rev[i >> 1] >> 1;
         if (i & 1)
-            f[n / 2 + i / 2] = tmp[i];
-        else
-            f[i / 2] = tmp[i];
+            rev[i] |= len >> 1;
     }
-    comp *g = f, *h = f + n / 2;
-    fft(g, n / 2, rev), fft(h, n / 2, rev);
-    comp cur(1, 0), step(cos(2 * M_PI / n), sin(2 * M_PI * rev / n));
-    for (int i = 0; i < n / 2; ++i) {
-        tmp[i] = g[i] + cur * h[i];
-        tmp[i + n / 2] = g[i] - cur * h[i];
-        cur *= step;
+    for (int i = 0; i < len; ++i)
+        if (i < rev[i])
+            swap(f[i], f[rev[i]]);
+}
+void fft(comp *f, int len, int on) {
+    change(f, len);
+    for (int h = 2; h <= len; h <<= 1) {
+        comp wn(cos(2 * M_PI / h), sin(2 * M_PI / h));
+        for (int j = 0; j < len; j += h) {
+            comp w(1, 0);
+            for (int k = j; k < j + h / 2; ++k) {
+                comp u = f[k], t = w * f[k + h / 2];
+                f[k] = u + t;
+                f[k + h / 2] = u - t;
+                w = w * wn;
+            }
+        }
     }
-    for (int i = 0; i < n; ++i)
-        f[i] = tmp[i];
+    if (on == -1) {
+        reverse(f + 1, f + len);
+        for (int i = 0; i < len; ++i)
+            f[i].real(f[i].real() / len);
+    }
+}
+void ntt(int *f, int len, int on) {
+    change(f, len);
+    for (int h = 2; h <= len; h <<= 1) {
+        int gn = qpow(3, (MOD - 1) / h);
+        for (int j = 0; j < len; j += h) {
+            int g = 1;
+            for (int k = j; k < j + h / 2; ++k) {
+                int u = f[k], t = g * f[k + h / 2] % MOD;
+                f[k] = (u + t + MOD) % MOD;
+                f[k + h / 2] = (u - t + MOD) % MOD;
+                g = g * gn % MOD;
+            }
+        }
+    }
+    if (on == -1) {
+        reverse(f + 1, f + len);
+        int inv = qpow(len, MOD - 2);
+        for (int i = 0; i < len; ++i)
+            f[i] = f[i] * inv % MOD;
+    }
 }
 ```
 
