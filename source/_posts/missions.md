@@ -33,13 +33,13 @@ comments: false
 ~~{% post_link 'sol-p2495' 'P2495' %}~~ ~~{% post_link 'sol-p3233' 'P3233' %}~~
 
 ### 2021.11.28 (Sun)
-~~{% post_link 'sol-p3803' 'P3803' %}~~ P4721
+~~{% post_link 'sol-p3803' 'P3803' %}~~
 
 ### 2021.11.29 (Mon)
 ~~{% post_link 'sol-p4606' 'P4606' %}~~
 
 ### 2021.11.30 (Tue)
-P4238
+~~{% post_link 'sol-p4238' 'P4238' %}~~
 
 ### 2021.12.1 (Wed)
 ~~{% post_link 'sol-cf1320e' 'CF1320E' %}~~
@@ -54,7 +54,7 @@ LOJ6184
 ~~{% post_link 'sol-cf526g' 'CF526G' %}~~ ~~{% post_link 'sol-p3803' 'P3803' %}~~ P4245
 
 ### 2021.12.5 (Sun)
-CF632E AT2064
+~~{% post_link 'sol-p4721' 'P4721' %}~~ ~~{% post_link 'sol-cf632e' 'CF632E' %}~~ AT2064
 
 ### 待写的题解
 $\emptyset$
