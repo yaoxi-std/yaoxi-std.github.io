@@ -159,8 +159,10 @@ signed main() {
 #### {% post_link 'sol-p3803' 'FFT && NTT' %}
 
 ```cpp
+const long double MPI = acos(-1);
 const int MOD = 998244353;
 // const int MOD = 1004535809; // 备用
+// const int MOD = 469762049; // 备用
 using comp = std::complex<double>;
 int rev[MAXN];
 void change(comp *f, int len) {
@@ -176,7 +178,7 @@ void change(comp *f, int len) {
 void fft(comp *f, int len, int on) {
     change(f, len);
     for (int h = 2; h <= len; h <<= 1) {
-        comp wn(cos(2 * M_PI / h), sin(2 * M_PI / h));
+        comp wn(cos(2 * MPI / h), sin(2 * MPI / h));
         for (int j = 0; j < len; j += h) {
             comp w(1, 0);
             for (int k = j; k < j + h / 2; ++k) {
