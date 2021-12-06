@@ -54,7 +54,10 @@ LOJ6184
 ~~{% post_link 'sol-cf526g' 'CF526G' %}~~ ~~{% post_link 'sol-p3803' 'P3803' %}~~
 
 ### 2021.12.5 (Sun)
-~~{% post_link 'sol-p4721' 'P4721' %}~~ ~~{% post_link 'sol-cf632e' 'CF632E' %}~~ ~~{% post_link 'sol-p4245' 'P4245' %}~~ AT2064
+~~{% post_link 'sol-p4721' 'P4721' %}~~ ~~{% post_link 'sol-cf632e' 'CF632E' %}~~ ~~{% post_link 'sol-p4245' 'P4245' %}~~
+
+### 2021.12.6 (Mon)
+AT2064
 
 ### 待写的题解
 $\emptyset$
