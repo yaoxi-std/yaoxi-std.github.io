@@ -6,8 +6,6 @@ top: 1600
 comments: false
 ---
 
-## 每天都不会成为$\emptyset$
-
 ### 参考 [<font color=black>t</font><font color=red>zc_wk</font> 的做题记录](https://www.cnblogs.com/ET2006/p/rwjh.html)
 
 ### 2021.11.20 (Sat)
@@ -57,7 +55,13 @@ LOJ6184
 ~~{% post_link 'sol-p4721' 'P4721' %}~~ ~~{% post_link 'sol-cf632e' 'CF632E' %}~~ ~~{% post_link 'sol-p4245' 'P4245' %}~~
 
 ### 2021.12.6 (Mon)
-AT2064
+~~{% post_link 'sol-at2064' 'AT2064' %}~~
+
+### 2021.12.8 (Wed)
+~~{% post_link 'sol-cf1096g' 'CF1096G' %}~~
+
+### 2021.12.10 (Fri)
+~~{% post_link 'sol-p2664' 'P2664' %}~~ ~~{% post_link 'sol-p6329' 'P6329' %}~~
 
 ### 待写的题解
-$\emptyset$
+{% post_link 'sol-p6329' 'P6329' %}
