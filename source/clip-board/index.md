@@ -9,7 +9,14 @@ comments: false
 
 ### 板子
 ```cpp
+/**
+ * @file:           {}.cpp
+ * @author:         yaoxi-std
+ * @url:            https://{}
+*/
 // #pragma GCC optimize ("O2")
+// #pragma GCC optimize ("Ofast", "inline", "-ffast-math")
+// #pragma GCC target ("avx,sse2,sse3,sse4,mmx")
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
@@ -40,7 +47,7 @@ inline void write(_Tp x) {
     putchar((x % 10) ^ 48);
 }
 const int MAXN = 1e5 + 10;
-const int INFL = 0x3f3f3f3f3f3f3f3f;
+const int INF = 0x3f3f3f3f3f3f3f3f;
 
 signed main() {
     // resetIO();
@@ -60,6 +67,8 @@ signed main() {
         " * @url:            ${2}",
         "*/",
         "// #pragma GCC optimize (\"O2\")",
+        "// #pragma GCC optimize (\"Ofast\", \"inline\", \"-ffast-math\")",
+        "// #pragma GCC target (\"avx,sse2,sse3,sse4,mmx\")",
         "#include <bits/stdc++.h>",
         "using namespace std;",
         "#define int long long",
@@ -90,7 +99,7 @@ signed main() {
         "    putchar((x % 10) ^ 48);",
         "}",
         "const int MAXN = 1e5 + 10;",
-        "const int INFL = 0x3f3f3f3f3f3f3f3f;",
+        "const int INF = 0x3f3f3f3f3f3f3f3f;",
         "",
         "signed main() {",
         "    // resetIO();",
@@ -150,6 +159,13 @@ signed main() {
 #pragma GCC optimize("-funsafe-loop-optimizations")
 #pragma GCC optimize("inline-functions-called-once")
 #pragma GCC optimize("-fdelete-null-pointer-checks")
+```
+
+### 短小精悍的火车头（雾
+```cpp
+#pragma GCC optimize ("O2")
+#pragma GCC optimize ("Ofast", "inline", "-ffast-math")
+#pragma GCC target ("avx,sse2,sse3,sse4,mmx")
 ```
 
 ### 算法板子
