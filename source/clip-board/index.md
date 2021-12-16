@@ -172,6 +172,8 @@ signed main() {
 
 **不要抄板子，要自己写，只是防止自己忘记**
 
+也就是说每次考前要复习一下这些板子
+
 #### {% post_link 'sol-p3803' 'FFT && NTT' %}
 
 ```cpp
@@ -404,6 +406,55 @@ struct splay_tree {
             ch[x][1] = ch[cur][1];
             clear(cur);
             maintain(rt);
+        }
+    }
+};
+```
+
+#### 后缀数组 suffix array
+```cpp
+struct suffix_array {
+    int n, sa[MAXN], rk[MAXN], tp[MAXN], ht[MAXN];
+    void radix_sort(int m) {
+        static int buk[MAXN];
+        for (int i = 0; i <= m; ++i)
+            buk[i] = 0;
+        for (int i = 1; i <= n; ++i)
+            buk[rk[i]]++;
+        for (int i = 1; i <= m; ++i)
+            buk[i] += buk[i - 1];
+        for (int i = n; i >= 1; --i)
+            sa[buk[rk[tp[i]]]--] = tp[i];
+    }
+    void init(char *s, int n) {
+        this->n = n;
+        int m = 100;
+        for (int i = 1; i <= n; ++i)
+            rk[i] = s[i] - '0' + 1, tp[i] = i;
+        radix_sort(m);
+        for (int p = 0, w = 1; p < n; m = p, w <<= 1) {
+            p = 0;
+            for (int i = 1; i <= w; ++i)
+                tp[++p] = n - w + i;
+            for (int i = 1; i <= n; ++i)
+                if (sa[i] > w)
+                    tp[++p] = sa[i] - w;
+            radix_sort(m);
+            copy(rk + 1, rk + n + 1, tp + 1);
+            rk[sa[1]] = p = 1;
+            for (int i = 2; i <= n; ++i) {
+                if (tp[sa[i - 1]] == tp[sa[i]] && tp[sa[i - 1] + w] == tp[sa[i] + w])
+                    rk[sa[i]] = p;
+                else
+                    rk[sa[i]] = ++p;
+            }
+        }
+        for (int i = 1, k = 0; i <= n; ++i) {
+            if (k)
+                k--;
+            while (s[i + k] == s[sa[rk[i] - 1] + k])
+                k++;
+            ht[i] = k;
         }
     }
 };
