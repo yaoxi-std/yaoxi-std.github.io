@@ -1,8 +1,8 @@
 ---
 title: '{{ title }}'
 date: {{ date }}
-tags: solutions
-category: 题解
+tags: topics
+category: 专题
 ---
 
 ## 
