@@ -20,28 +20,33 @@
     var CONFIG = {"hostname":"yaoxi-std.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="yaoxi-std 的博客">
-<meta property="og:url" content="http://yaoxi-std.github.io/index.html">
+  <meta name="description" content="P3181 [HAOI2016] 找相同字符串题面题目链接 解法假设我们已经知道如何计算单一串的答案，之后可以将两个串拼接，中间间隔字符$，算出新串的答案。但是这样会重复计算两个子串在同一个原串，所以还需减去两个原串的答案。即$ans&#x3D;ans_s-ans_{s1}-ans_{s2}$。 现在只需考虑如何算出一个单一串的答案。根据后缀数组的性质，显然答案为  \begin{aligned} ans_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P3181 [HAOI2016] 找相同字符串">
+<meta property="og:url" content="http://yaoxi-std.github.io/2021/12/19/sol-p3181/index.html">
 <meta property="og:site_name" content="yaoxi-std 的博客">
+<meta property="og:description" content="P3181 [HAOI2016] 找相同字符串题面题目链接 解法假设我们已经知道如何计算单一串的答案，之后可以将两个串拼接，中间间隔字符$，算出新串的答案。但是这样会重复计算两个子串在同一个原串，所以还需减去两个原串的答案。即$ans&#x3D;ans_s-ans_{s1}-ans_{s2}$。 现在只需考虑如何算出一个单一串的答案。根据后缀数组的性质，显然答案为  \begin{aligned} ans_">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-19T13:28:35.000Z">
+<meta property="article:modified_time" content="2021-12-19T14:06:33.274Z">
 <meta property="article:author" content="yaoxi-std">
+<meta property="article:tag" content="solutions">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yaoxi-std.github.io/">
+<link rel="canonical" href="http://yaoxi-std.github.io/2021/12/19/sol-p3181/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>yaoxi-std 的博客</title>
+  <title>P3181 [HAOI2016] 找相同字符串 | yaoxi-std 的博客</title>
   
 
 
@@ -192,648 +197,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yaoxi-std.github.io/2021/11/20/about-me/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yaoxi-std">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yaoxi-std 的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/20/about-me/" class="post-title-link" itemprop="url">关于我</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-20 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-20T00:00:00+08:00">2021-11-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-21 19:19:10" itemprop="dateModified" datetime="2021-11-21T19:19:10+08:00">2021-11-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://yaoxi-std.github.io/">这里</a>是 yaoxi-std 的个人主页，<del>欢迎各位巨佬来爆踩</del>。</p>
-<p>关于我的个人信息：</p>
-<ul>
-<li>姓名：yx</li>
-<li>坐标：南京，江苏</li>
-<li>就读学校：NFLS</li>
-<li>年级：初三</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/141573">我的洛谷账号</a></p>
-<p><a target="_blank" rel="noopener" href="https://atcoder.jp/users/yaoxi_std">我的AtCoder账号</a></p>
-<p><a target="_blank" rel="noopener" href="https://codeforces.com/profile/yaoxi">我的Codeforces账号</a></p>
-<p><del>很菜对不对</del></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yaoxi-std.github.io/2021/11/20/missions/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yaoxi-std">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yaoxi-std 的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/20/missions/" class="post-title-link" itemprop="url">任务计划</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-20 19:36:58" itemprop="dateCreated datePublished" datetime="2021-11-20T19:36:58+08:00">2021-11-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-19 22:08:59" itemprop="dateModified" datetime="2021-12-19T22:08:59+08:00">2021-12-19</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="参考-tzc-wk-的做题记录"><a href="#参考-tzc-wk-的做题记录" class="headerlink" title="参考 tzc_wk 的做题记录"></a>参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/ET2006/p/rwjh.html"><font color=black>t</font><font color=red>zc_wk</font> 的做题记录</a></h3><h3 id="2021-11-20-Sat"><a href="#2021-11-20-Sat" class="headerlink" title="2021.11.20 (Sat)"></a>2021.11.20 (Sat)</h3><p><del><a href="/2021/11/25/sol-p3715/" title="P3715">P3715</a></del></p>
-<p><del><a href="/2021/11/22/sol-cf702f/" title="CF702F">CF702F</a></del> <del><a href="/2021/11/22/sol-cf710f/" title="CF710F">CF710F</a></del></p>
-<p><del><a href="/2021/11/22/sol-p4632/" title="P4632">P4632</a></del></p>
-<p><del><a href="/2021/11/23/sol-p6144/" title="P6144">P6144</a></del></p>
-<p><del><a href="/2021/11/24/sol-cf575a/" title="CF575A">CF575A</a></del></p>
-<p><del><a href="/2021/11/25/sol-p7154/" title="P7154">P7154</a></del> <del><a href="/2021/11/26/sol-p7155/" title="P7155">P7155</a></del></p>
-<p><del><a href="/2021/11/26/sol-bzoj2720/" title="BZOJ2720">BZOJ2720</a></del></p>
-<h3 id="2021-11-27-Sat"><a href="#2021-11-27-Sat" class="headerlink" title="2021.11.27 (Sat)"></a>2021.11.27 (Sat)</h3><p><del><a href="/2021/11/27/sol-p2495/" title="P2495">P2495</a></del> <del><a href="/2021/11/27/sol-p3233/" title="P3233">P3233</a></del></p>
-<p><del><a href="/2021/11/28/sol-p3803/" title="P3803">P3803</a></del></p>
-<p><del><a href="/2021/11/29/sol-p4606/" title="P4606">P4606</a></del></p>
-<p><del><a href="/2021/12/05/sol-p4238/" title="P4238">P4238</a></del></p>
-<p><del><a href="/2021/12/01/sol-cf1320e/" title="CF1320E">CF1320E</a></del></p>
-<p><del><a href="/2021/12/03/sol-cf639f/" title="CF639F">CF639F</a></del></p>
-<p>LOJ6184</p>
-<h3 id="2021-12-4-Sat"><a href="#2021-12-4-Sat" class="headerlink" title="2021.12.4 (Sat)"></a>2021.12.4 (Sat)</h3><p><del><a href="/2021/12/04/sol-cf526g/" title="CF526G">CF526G</a></del> <del><a href="/2021/11/28/sol-p3803/" title="P3803">P3803</a></del></p>
-<p><del><a href="/2021/12/05/sol-p4721/" title="P4721">P4721</a></del> <del><a href="/2021/12/05/sol-cf632e/" title="CF632E">CF632E</a></del> <del><a href="/2021/12/05/sol-p4245/" title="P4245">P4245</a></del></p>
-<p><del><a href="/2021/12/06/sol-at2064/" title="AT2064">AT2064</a></del></p>
-<p><del><a href="/2021/12/08/sol-cf1096g/" title="CF1096G">CF1096G</a></del></p>
-<p><del><a href="/2021/12/10/sol-p2664/" title="P2664">P2664</a></del> <del><a href="/2021/12/10/sol-p6329/" title="P6329">P6329</a></del></p>
-<h3 id="2021-12-15-Wed"><a href="#2021-12-15-Wed" class="headerlink" title="2021.12.15 (Wed)"></a>2021.12.15 (Wed)</h3><p>因为月考所以🐦🐦🐦了几天，但月考考的很烂</p>
-<p><del><a href="/2021/12/15/sol-p2056/" title="P2056">P2056</a></del></p>
-<p><del><a href="/2021/12/16/sol-p3809/" title="P3809">P3809</a></del></p>
-<p><del><a href="/2021/12/17/sol-p2408/" title="P2408">P2408</a></del> <del><a href="/2021/12/17/sol-p4051/" title="P4051">P4051</a></del> <del><a href="/2021/12/17/sol-p4248/" title="P4248">P4248</a></del></p>
-<h3 id="2021-12-19-Sun"><a href="#2021-12-19-Sun" class="headerlink" title="2021.12.19 (Sun)"></a>2021.12.19 (Sun)</h3><p><del><a href="/2021/12/19/sol-p3181/" title="P3181">P3181</a></del></p>
-<h3 id="待写的题解"><a href="#待写的题解" class="headerlink" title="待写的题解"></a>待写的题解</h3>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yaoxi-std.github.io/2021/11/20/sb-mistakes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yaoxi-std">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yaoxi-std 的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/20/sb-mistakes/" class="post-title-link" itemprop="url">SB错误</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-20 19:24:51" itemprop="dateCreated datePublished" datetime="2021-11-20T19:24:51+08:00">2021-11-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-10 23:29:32" itemprop="dateModified" datetime="2021-12-10T23:29:32+08:00">2021-12-10</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一些sb的错误汇总"><a href="#一些sb的错误汇总" class="headerlink" title="一些sb的错误汇总"></a>一些sb的错误汇总</h2><ul>
-<li>AC自动机在做多模式匹配的时候<strong>一定要跳fail指针</strong>不然会<strong>漏遍历很多东西</strong>（AC自动机白学了）！！！(2021.11.20, P3715)</li>
-<li>写矩阵快速幂优化dp（尤其是dp[i]依赖于dp[i-2]这种）的时候一定要算好，不能重复加了(2021.11.20, P3715)</li>
-<li>取模的题目遇到特判一定记得输出取模，不然等着被hack吧。。。(2021.11.24, CF575A)</li>
-<li>换根$dp$不要在统计$pre$和$nxt$数组时就写$dfs$!!!数组整个改变!!!不然会死得很惨（指对着n=1000,m=100的大样例调1h）(2021.11.27, P3233)</li>
-<li>多测不清空，爆零两行泪/kk 多测<code>dfn</code>数组记得清空啊 (2021.11.29, P4606)</li>
-<li><code>(0 - 1) / x + 1 == 1</code>，要特判或者写成<code>(? + x - 1) / x</code> (2021.12.1 CF1320E)</li>
-<li><code>std::priority_queue</code>默认是<code>std::less&lt;_Tp&gt;</code>，自定义类型要么按照<code>\gt</code>的逻辑重载<code>operator&lt;()</code>，要么按照<code>\gt</code>的逻辑重载<code>operator&gt;()</code>并且修改默认参数（这个好像错了不止一次了）(2021.12.1 CF1320E)</li>
-<li>这个故事告诉我们FFT/NTT做卷积一定要开两倍长度 (2021.12.6, AT2064)</li>
-<li>开<code>vector</code>当动态开点树状数组<code>resize</code>时没有$+1$ (2021.12.10, P6329)</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yaoxi-std.github.io/2021/11/20/some-tips/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yaoxi-std">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yaoxi-std 的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/20/some-tips/" class="post-title-link" itemprop="url">一些tips</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-20 19:35:30" itemprop="dateCreated datePublished" datetime="2021-11-20T19:35:30+08:00">2021-11-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-05 21:35:18" itemprop="dateModified" datetime="2021-12-05T21:35:18+08:00">2021-12-05</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ul>
-<li>AC自动机build以后可以先把cnt数组预处理出来，这样就不用每次都跳fail指针了（也不知道算卡常还是说不预处理复杂度就不对，反正我的<a href="/2021/11/22/sol-cf710f/" title="CF710F">CF710F</a>就是加了这个优化才过了的）(2021.11.22, CF710F)</li>
-<li>计算树上最长路径和可以用<strong><a href="/2021/12/04/sol-cf526g/" title="长链剖分的奇妙性质">长链剖分的奇妙性质</a></strong>来维护 (2021.12.4, CF526G)</li>
-<li><strong>不要</strong>用变量<code>M_PI</code>!!! <strong>要</strong>用<code>acos(-1)</code>!!! (2021.12.5, P4245)</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yaoxi-std.github.io/2021/11/20/noi-records/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yaoxi-std">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yaoxi-std 的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/20/noi-records/" class="post-title-link" itemprop="url">NOI系列比赛获奖记录</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-20 19:32:44" itemprop="dateCreated datePublished" datetime="2021-11-20T19:32:44+08:00">2021-11-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-29 21:55:27" itemprop="dateModified" datetime="2021-11-29T21:55:27+08:00">2021-11-29</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="弱弱的获奖记录"><a href="#弱弱的获奖记录" class="headerlink" title="弱弱的获奖记录"></a>弱弱的获奖记录</h2><p><del>假装自己没获得过奖吧</del></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yaoxi-std.github.io/2021/11/20/date-records/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yaoxi-std">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yaoxi-std 的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/20/date-records/" class="post-title-link" itemprop="url">Important dates</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-20 19:33:52" itemprop="dateCreated datePublished" datetime="2021-11-20T19:33:52+08:00">2021-11-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-22 21:23:44" itemprop="dateModified" datetime="2021-11-22T21:23:44+08:00">2021-11-22</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一些在OI中对我来说比较重要的时刻"><a href="#一些在OI中对我来说比较重要的时刻" class="headerlink" title="一些在OI中对我来说比较重要的时刻"></a>一些在OI中对我来说比较重要的时刻</h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yaoxi-std.github.io/2021/11/21/school-contests/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yaoxi-std">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yaoxi-std 的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/21/school-contests/" class="post-title-link" itemprop="url">校内训练</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-21 18:32:47" itemprop="dateCreated datePublished" datetime="2021-11-21T18:32:47+08:00">2021-11-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-22 21:23:55" itemprop="dateModified" datetime="2021-11-22T21:23:55+08:00">2021-11-22</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          这里有东西被加密了，需要输入密码查看哦。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/11/21/school-contests/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yaoxi-std.github.io/2021/11/20/atcoder-records/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yaoxi-std">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yaoxi-std 的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/20/atcoder-records/" class="post-title-link" itemprop="url">AtCoder 比赛记录</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-20 19:24:57" itemprop="dateCreated datePublished" datetime="2021-11-20T19:24:57+08:00">2021-11-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-22 21:27:24" itemprop="dateModified" datetime="2021-11-22T21:27:24+08:00">2021-11-22</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="AtCoder-上的比赛记录"><a href="#AtCoder-上的比赛记录" class="headerlink" title="AtCoder 上的比赛记录"></a>AtCoder 上的比赛记录</h2><h3 id="2021-11-21-ARC129"><a href="#2021-11-21-ARC129" class="headerlink" title="2021.11.21 ARC129"></a>2021.11.21 ARC129</h3><p>被之前两道DS题搞得有点头晕，看了下题感觉<del>只会做A</del>挺思维的，于是切了下A题就去继续做<a href="/2021/11/20/missions/" title="任务计划">任务计划</a>了。<br>update 2021.11.22 （本以为肯定要掉好多分，结果分数<del>不减反增</del>）</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yaoxi-std.github.io/2021/11/20/codeforces-records/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yaoxi-std">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yaoxi-std 的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/20/codeforces-records/" class="post-title-link" itemprop="url">Codeforces 比赛记录</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-20 19:24:50" itemprop="dateCreated datePublished" datetime="2021-11-20T19:24:50+08:00">2021-11-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-22 21:30:52" itemprop="dateModified" datetime="2021-11-22T21:30:52+08:00">2021-11-22</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="CodeForces-上的比赛记录"><a href="#CodeForces-上的比赛记录" class="headerlink" title="CodeForces 上的比赛记录"></a>CodeForces 上的比赛记录</h2><h3 id="2021-11-22-CF1612"><a href="#2021-11-22-CF1612" class="headerlink" title="2021.11.22 CF1612"></a>2021.11.22 CF1612</h3><p>没算好恰饭的时间，<del>以后不打下午5点的CF了</del><br>一样是切了ABCD，看了眼EFG走人<del>（太不专心了，也不知道掉多少分）</del><br><del>难道学校今天开家长会就是为了让我们打下午的Codeforces的。。。</del></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -849,10 +216,9 @@
       <meta itemprop="name" content="yaoxi-std 的博客">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/19/sol-p3181/" class="post-title-link" itemprop="url">P3181 [HAOI2016] 找相同字符串</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          P3181 [HAOI2016] 找相同字符串
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -885,7 +251,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="P3181-HAOI2016-找相同字符串"><a href="#P3181-HAOI2016-找相同字符串" class="headerlink" title="P3181 [HAOI2016] 找相同字符串"></a>P3181 [HAOI2016] 找相同字符串</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3181">题目链接</a></p>
+        <h2 id="P3181-HAOI2016-找相同字符串"><a href="#P3181-HAOI2016-找相同字符串" class="headerlink" title="P3181 [HAOI2016] 找相同字符串"></a>P3181 [HAOI2016] 找相同字符串</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3181">题目链接</a></p>
 <h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>假设我们已经知道如何计算单一串的答案，之后可以将两个串拼接，中间间隔字符<code>$</code>，算出新串的答案。但是这样会重复计算两个子串在同一个原串，所以还需减去两个原串的答案。即$ans=ans_s-ans_{s1}-ans_{s2}$。</p>
 <p>现在只需考虑如何算出一个单一串的答案。根据后缀数组的性质，显然答案为</p>
 <script type="math/tex; mode=display">
@@ -895,30 +261,40 @@ ans_s &= \sum_{1 \le i \lt j \le n}{|lcp(suf_i, suf_j)|} \\
 \end{aligned}</script><p>算出每个$height$对$ans$的贡献$(i - pre_i) \times (nxt_i - i) \times height(i)$，其中$pre_i$表示前一个<strong>小于</strong>$height(i)$的位置，$nxt_i$表示后一个<strong>小于等于</strong>$height_i$的位置。单调栈维护。</p>
 <p>时间复杂度$O(n \log n)$，但显然可以通过使用更高级的$SA$优化到$O(n)$。</p>
 <h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file:           P3181.cpp</span></span><br><span class="line"><span class="comment"> * @author:         yaoxi-std</span></span><br><span class="line"><span class="comment"> * @url:            https://www.luogu.com.cn/problem/P3181</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// #pragma GCC optimize (&quot;O2&quot;)</span></span><br><span class="line"><span class="comment">// #pragma GCC optimize (&quot;Ofast&quot;, &quot;inline&quot;, &quot;-ffast-math&quot;)</span></span><br><span class="line"><span class="comment">// #pragma GCC target (&quot;avx,sse2,sse3,sse4,mmx&quot;)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> resetIO(x) \</span></span><br><span class="line"><span class="meta">    freopen(#x <span class="meta-string">&quot;.in&quot;</span>, <span class="meta-string">&quot;r&quot;</span>, stdin), freopen(#x <span class="meta-string">&quot;.out&quot;</span>, <span class="meta-string">&quot;w&quot;</span>, stdout)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> debug(fmt, ...) \</span></span><br><span class="line"><span class="meta">    fprintf(stderr, <span class="meta-string">&quot;[%s:%d] &quot;</span> fmt <span class="meta-string">&quot;\n&quot;</span>, __FILE__, __LINE__, ##__VA_ARGS__)</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> _<span class="title">Tp</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> _Tp&amp; <span class="title">read</span><span class="params">(_Tp &amp;x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> sign = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">double</span> tmp = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>())</span><br><span class="line">        sign |= (ch == <span class="string">&#x27;-&#x27;</span>);</span><br><span class="line">    <span class="keyword">for</span> (x = <span class="number">0</span>; <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>())</span><br><span class="line">        x = x * <span class="number">10</span> + (ch ^ <span class="number">48</span>);</span><br><span class="line">    <span class="keyword">if</span> (ch == <span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> (ch = <span class="built_in">getchar</span>(); <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>())</span><br><span class="line">            tmp /= <span class="number">10.0</span>, x += tmp * (ch ^ <span class="number">48</span>);</span><br><span class="line">    <span class="keyword">return</span> sign ? (x = -x) : x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> _<span class="title">Tp</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(_Tp x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="built_in">putchar</span>(<span class="string">&#x27;-&#x27;</span>), x = -x;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">9</span>)</span><br><span class="line">        <span class="built_in">write</span>(x / <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">putchar</span>((x % <span class="number">10</span>) ^ <span class="number">48</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">4e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f3f3f3f3f</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">suffix_array</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> *str;</span><br><span class="line">    <span class="keyword">int</span> n, sa[MAXN], rk[MAXN], tp[MAXN], ht[MAXN];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">radix_sort</span><span class="params">(<span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> buk[MAXN];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; ++i)</span><br><span class="line">            buk[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">            buk[rk[i]]++;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i)</span><br><span class="line">            buk[i] += buk[i - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; --i)</span><br><span class="line">            sa[buk[rk[tp[i]]]--] = tp[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">char</span> *s, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;str = s;</span><br><span class="line">        <span class="keyword">this</span>-&gt;n = n;</span><br><span class="line">        <span class="keyword">int</span> m = <span class="number">128</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">            rk[i] = s[i] + <span class="number">1</span>, tp[i] = i;</span><br><span class="line">        <span class="built_in">radix_sort</span>(m);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> p = <span class="number">0</span>, w = <span class="number">1</span>; p &lt; n; m = p, w &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            p = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= w; ++i)</span><br><span class="line">                tp[++p] = n - w + i;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">                <span class="keyword">if</span> (sa[i] &gt; w)</span><br><span class="line">                    tp[++p] = sa[i] - w;</span><br><span class="line">            <span class="built_in">radix_sort</span>(m);</span><br><span class="line">            <span class="built_in">copy</span>(rk + <span class="number">1</span>, rk + n + <span class="number">1</span>, tp + <span class="number">1</span>);</span><br><span class="line">            rk[sa[<span class="number">1</span>]] = p = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tp[sa[i - <span class="number">1</span>]] == tp[sa[i]] &amp;&amp; tp[sa[i - <span class="number">1</span>] + w] == tp[sa[i] + w])</span><br><span class="line">                    rk[sa[i]] = p;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    rk[sa[i]] = ++p;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, k = <span class="number">0</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (k)</span><br><span class="line">                k--;</span><br><span class="line">            <span class="keyword">while</span> (s[i + k] == s[sa[rk[i] - <span class="number">1</span>] + k])</span><br><span class="line">                k++;</span><br><span class="line">            ht[i] = k;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>, top;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> pre[MAXN], nxt[MAXN], sta[MAXN];</span><br><span class="line">        sta[top = <span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">while</span> (top &amp;&amp; ht[sa[sta[top]]] &gt;= ht[sa[i]])</span><br><span class="line">                --top;</span><br><span class="line">            pre[i] = i - sta[top];</span><br><span class="line">            sta[++top] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        sta[top = <span class="number">0</span>] = n + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">while</span> (top &amp;&amp; ht[sa[sta[top]]] &gt; ht[sa[i]])</span><br><span class="line">                --top;</span><br><span class="line">            nxt[i] = sta[top] - i;</span><br><span class="line">            sta[++top] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">            ret += pre[i] * nxt[i] * ht[sa[i]];</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> n0, n1, n2;</span><br><span class="line"><span class="keyword">char</span> s0[MAXN], s1[MAXN], s2[MAXN];</span><br><span class="line">suffix_array sa0, sa1, sa2;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s%s&quot;</span>, s1 + <span class="number">1</span>, s2 + <span class="number">1</span>);</span><br><span class="line">    n1 = <span class="built_in">strlen</span>(s1 + <span class="number">1</span>);</span><br><span class="line">    n2 = <span class="built_in">strlen</span>(s2 + <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">copy</span>(s1 + <span class="number">1</span>, s1 + n1 + <span class="number">1</span>, s0 + <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">copy</span>(s2 + <span class="number">1</span>, s2 + n2 + <span class="number">1</span>, s0 + n1 + <span class="number">2</span>);</span><br><span class="line">    s0[n1 + <span class="number">1</span>] = <span class="string">&#x27;$&#x27;</span>, n0 = n1 + n2 + <span class="number">1</span>;</span><br><span class="line">    sa0.<span class="built_in">build</span>(s0, n0);</span><br><span class="line">    sa1.<span class="built_in">build</span>(s1, n1);</span><br><span class="line">    sa2.<span class="built_in">build</span>(s2, n2);</span><br><span class="line">    <span class="keyword">int</span> ans = sa0.<span class="built_in">calc</span>() - sa1.<span class="built_in">calc</span>() - sa2.<span class="built_in">calc</span>();</span><br><span class="line">    <span class="built_in">write</span>(ans), <span class="built_in">putchar</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/solutions/" rel="tag"># solutions</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/17/sol-p4248/" rel="prev" title="[AHOI2013] 差异 题解">
+      <i class="fa fa-chevron-left"></i> [AHOI2013] 差异 题解
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
   
 
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -965,6 +341,7 @@ ans_s &= \sum_{1 \le i \lt j \le n}{|lcp(suf_i, suf_j)|} \\
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#P3181-HAOI2016-%E6%89%BE%E7%9B%B8%E5%90%8C%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">P3181 [HAOI2016] 找相同字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E9%9D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">题面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">AC代码</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1142,6 +519,25 @@ ans_s &= \sum_{1 \le i \lt j \le n}{|lcp(suf_i, suf_j)|} \\
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '18dd18baae150ef9ab44',
+      clientSecret: '22b3c495c79f197d74c81171f0603dca0f60849a',
+      repo        : 'yaoxi-std.github.io',
+      owner       : 'yaoxi-std',
+      admin       : ['yaoxi-std'],
+      id          : 'e89a722057d2a554085903bdf4c5c7c1',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
