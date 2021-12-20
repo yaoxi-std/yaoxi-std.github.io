@@ -40,6 +40,8 @@ date: 2021-12-17 18:28:14
 
 {% post_link 'sol-p4248' 'P4248' %}
 
+{% post_link 'sol-p3181' 'P3181' %}
+
 ### 模版代码
 ```cpp
 struct suffix_array {

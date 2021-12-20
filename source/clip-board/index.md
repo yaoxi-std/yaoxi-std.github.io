@@ -248,8 +248,6 @@ void build_vtr() {
         if (s[i] == 1)
             continue;
         int l = lca(sta[top], s[i]);
-        if (l < 1 || l > bcc)
-            lca(sta[top], s[i]);
         while (id[l] <= id[sta[top - 1]])
             add_vedge(sta[top - 1], sta[top]), --top;
         if (sta[top] != l)
