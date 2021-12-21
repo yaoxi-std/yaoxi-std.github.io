@@ -16,3 +16,4 @@ comments: false
  - `std::priority_queue`默认是`std::less<_Tp>`，自定义类型要么按照`\gt`的逻辑重载`operator<()`，要么按照`\gt`的逻辑重载`operator>()`并且修改默认参数（这个好像错了不止一次了）(2021.12.1 CF1320E)
  - 这个故事告诉我们FFT/NTT做卷积一定要开两倍长度 (2021.12.6, AT2064)
  - 开`vector`当动态开点树状数组`resize`时没有$+1$ (2021.12.10, P6329)
+ - 费用流需要注意的地方见{% post_link 'top-networkflow' '这里' %} (2021.12.21, P4016)

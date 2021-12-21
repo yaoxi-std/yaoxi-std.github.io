@@ -62,9 +62,9 @@ LOJ6184
 ### 2021.12.19 (Sun)
 ~~{% post_link 'sol-p3181' 'P3181' %}~~
 
-~~{% post_link 'sol-p2756' 'P2756' %}~~ ~~{% post_link 'sol-p2761' 'P2761' %}~~ P4011
+~~{% post_link 'sol-p2756' 'P2756' %}~~ ~~{% post_link 'sol-p2761' 'P2761' %}~~
 
-P4016
+~~{% post_link 'sol-p4011' 'P4011' %}~~ ~~{% post_link 'sol-p4016' 'P4016' %}~~
 
 P1251 P2754
 
