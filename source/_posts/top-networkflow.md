@@ -22,6 +22,8 @@ date: 2021-12-17 18:28:54
 ### 流模型
 {% post_link 'sol-p2756' 'P2756' %}
 {% post_link 'sol-p4016' 'P4016' %}
+{% post_link 'sol-p1251' 'P1251' %}
+{% post_link 'sol-p2754' 'P2754' %}
 
 ### 割模型
 
@@ -96,36 +98,32 @@ struct dinic {
 #### 费用流(dinic)
 
 ```cpp
-struct dinic {
-    struct edges {
-        int v, c, f, next;
+struct Dinic {
+    struct Edge {
+        int v, cost, flow;
     } edge[MAXM];
-    int n, tot, flow, cost, head[MAXN];
-    int cur[MAXN], dis[MAXN];
+    int tot = 1, cost = 0, flow = 0;
+    int head[MAXN], nxt[MAXM], dis[MAXN], cur[MAXN];
     bool vis[MAXN];
-    void init(int n) {
-        this->n = n, tot = 0;
-        fill(head, head + n + 1, -1);
-    }
-    void addedge(int u, int v, int c, int f) {
-        edge[tot] = {v, c, f, head[u]};
-        head[u] = tot++;
-        edge[tot] = {u, -c, 0, head[v]};
-        head[v] = tot++;
+    void addedge(int u, int v, int cost, int flow) {
+        edge[++tot] = {v, cost, flow};
+        nxt[tot] = head[u], head[u] = tot;
+        edge[++tot] = {u, -cost, 0};
+        nxt[tot] = head[v], head[v] = tot;
     }
     bool spfa(int s, int t) {
-        fill(dis, dis + n + 1, INF);
-        fill(vis, vis + n + 1, false);
+        memset(vis, 0, sizeof(vis));
+        memset(dis, 0x3f, sizeof(dis));
         queue<int> que;
         que.push(s);
         dis[s] = 0, vis[s] = true;
         while (!que.empty()) {
             int u = que.front();
             que.pop(), vis[u] = false;
-            for (int i = head[u]; ~i; i = edge[i].next) {
-                int v = edge[i].v, c = edge[i].c, f = edge[i].f;
-                if (f && dis[v] > dis[u] + c) {
-                    dis[v] = dis[u] + c;
+            for (int i = head[u]; i; i = nxt[i]) {
+                int v = edge[i].v;
+                if (edge[i].flow && dis[v] > dis[u] + edge[i].cost) {
+                    dis[v] = dis[u] + edge[i].cost;
                     if (!vis[v]) {
                         que.push(v);
                         vis[v] = true;
@@ -135,34 +133,30 @@ struct dinic {
         }
         return dis[t] != INF;
     }
-    int dfs(int u, int t, int mx) {
+    int augment(int u, int t, int mx) {
         if (u == t || mx == 0)
             return mx;
         vis[u] = true;
         int ret = 0;
-        for (int &i = cur[u]; ~i; i = edge[i].next) {
-            int v = edge[i].v, c = edge[i].c, f = edge[i].f;
-            if (vis[v])
+        for (int &i = cur[u]; i; i = nxt[i]) {
+            int v = edge[i].v;
+            if (vis[v] || dis[u] + edge[i].cost != dis[v])
                 continue;
-            if (dis[u] + c == dis[v]) {
-                int tmp = dfs(v, t, min(mx, f));
-                cost += c * tmp;
-                mx -= tmp, ret += tmp;
-                edge[i].f -= tmp, edge[i ^ 1].f += tmp;
-            }
+            int tmp = augment(v, t, min(mx, edge[i].flow));
+            mx -= tmp, ret += tmp;
+            edge[i].flow -= tmp, edge[i ^ 1].flow += tmp;
+            cost += edge[i].cost * tmp;
             if (mx == 0)
                 break;
         }
         vis[u] = false;
         return ret;
     }
-    int mcmf(int s, int t) {
-        flow = cost = 0;
+    void mcmf(int s, int t) {
         while (spfa(s, t)) {
-            copy(head, head + n + 1, cur);
-            flow += dfs(s, t, INF);
+            memcpy(cur, head, sizeof(cur));
+            flow += augment(s, t, INF);
         }
-        return flow;
     }
 };
 ```

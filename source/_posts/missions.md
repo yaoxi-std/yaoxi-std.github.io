@@ -66,7 +66,7 @@ LOJ6184
 
 ~~{% post_link 'sol-p4011' 'P4011' %}~~ ~~{% post_link 'sol-p4016' 'P4016' %}~~
 
-P1251 P2754
+~~{% post_link 'sol-p1251' 'P1251' %}~~ ~~{% post_link 'sol-p2754' 'P2754' %}~~
 
 P2762
 
