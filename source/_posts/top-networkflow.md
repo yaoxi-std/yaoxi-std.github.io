@@ -26,6 +26,7 @@ date: 2021-12-17 18:28:54
 {% post_link 'sol-p2754' 'P2754' %}
 
 ### 割模型
+{% post_link 'sol-p2762' 'P2762' %}
 
 ### 非模型
 {% post_link 'sol-p2761' 'P2761' %}
@@ -36,61 +37,58 @@ date: 2021-12-17 18:28:54
 #### 网络流(dinic)
 
 ```cpp
-struct dinic {
-    struct edges {
-        int v, w, next;
+struct Dinic {
+    struct Edge {
+        int v, flow;
     } edge[MAXM];
-    int n, tot, head[MAXN];
-    int cur[MAXN], lev[MAXN];
-    void init(int n) {
-        this->n = n, tot = 0;
-        fill(head, head + n + 1, -1);
-    }
-    void addedge(int u, int v, int w) {
-        edge[tot] = {v, w, head[u]};
-        head[u] = tot++;
-        edge[tot] = {u, 0, head[v]};
-        head[v] = tot++;
+    int tot = 1, flow = 0;
+    int head[MAXN], nxt[MAXM], lev[MAXN], cur[MAXN];
+    void addedge(int u, int v, int flow) {
+        edge[++tot] = {v, flow};
+        nxt[tot] = head[u], head[u] = tot;
+        edge[++tot] = {u, 0};
+        nxt[tot] = head[v], head[v] = tot;
     }
     bool bfs(int s, int t) {
-        fill(lev, lev + n + 1, -1);
+        memset(lev, -1, sizeof(lev));
         queue<int> que;
-        que.push(s), lev[s] = 0;
+        que.push(s);
+        lev[s] = 0;
         while (!que.empty()) {
             int u = que.front();
             que.pop();
-            for (int i = head[u]; ~i; i = edge[i].next) {
-                if (edge[i].w && lev[edge[i].v] == -1) {
-                    lev[edge[i].v] = lev[u] + 1;
-                    que.push(edge[i].v);
+            for (int i = head[u]; i; i = nxt[i]) {
+                int v = edge[i].v;
+                if (edge[i].flow && lev[v] == -1) {
+                    lev[v] = lev[u] + 1;
+                    que.push(v);
                 }
             }
         }
         return lev[t] != -1;
     }
-    int dfs(int u, int t, int mx) {
+    int augment(int u, int t, int mx) {
         if (u == t || mx == 0)
             return mx;
         int ret = 0;
-        for (int &i = cur[u]; ~i; i = edge[i].next) {
-            int v = edge[i].v, w = edge[i].w;
+        for (int &i = cur[u]; i; i = nxt[i]) {
+            int v = edge[i].v;
             if (lev[v] != lev[u] + 1)
                 continue;
-            int tmp = dfs(v, t, min(mx, w));
-            edge[i].w -= tmp, edge[i ^ 1].w += tmp;
+            int tmp = augment(v, t, min(mx, edge[i].flow));
             mx -= tmp, ret += tmp;
+            edge[i].flow -= tmp, edge[i ^ 1].flow += tmp;
             if (mx == 0)
                 break;
         }
         return ret;
     }
     int maxflow(int s, int t) {
-        int ret = 0;
         while (bfs(s, t)) {
-            copy(head, head + n + 1, cur);
-            ret += dfs(s, t, INF);
+            memcpy(cur, head, sizeof(cur));
+            flow += augment(s, t, INF);
         }
-        return ret;
+        return flow;
     }
 };
 ```
