@@ -9,8 +9,11 @@ date: 2021-12-17 18:28:54
 
 网络流的话，先口糊好怎么建图，然后~~复制~~默写一下板子就好了。
 
-~~其实网络流24题的全称叫网络流和线性规划24题？~~
+难点其实有两个，一个是如何建图，另一个是输出路径。
 
+如果一道题有许多奇怪的限制，并且$n$和$m$很小，导致$O(n^2m)$可以通过，就可以往网络流方面去想。
+
+~~其实网络流24题的全称叫网络流和线性规划24题？~~
 
 ### 费用流需要注意的地方
 
@@ -20,17 +23,31 @@ date: 2021-12-17 18:28:54
 4. （这应该算是个小$tip$）网络流$tot$一开始清空成$1$可以不需要再调用`init`函数，也不需要再把$head$清空成$-1$。
 
 ### 流模型
-{% post_link 'sol-p2756' 'P2756' %}
-{% post_link 'sol-p4016' 'P4016' %}
-{% post_link 'sol-p1251' 'P1251' %}
-{% post_link 'sol-p2754' 'P2754' %}
+{% post_link 'sol-p2756' %} </br>
+
+{% post_link 'sol-p4016' %} </br>
+
+{% post_link 'sol-p1251' %} </br>
+
+{% post_link 'sol-p2754' %} </br>
+
+{% post_link 'sol-p2763' %} </br>
+
+{% post_link 'sol-p2764' %} </br>
+
+{% post_link 'sol-p2765' %} </br>
+
+{% post_link 'sol-p2766' %} </br>
+
+{% post_link 'sol-p2770' %}
 
 ### 割模型
-{% post_link 'sol-p2762' 'P2762' %}
+{% post_link 'sol-p2762' %}
 
 ### 非模型
-{% post_link 'sol-p2761' 'P2761' %}
-{% post_link 'sol-p4011' 'P4011' %}
+{% post_link 'sol-p2761' %} </br>
+
+{% post_link 'sol-p4011' %}
 
 ### 模版代码
 
@@ -50,7 +67,7 @@ struct Dinic {
         nxt[tot] = head[v], head[v] = tot;
     }
     bool bfs(int s, int t) {
-        memset(lev, -1, sizeof(lev));
+        fill(lev, lev + MAXN, -1);
         queue<int> que;
         que.push(s);
         lev[s] = 0;
@@ -85,7 +102,7 @@ struct Dinic {
     }
     int maxflow(int s, int t) {
         while (bfs(s, t)) {
-            memcpy(cur, head, sizeof(cur));
+            copy(head, head + MAXN, cur);
             flow += augment(s, t, INF);
         }
         return flow;
@@ -93,39 +110,37 @@ struct Dinic {
 };
 ```
 
-#### 费用流(dinic)
+#### 最小费用最大流(dinic)
 
 ```cpp
 struct Dinic {
     struct Edge {
-        int v, cost, flow;
+        int v, flow, cost;
     } edge[MAXM];
-    int tot = 1, cost = 0, flow = 0;
+    int tot = 1, flow = 0, cost = 0;
     int head[MAXN], nxt[MAXM], dis[MAXN], cur[MAXN];
     bool vis[MAXN];
-    void addedge(int u, int v, int cost, int flow) {
-        edge[++tot] = {v, cost, flow};
+    void addedge(int u, int v, int flow, int cost) {
+        edge[++tot] = {v, flow, cost};
         nxt[tot] = head[u], head[u] = tot;
-        edge[++tot] = {u, -cost, 0};
+        edge[++tot] = {u, 0, -cost};
         nxt[tot] = head[v], head[v] = tot;
     }
     bool spfa(int s, int t) {
-        memset(vis, 0, sizeof(vis));
-        memset(dis, 0x3f, sizeof(dis));
+        fill(vis, vis + MAXN, 0);
+        fill(dis, dis + MAXN, INF);
         queue<int> que;
         que.push(s);
-        dis[s] = 0, vis[s] = true;
+        dis[s] = 0, vis[s] = 1;
         while (!que.empty()) {
             int u = que.front();
-            que.pop(), vis[u] = false;
+            que.pop(), vis[u] = 0;
             for (int i = head[u]; i; i = nxt[i]) {
                 int v = edge[i].v;
                 if (edge[i].flow && dis[v] > dis[u] + edge[i].cost) {
                     dis[v] = dis[u] + edge[i].cost;
-                    if (!vis[v]) {
-                        que.push(v);
-                        vis[v] = true;
-                    }
+                    if (!vis[v])
+                        que.push(v), vis[v] = 1;
                 }
             }
         }
@@ -134,27 +149,28 @@ struct Dinic {
     int augment(int u, int t, int mx) {
         if (u == t || mx == 0)
             return mx;
-        vis[u] = true;
+        vis[u] = 1;
         int ret = 0;
         for (int &i = cur[u]; i; i = nxt[i]) {
             int v = edge[i].v;
-            if (vis[v] || dis[u] + edge[i].cost != dis[v])
+            if (vis[v] || dis[v] != dis[u] + edge[i].cost)
                 continue;
             int tmp = augment(v, t, min(mx, edge[i].flow));
+            cost += tmp * edge[i].cost;
             mx -= tmp, ret += tmp;
             edge[i].flow -= tmp, edge[i ^ 1].flow += tmp;
-            cost += edge[i].cost * tmp;
             if (mx == 0)
                 break;
         }
-        vis[u] = false;
+        vis[u] = 0;
         return ret;
     }
-    void mcmf(int s, int t) {
+    int mcmf(int s, int t) {
         while (spfa(s, t)) {
-            memcpy(cur, head, sizeof(cur));
+            copy(head, head + MAXN, cur);
             flow += augment(s, t, INF);
         }
+        return flow;
     }
 };
 ```

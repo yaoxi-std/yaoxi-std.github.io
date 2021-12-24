@@ -34,13 +34,13 @@ date: 2021-12-17 18:28:14
 
 ### 题目
 
-{% post_link 'sol-p2408' 'P2408' %}
+{% post_link 'sol-p2408' %} </br>
 
-{% post_link 'sol-p4051' 'P4051' %}
+{% post_link 'sol-p4051' %} </br>
 
-{% post_link 'sol-p4248' 'P4248' %}
+{% post_link 'sol-p4248' %} </br>
 
-{% post_link 'sol-p3181' 'P3181' %}
+{% post_link 'sol-p3181' %}
 
 ### 模版代码
 ```cpp

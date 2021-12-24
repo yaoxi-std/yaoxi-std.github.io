@@ -17,17 +17,17 @@ date: 2021-12-17 18:29:26
 
 ### 题目
 
-{% post_link 'sol-p2495' 'P2495' %}
+{% post_link 'sol-p2495' %} </br>
 
-{% post_link 'sol-p4606' 'P4606' %}
+{% post_link 'sol-p4606' %} </br>
 
-{% post_link 'sol-p3233' 'P3233' %}
+{% post_link 'sol-p3233' %} </br>
 
-{% post_link 'sol-cf1320e' 'CF1320E' %}
+{% post_link 'sol-cf1320e' %} </br>
 
-{% post_link 'sol-cf639f' 'CF639F' %}
+{% post_link 'sol-cf639f' %} </br>
 
-{% post_link 'sol-loj6184' 'LOJ6184' %}
+{% post_link 'sol-loj6184'' %}
 
 ### 模版代码
 ```cpp
