@@ -27,7 +27,7 @@ date: 2021-12-17 18:29:26
 
 {% post_link 'sol-cf639f' %} </br>
 
-{% post_link 'sol-loj6184'' %}
+{% post_link 'sol-loj6184' %}
 
 ### 模版代码
 ```cpp

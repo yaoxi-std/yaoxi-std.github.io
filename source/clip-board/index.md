@@ -25,7 +25,7 @@ using namespace std;
 #define debug(fmt, ...) \
     fprintf(stderr, "[%s:%d] " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__)
 template <class _Tp>
-inline _Tp& read(_Tp &x) {
+inline _Tp& read(_Tp& x) {
     bool sign = false;
     char ch = getchar();
     long double tmp = 1;
@@ -77,7 +77,7 @@ signed main() {
         "#define debug(fmt, ...) \\",
         "    fprintf(stderr, \"[%s:%d] \" fmt \"\\n\", __FILE__, __LINE__, ##__VA_ARGS__)",
         "template <class _Tp>",
-        "inline _Tp& read(_Tp &x) {",
+        "inline _Tp& read(_Tp& x) {",
         "    bool sign = false;",
         "    char ch = getchar();",
         "    long double tmp = 1;",

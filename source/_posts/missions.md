@@ -72,8 +72,8 @@ LOJ6184
 
 ~~{% post_link 'sol-p2764' 'P2764' %}~~ ~~{% post_link 'sol-p2765' 'P2765' %}~~ ~~{% post_link 'sol-p2766' 'P2766' %}~~ ~~{% post_link 'sol-p2770' 'P2770' %}~~
 
-### 2021.12.26 (Sun)
+~~{% post_link 'sol-p4716' 'P4716' %}~~ ~~{% post_link 'sol-p2774' 'P2774' %}~~ ~~{% post_link 'sol-p3254' 'P3254' %}~~ ~~{% post_link 'sol-p3355' 'P3355' %}~~
 
-P2774 P2775
+### 2021.12.26 (Sun)
 
 ### 待写的题解
