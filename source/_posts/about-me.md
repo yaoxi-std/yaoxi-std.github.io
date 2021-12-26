@@ -5,18 +5,14 @@ top: 10000
 comments: false
 ---
 
-[这里](https://yaoxi-std.github.io/)是 yaoxi-std 的个人主页，~~欢迎各位巨佬来爆踩~~。
+![](https://api.xecades.xyz/api?img=1&luogu=yaoxi&github=yaoxi-std&codeforces=yaoxi&qq=3098527227&email=yaoxi20061225%40126.com&site=yaoxi-std.github.io&quote=)
 
-关于我的个人信息：
- - 姓名：yx
- - 坐标：南京，江苏
- - 就读学校：NFLS
- - 年级：初三
+[![luogu-info](https://luogu-card-qinyihao.vercel.app/about?id=141573&card_width=800)](https://www.luogu.com.cn/user/141573)
 
-[我的洛谷账号](https://www.luogu.com.cn/user/141573)
+[![luogu-solved](https://statcard.vercel.app/practice?id=141573&card_width=800)](https://www.luogu.com.cn/user/141573)
 
-[我的AtCoder账号](https://atcoder.jp/users/yaoxi_std)
+[![luogu](https://statcard.vercel.app/shield?id=141573)](https://www.luogu.com.cn/user/141573)
 
-[我的Codeforces账号](https://codeforces.com/profile/yaoxi)
+[![atcoder](https://atcoder.swift-zym.workers.dev/yaoxi_std)](https://atcoder.jp/users/yaoxi_std)
 
-~~很菜对不对~~
+[![codeforces](https://cfrating.ihcr.top/?user=yaoxi)](https://codeforces.com/profile/yaoxi)
