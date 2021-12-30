@@ -78,4 +78,6 @@ LOJ6184
 
 ~~{% post_link 'sol-p3356' 'P3356' %}~~ ~~{% post_link 'sol-p3357' 'P3357' %}~~ ~~{% post_link 'sol-p3358' 'P3358' %}~~
 
+~~{% post_link 'sol-p4012' 'P4012' %}~~ ~~{% post_link 'sol-p4013' 'P4013' %}~~ ~~{% post_link 'sol-p4014' 'P4014' %}~~ ~~{% post_link 'sol-p4015' 'P4015' %}~~
+
 ### 待写的题解

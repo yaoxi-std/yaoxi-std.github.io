@@ -47,7 +47,15 @@ date: 2021-12-17 18:28:54
 
 {% post_link 'sol-p3357' %} </br>
 
-{% post_link 'sol-p3358' %}
+{% post_link 'sol-p3358' %} </br>
+
+{% post_link 'sol-p4012' %} </br>
+
+{% post_link 'sol-p4013' %} </br>
+
+{% post_link 'sol-p4014' %} </br>
+
+{% post_link 'sol-p4015' %}
 
 ### 割模型
 {% post_link 'sol-p2762' %} </br>
@@ -125,13 +133,15 @@ struct Dinic {
 #### 最小费用最大流(dinic)
 
 ```cpp
-struct Dinic {
+template <const int MAXV, const int MAXE>
+struct MCMF {
+    const int INF = 0x3f3f3f3f3f3f3f3f;
     struct Edge {
         int v, flow, cost;
-    } edge[MAXM];
-    int tot = 1, flow = 0, cost = 0;
-    int head[MAXN], nxt[MAXM], dis[MAXN], cur[MAXN];
-    bool vis[MAXN];
+    } edge[MAXE * 2];
+    int tot = 1, head[MAXV], nxt[MAXE];
+    int flow, cost, cur[MAXV], dis[MAXV];
+    bool vis[MAXV];
     void addedge(int u, int v, int flow, int cost) {
         edge[++tot] = {v, flow, cost};
         nxt[tot] = head[u], head[u] = tot;
@@ -139,20 +149,24 @@ struct Dinic {
         nxt[tot] = head[v], head[v] = tot;
     }
     bool spfa(int s, int t) {
-        fill(vis, vis + MAXN, 0);
-        fill(dis, dis + MAXN, INF);
+        fill(vis, vis + MAXV, 0);
+        fill(dis, dis + MAXV, INF);
         queue<int> que;
         que.push(s);
-        dis[s] = 0, vis[s] = 1;
+        dis[s] = 0;
+        vis[s] = 1;
         while (!que.empty()) {
             int u = que.front();
-            que.pop(), vis[u] = 0;
+            que.pop();
+            vis[u] = 0;
             for (int i = head[u]; i; i = nxt[i]) {
                 int v = edge[i].v;
                 if (edge[i].flow && dis[v] > dis[u] + edge[i].cost) {
                     dis[v] = dis[u] + edge[i].cost;
-                    if (!vis[v])
-                        que.push(v), vis[v] = 1;
+                    if (!vis[v]) {
+                        que.push(v);
+                        vis[v] = 1;
+                    }
                 }
             }
         }
@@ -177,12 +191,12 @@ struct Dinic {
         vis[u] = 0;
         return ret;
     }
-    int mcmf(int s, int t) {
+    pair<int, int> mcmf(int s, int t) {
         while (spfa(s, t)) {
-            copy(head, head + MAXN, cur);
+            copy(head, head + MAXV, cur);
             flow += augment(s, t, INF);
         }
-        return flow;
+        return make_pair(flow, cost);
     }
 };
 ```
