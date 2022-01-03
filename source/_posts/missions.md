@@ -80,4 +80,10 @@ LOJ6184
 
 ~~{% post_link 'sol-p4012' 'P4012' %}~~ ~~{% post_link 'sol-p4013' 'P4013' %}~~ ~~{% post_link 'sol-p4014' 'P4014' %}~~ ~~{% post_link 'sol-p4015' 'P4015' %}~~
 
+~~{% post_link 'sol-p4009' 'P4009' %}~~
+
+### 2022.1.1 (Sat)
+
+~~{% post_link 'sol-cf986d' 'CF986D' %}~~
+
 ### 待写的题解
