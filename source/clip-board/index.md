@@ -177,14 +177,20 @@ signed main() {
 #### {% post_link 'sol-p3803' 'FFT && NTT' %}
 
 ```cpp
-const long double MPI = acos(-1);
+using comp = complex<double>;
+const int MAXN = 1 << 20;
+const int INF = 0x3f3f3f3f;
 const int MOD = 998244353;
-// const int MOD = 1004535809; // 备用
-// const int MOD = 469762049; // 备用
-using comp = std::complex<double>;
-int rev[MAXN];
-void change(comp *f, int len) {
-    for (int i = 0; i < len; ++i) {
+// const int MOD = 1004535809;
+// const int MOD = 469762049;
+const double PI = acos(-1);
+int add(int x, int y);
+int sub(int x, int y);
+int qpow(int x, int y, int p = MOD);
+template <class _Tp>
+void change(_Tp* f, int len) {
+    static int rev[MAXN];
+    for (int i = rev[0] = 0; i < len; ++i) {
         rev[i] = rev[i >> 1] >> 1;
         if (i & 1)
             rev[i] |= len >> 1;
@@ -193,27 +199,26 @@ void change(comp *f, int len) {
         if (i < rev[i])
             swap(f[i], f[rev[i]]);
 }
-void fft(comp *f, int len, int on) {
+void fft(comp* f, int len, int on) {
     change(f, len);
     for (int h = 2; h <= len; h <<= 1) {
-        comp wn(cos(2 * MPI / h), sin(2 * MPI / h));
+        comp wn(cos(2 * PI / h), sin(2 * PI / h));
         for (int j = 0; j < len; j += h) {
             comp w(1, 0);
             for (int k = j; k < j + h / 2; ++k) {
                 comp u = f[k], t = w * f[k + h / 2];
-                f[k] = u + t;
-                f[k + h / 2] = u - t;
-                w = w * wn;
+                f[k] = u + t, f[k + h / 2] = u - t;
+                w *= wn;
             }
         }
     }
     if (on == -1) {
         reverse(f + 1, f + len);
         for (int i = 0; i < len; ++i)
-            f[i].real(f[i].real() / len);
+            f[i] /= len;
     }
 }
-void ntt(int *f, int len, int on) {
+void ntt(int* f, int len, int on) {
     change(f, len);
     for (int h = 2; h <= len; h <<= 1) {
         int gn = qpow(3, (MOD - 1) / h);
@@ -221,8 +226,7 @@ void ntt(int *f, int len, int on) {
             int g = 1;
             for (int k = j; k < j + h / 2; ++k) {
                 int u = f[k], t = g * f[k + h / 2] % MOD;
-                f[k] = (u + t + MOD) % MOD;
-                f[k + h / 2] = (u - t + MOD) % MOD;
+                f[k] = add(u, t), f[k + h / 2] = sub(u, t);
                 g = g * gn % MOD;
             }
         }
@@ -231,7 +235,7 @@ void ntt(int *f, int len, int on) {
         reverse(f + 1, f + len);
         int inv = qpow(len, MOD - 2);
         for (int i = 0; i < len; ++i)
-            f[i] = f[i] * inv % MOD;
+            f[i] = (f[i] * inv) % MOD;
     }
 }
 ```
