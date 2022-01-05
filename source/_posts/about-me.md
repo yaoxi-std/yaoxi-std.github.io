@@ -15,4 +15,4 @@ comments: false
 
 [![atcoder](https://atcoder.swift-zym.workers.dev/yaoxi_std)](https://atcoder.jp/users/yaoxi_std)
 
-[![codeforces](https://cfrating.ihcr.top/?user=yaoxi)](https://codeforces.com/profile/yaoxi)
+[![codeforces](http://cfrating.ihcr.top/?user=yaoxi)](https://codeforces.com/profile/yaoxi)
