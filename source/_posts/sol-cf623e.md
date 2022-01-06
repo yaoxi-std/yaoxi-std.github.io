@@ -31,7 +31,9 @@ $$
 
 时间复杂度$O(k \log n \log k)$。
 
-**任意模数NTT**明天再写。。。
+注意模数是$10^9+7$要用{% post_link 'sol-p4245' '任意模数NTT' %}。
+
+PS: MTT带个$5$的常数，这里$\log_2n=60$，$k=3\times 10^4$，FFT长度取$2^{16}$，导致理论上的运算次数已经卡满了$10^9$，本地小样例都要跑$7$秒，但谁叫CF评测机快呢～
 
 ### AC代码
 
@@ -75,9 +77,12 @@ inline void write(_Tp x) {
 }
 const int MAXN = 1 << 16;
 const int LOGN = 60;
+const int BLOC = 1 << 15;
 const int INF = 0x3f3f3f3f3f3f3f3f;
 const int MOD = 1e9 + 7;
+const long double PI = acos(-1);
 namespace maths {
+    using comp = complex<long double>;
     int add(int x, int y) {
         x += y;
         return x >= MOD ? x - MOD : x;
@@ -105,8 +110,24 @@ namespace maths {
             if (i < rev[i])
                 swap(f[i], f[rev[i]]);
     }
-    void ntt(int* f, int len, int on) {
-        
+    void fft(comp* f, int len, int on) {
+        change(f, len);
+        for (int h = 2; h <= len; h <<= 1) {
+            comp wn(cos(2 * PI / h), sin(2 * PI / h));
+            for (int j = 0; j < len; j += h) {
+                comp w(1, 0);
+                for (int k = j; k < j + h / 2; ++k) {
+                    comp u = f[k], t = w * f[k + h / 2];
+                    f[k] = u + t, f[k + h / 2] = u - t;
+                    w *= wn;
+                }
+            }
+        }
+        if (on == -1) {
+            reverse(f + 1, f + len);
+            for (int i = 0; i < len; ++i)
+                f[i] /= len;
+        }
     }
     struct poly {
         const static int len = 1 << 16;
@@ -117,12 +138,6 @@ namespace maths {
         int& operator[](int i) {
             return a[i];
         }
-        poly operator+(const poly& rhs) const {
-            poly ret;
-            for (int i = 0; i < len; ++i)
-                ret[i] = add(a[i], rhs[i]);
-            return ret;
-        }
         poly operator*(const poly& rhs) const {
             poly ret;
             for (int i = 0; i < len; ++i)
@@ -130,16 +145,26 @@ namespace maths {
             return ret;
         }
         poly operator^(const poly& rhs) const {
-            static int f1[MAXN], f2[MAXN];
+            static comp f1[MAXN], f2[MAXN], f3[MAXN];
             poly ret;
-            for (int i = 0; i < len; ++i)
-                f1[i] = a[i], f2[i] = rhs[i];
-            ntt(f1, len, 1), ntt(f2, len, 1);
-            for (int i = 0; i < len; ++i)
-                f1[i] = f1[i] * f2[i] % MOD;
-            ntt(f1, len, -1);
-            for (int i = 0; i < len; ++i)
-                ret[i] = f1[i];
+            for (int i = 0; i < len; ++i) {
+                f1[i] = comp(a[i] / BLOC, a[i] % BLOC);
+                f2[i] = comp(a[i] / BLOC, -a[i] % BLOC);
+                f3[i] = comp(rhs[i] / BLOC, rhs[i] % BLOC);
+            }
+            fft(f1, len, 1), fft(f2, len, 1), fft(f3, len, 1);
+            for (int i = 0; i < len; ++i) {
+                f1[i] *= f3[i];
+                f2[i] *= f3[i];
+            }
+            fft(f1, len, -1), fft(f2, len, -1);
+            for (int i = 0; i < len; ++i) {
+                int axay = (int)round((f1[i].real() + f2[i].real()) / 2) % MOD;
+                int bxby = (int)round((f2[i].real() - f1[i].real()) / 2) % MOD;
+                int axby = (int)round((f1[i].imag() + f2[i].imag()) / 2) % MOD;
+                int aybx = (int)round((f1[i].imag() - f2[i].imag()) / 2) % MOD;
+                ret[i] = (axay * BLOC % MOD * BLOC + (axby + aybx) * BLOC % MOD + bxby) % MOD;
+            }
             return ret;
         }
     };
