@@ -28,7 +28,7 @@
 <meta property="og:description" content="P4245 【模版】任意模数多项式乘法题面题目链接 解法对于任意模数的多项式乘法显然无法直接套用$NTT$。而由于数量级过大，采用std::complex&lt;long double&gt;的$FFT$也会产生比较多的精度丢失。 方法1: $NTT$合并由于$a_i,b_i \le 10^9$且$n \le 10^5$，所以答案的数量级不超过$10^9 \times 10^9 \times 10">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-05T11:24:39.000Z">
-<meta property="article:modified_time" content="2021-12-05T13:37:31.031Z">
+<meta property="article:modified_time" content="2022-01-06T10:33:16.321Z">
 <meta property="article:author" content="yaoxi-std">
 <meta property="article:tag" content="solutions">
 <meta name="twitter:card" content="summary">
@@ -226,10 +226,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-12-05 19:24:39 / 修改时间：21:37:31" itemprop="dateCreated datePublished" datetime="2021-12-05T19:24:39+08:00">2021-12-05</time>
+              <time title="创建时间：2021-12-05 19:24:39" itemprop="dateCreated datePublished" datetime="2021-12-05T19:24:39+08:00">2021-12-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-06 18:33:16" itemprop="dateModified" datetime="2022-01-06T18:33:16+08:00">2022-01-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -293,7 +299,7 @@ c_1 \times c_2 &= (a_1 \times 2^{15} + b_1) \times (a_2 \times 2^{15} + b_2) \\
 <p>又设$P’ = A_1 - iB_1$，</p>
 <p>那$T_2 = P’ \times Q = A_1 A_2 + B_1 B_2 + (A_1 B_2 - A_2 B_1)i$，</p>
 <p>两者$T_1$和$T_2$进行和差就得到了多项式的两两乘积（妙啊）。</p>
-<p>总的$FFT$次数为$3$次$DFT<script type="math/tex">+</script>2$次$IDFT<script type="math/tex">=</script>5$次。</p>
+<p>总的$FFT$次数为$3$次DFT$+2$次IDFT$=5$次。</p>
 <p>突然发现值域其实应该是$10^{19}$而不是$10^{14}$，因为$IDFT$之前还得除以$n$……</p>
 <p>看数据强度跑吧，代码倒是挺好写的。</p>
 <p><strong>计算$\pi$不要用常量<code>M_PI</code>而是要用<code>acos(-1)</code>!!!!不然这题丢失精度只能过前$10$个点!!!!</strong></p>
