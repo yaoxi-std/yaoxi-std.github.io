@@ -92,4 +92,6 @@ LOJ6184
 
 ~~{% post_link 'sol-cf623e' 'CF623E' %}~~
 
+~~{% post_link 'sol-cf773f' 'CF773F' %}~~
+
 ### 待写的题解
