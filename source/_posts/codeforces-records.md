@@ -42,6 +42,9 @@ comments: false
 }
 </style>
 
+[![codeforces](https://codeforces-status.yaoxi-std.workers.dev/shields?handle=yaoxi)](https://codeforces.com/profile/yaoxi)
+
+<!-- more -->
 ## CodeForces 上的比赛记录
 
 ### 2021.11.22 CF1612

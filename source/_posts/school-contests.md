@@ -7,3 +7,4 @@ comments: false
 ---
 
 ## 校内训练模拟赛
+<!-- more -->

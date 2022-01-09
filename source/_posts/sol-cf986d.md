@@ -6,6 +6,7 @@ date: 2022-01-02 15:57:25
 ---
 
 ## CF986D Perfect Encoding
+<!-- more -->
 
 ### 题面
 

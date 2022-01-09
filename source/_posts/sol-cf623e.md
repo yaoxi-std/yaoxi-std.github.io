@@ -6,6 +6,7 @@ date: 2022-01-05 22:01:24
 ---
 
 ## CF623E Transforming Sequence
+<!-- more -->
 
 ### 题面
 

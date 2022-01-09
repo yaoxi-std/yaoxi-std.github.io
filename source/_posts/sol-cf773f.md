@@ -6,6 +6,7 @@ date: 2022-01-07 20:01:40
 ---
 
 ## CF773F Test Data Generation
+<!-- more -->
 
 ### 题面
 

@@ -7,3 +7,4 @@ comments: false
 ---
 
 ## 一些在OI中对我来说比较重要的时刻
+<!-- more -->

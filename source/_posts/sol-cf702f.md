@@ -6,6 +6,7 @@ category: 题解
 ---
 
 ## CF702F T-Shirts 题解
+<!-- more -->
 
 ### 题面
 
