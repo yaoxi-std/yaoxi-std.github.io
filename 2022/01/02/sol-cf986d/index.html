@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yaoxi-std.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="CF986D Perfect Encoding题面题目链接 解法一道思维难度低但码量极大且及其卡常的烂题。 首先根据小学奥数学过的东西，可以知道分解出许多$3$，剩下无法分解的凑成$1$到$2$个$2$，这样得到的积一定是最大的。 答案明显是单调的，可以考虑二分+判断。$n$的范围巨大，需要用高精度+FFT+快速幂，时间复杂度一下子$O(n \log^3 n)$级别，无法通过。 进一步思考，答案应">
+  <meta name="description" content="CF986D Perfect Encoding">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF986D Perfect Encoding">
 <meta property="og:url" content="http://yaoxi-std.github.io/2022/01/02/sol-cf986d/index.html">
 <meta property="og:site_name" content="yaoxi-std 的博客">
-<meta property="og:description" content="CF986D Perfect Encoding题面题目链接 解法一道思维难度低但码量极大且及其卡常的烂题。 首先根据小学奥数学过的东西，可以知道分解出许多$3$，剩下无法分解的凑成$1$到$2$个$2$，这样得到的积一定是最大的。 答案明显是单调的，可以考虑二分+判断。$n$的范围巨大，需要用高精度+FFT+快速幂，时间复杂度一下子$O(n \log^3 n)$级别，无法通过。 进一步思考，答案应">
+<meta property="og:description" content="CF986D Perfect Encoding">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-02T07:57:25.000Z">
-<meta property="article:modified_time" content="2022-01-02T08:20:53.507Z">
+<meta property="article:modified_time" content="2022-01-09T15:22:49.628Z">
 <meta property="article:author" content="yaoxi-std">
 <meta property="article:tag" content="solutions">
 <meta name="twitter:card" content="summary">
@@ -246,10 +246,16 @@ darkmode.showWidget();
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-01-02 15:57:25 / 修改时间：16:20:53" itemprop="dateCreated datePublished" datetime="2022-01-02T15:57:25+08:00">2022-01-02</time>
+              <time title="创建时间：2022-01-02 15:57:25" itemprop="dateCreated datePublished" datetime="2022-01-02T15:57:25+08:00">2022-01-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-09 23:22:49" itemprop="dateModified" datetime="2022-01-09T23:22:49+08:00">2022-01-09</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -271,7 +277,8 @@ darkmode.showWidget();
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="CF986D-Perfect-Encoding"><a href="#CF986D-Perfect-Encoding" class="headerlink" title="CF986D Perfect Encoding"></a>CF986D Perfect Encoding</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF986D">题目链接</a></p>
+        <h2 id="CF986D-Perfect-Encoding"><a href="#CF986D-Perfect-Encoding" class="headerlink" title="CF986D Perfect Encoding"></a>CF986D Perfect Encoding</h2><span id="more"></span>
+<h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF986D">题目链接</a></p>
 <h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>一道思维难度低但码量极大且及其卡常的烂题。</p>
 <p>首先根据小学奥数学过的东西，可以知道分解出许多$3$，剩下无法分解的凑成$1$到$2$个$2$，这样得到的积一定是最大的。</p>
 <p>答案明显是单调的，可以考虑二分+判断。$n$的范围巨大，需要用高精度+FFT+快速幂，时间复杂度一下子$O(n \log^3 n)$级别，无法通过。</p>

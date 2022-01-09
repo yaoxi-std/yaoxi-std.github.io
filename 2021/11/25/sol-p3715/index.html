@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yaoxi-std.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="P3715 魔法咒语 题解题面题目链接 解法多模式字符串匹配首先想到AC自动机，那么将忌讳词语建立AC自动机，整个$dp$就有一维状态设为AC自动机的状态，另一维就用字符串的长度，得到$dp_{i,s}$表示长度为$i$，匹配到AC自动机的状态为$s$的字符串个数。转移时枚举基本词汇，在AC自动机上跑出下一个状态，判断是否合法然后向后转移。时间复杂度$O(Ln \Sigma)$，$\Sigma$为">
+  <meta name="description" content="P3715 魔法咒语 题解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="P3715 魔法咒语 题解">
 <meta property="og:url" content="http://yaoxi-std.github.io/2021/11/25/sol-p3715/index.html">
 <meta property="og:site_name" content="yaoxi-std 的博客">
-<meta property="og:description" content="P3715 魔法咒语 题解题面题目链接 解法多模式字符串匹配首先想到AC自动机，那么将忌讳词语建立AC自动机，整个$dp$就有一维状态设为AC自动机的状态，另一维就用字符串的长度，得到$dp_{i,s}$表示长度为$i$，匹配到AC自动机的状态为$s$的字符串个数。转移时枚举基本词汇，在AC自动机上跑出下一个状态，判断是否合法然后向后转移。时间复杂度$O(Ln \Sigma)$，$\Sigma$为">
+<meta property="og:description" content="P3715 魔法咒语 题解">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-25T15:31:42.000Z">
-<meta property="article:modified_time" content="2021-11-27T14:05:22.155Z">
+<meta property="article:modified_time" content="2022-01-09T15:24:12.549Z">
 <meta property="article:author" content="yaoxi-std">
 <meta property="article:tag" content="solutions">
 <meta name="twitter:card" content="summary">
@@ -254,7 +254,7 @@ darkmode.showWidget();
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-27 22:05:22" itemprop="dateModified" datetime="2021-11-27T22:05:22+08:00">2021-11-27</time>
+                <time title="修改时间：2022-01-09 23:24:12" itemprop="dateModified" datetime="2022-01-09T23:24:12+08:00">2022-01-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -277,7 +277,8 @@ darkmode.showWidget();
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="P3715-魔法咒语-题解"><a href="#P3715-魔法咒语-题解" class="headerlink" title="P3715 魔法咒语 题解"></a>P3715 魔法咒语 题解</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3715">题目链接</a></p>
+        <h2 id="P3715-魔法咒语-题解"><a href="#P3715-魔法咒语-题解" class="headerlink" title="P3715 魔法咒语 题解"></a>P3715 魔法咒语 题解</h2><span id="more"></span>
+<h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3715">题目链接</a></p>
 <h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>多模式字符串匹配首先想到AC自动机，那么将忌讳词语建立AC自动机，整个$dp$就有一维状态设为AC自动机的状态，另一维就用字符串的长度，得到$dp_{i,s}$表示长度为$i$，匹配到AC自动机的状态为$s$的字符串个数。转移时枚举基本词汇，在AC自动机上跑出下一个状态，判断是否合法然后向后转移。时间复杂度$O(Ln \Sigma)$，$\Sigma$为忌讳词语的总长度，可通过测试点$1-6$。</p>
 <p>接下来分析如何做测试点$7-10$。发现测试点$7-10$有$|S_i| \le 2$的性质（$|S_i|$为基本词汇长度），而$L \le 10^8$又给我们一个提示，即正解复杂度带有$\log L$，于是想到用矩阵快速幂来优化$dp$。考虑到因为有$|S_1| \le 2$，所以$dp_{i,s}$只依赖于$dp_{i-2,t}$，就可以参考斐波那契数列的矩阵快速幂优化来设定一个$(tot \times 2) \times (tot \times 2)$，$tot$表示AC自动机状态总数（显然$tot \le \Sigma \le 100$）的转移矩阵处理即可。时间复杂度$O((\Sigma)^3 \log L)$，可通过测试点$7-10$。</p>
 <p>综上所述，总的时间复杂度为$O(\min(Ln \Sigma, \Sigma^3 \log L))$。</p>

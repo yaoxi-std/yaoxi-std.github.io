@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yaoxi-std.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="P3355 骑士共存问题题面题目链接 解法显然是一个二分图最小割问题。 如果不考虑障碍，可以直接源点到左边点、右边点到汇点连$1$的边，而左右点之间冲突的连$+\infty$。 现在考虑障碍物。思考之前建图的意义，一个点和源点&#x2F;汇点之间的边被割掉代表不取这个点。于是这些障碍物显然不能取，所以干脆不将它们连边，最后答案在$n \times n - mincut$的基础上再减去$m$就可以了。 AC代">
+  <meta name="description" content="P3355 骑士共存问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="P3355 骑士共存问题">
 <meta property="og:url" content="http://yaoxi-std.github.io/2021/12/25/sol-p3355/index.html">
 <meta property="og:site_name" content="yaoxi-std 的博客">
-<meta property="og:description" content="P3355 骑士共存问题题面题目链接 解法显然是一个二分图最小割问题。 如果不考虑障碍，可以直接源点到左边点、右边点到汇点连$1$的边，而左右点之间冲突的连$+\infty$。 现在考虑障碍物。思考之前建图的意义，一个点和源点&#x2F;汇点之间的边被割掉代表不取这个点。于是这些障碍物显然不能取，所以干脆不将它们连边，最后答案在$n \times n - mincut$的基础上再减去$m$就可以了。 AC代">
+<meta property="og:description" content="P3355 骑士共存问题">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-25T13:06:15.000Z">
-<meta property="article:modified_time" content="2021-12-25T13:13:03.818Z">
+<meta property="article:modified_time" content="2022-01-09T15:24:00.889Z">
 <meta property="article:author" content="yaoxi-std">
 <meta property="article:tag" content="solutions">
 <meta name="twitter:card" content="summary">
@@ -246,10 +246,16 @@ darkmode.showWidget();
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-12-25 21:06:15 / 修改时间：21:13:03" itemprop="dateCreated datePublished" datetime="2021-12-25T21:06:15+08:00">2021-12-25</time>
+              <time title="创建时间：2021-12-25 21:06:15" itemprop="dateCreated datePublished" datetime="2021-12-25T21:06:15+08:00">2021-12-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-09 23:24:00" itemprop="dateModified" datetime="2022-01-09T23:24:00+08:00">2022-01-09</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -271,7 +277,8 @@ darkmode.showWidget();
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="P3355-骑士共存问题"><a href="#P3355-骑士共存问题" class="headerlink" title="P3355 骑士共存问题"></a>P3355 骑士共存问题</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3355">题目链接</a></p>
+        <h2 id="P3355-骑士共存问题"><a href="#P3355-骑士共存问题" class="headerlink" title="P3355 骑士共存问题"></a>P3355 骑士共存问题</h2><span id="more"></span>
+<h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3355">题目链接</a></p>
 <h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>显然是一个二分图最小割问题。</p>
 <p>如果不考虑障碍，可以直接源点到左边点、右边点到汇点连$1$的边，而左右点之间冲突的连$+\infty$。</p>
 <p>现在考虑障碍物。思考之前建图的意义，一个点和源点/汇点之间的边被割掉代表不取这个点。于是这些障碍物显然不能取，所以干脆不将它们连边，最后答案在$n \times n - mincut$的基础上再减去$m$就可以了。</p>

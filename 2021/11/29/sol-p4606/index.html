@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yaoxi-std.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="P4606 战略游戏 题解题面题目链接 解法 圆方树上圆方果 圆方树下你和我 圆方树前建虚树 欢乐多又多 &#x2F;kk  看到$\sum|S|$于是开始套路地想到虚树。 但是给定的是一个无向图不是一棵树啊…… 所以要想办法把图转化成一棵树，这样的数据结构叫做圆方树。 这里假设你已经学会圆方树了 考虑圆方树的性质。显然对于一对节点$(u, v)$，它们在圆方树上的路径中的圆点（不包括自身）就是删掉后能使得">
+  <meta name="description" content="P4606 战略游戏 题解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="P4606 战略游戏 题解">
 <meta property="og:url" content="http://yaoxi-std.github.io/2021/11/29/sol-p4606/index.html">
 <meta property="og:site_name" content="yaoxi-std 的博客">
-<meta property="og:description" content="P4606 战略游戏 题解题面题目链接 解法 圆方树上圆方果 圆方树下你和我 圆方树前建虚树 欢乐多又多 &#x2F;kk  看到$\sum|S|$于是开始套路地想到虚树。 但是给定的是一个无向图不是一棵树啊…… 所以要想办法把图转化成一棵树，这样的数据结构叫做圆方树。 这里假设你已经学会圆方树了 考虑圆方树的性质。显然对于一对节点$(u, v)$，它们在圆方树上的路径中的圆点（不包括自身）就是删掉后能使得">
+<meta property="og:description" content="P4606 战略游戏 题解">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-29T13:36:43.000Z">
-<meta property="article:modified_time" content="2021-11-29T13:54:27.533Z">
+<meta property="article:modified_time" content="2022-01-09T15:24:57.002Z">
 <meta property="article:author" content="yaoxi-std">
 <meta property="article:tag" content="solutions">
 <meta name="twitter:card" content="summary">
@@ -246,10 +246,16 @@ darkmode.showWidget();
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-11-29 21:36:43 / 修改时间：21:54:27" itemprop="dateCreated datePublished" datetime="2021-11-29T21:36:43+08:00">2021-11-29</time>
+              <time title="创建时间：2021-11-29 21:36:43" itemprop="dateCreated datePublished" datetime="2021-11-29T21:36:43+08:00">2021-11-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-09 23:24:57" itemprop="dateModified" datetime="2022-01-09T23:24:57+08:00">2022-01-09</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -271,7 +277,8 @@ darkmode.showWidget();
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="P4606-战略游戏-题解"><a href="#P4606-战略游戏-题解" class="headerlink" title="P4606 战略游戏 题解"></a>P4606 战略游戏 题解</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4606">题目链接</a></p>
+        <h2 id="P4606-战略游戏-题解"><a href="#P4606-战略游戏-题解" class="headerlink" title="P4606 战略游戏 题解"></a>P4606 战略游戏 题解</h2><span id="more"></span>
+<h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4606">题目链接</a></p>
 <h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><blockquote>
 <p>圆方树上圆方果</p>
 <p>圆方树下你和我</p>

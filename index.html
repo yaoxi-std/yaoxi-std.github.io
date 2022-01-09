@@ -422,7 +422,7 @@ darkmode.showWidget();
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-08 21:45:10" itemprop="dateModified" datetime="2022-01-08T21:45:10+08:00">2022-01-08</time>
+                <time title="修改时间：2022-01-09 23:11:00" itemprop="dateModified" datetime="2022-01-09T23:11:00+08:00">2022-01-09</time>
               </span>
 
           
@@ -446,20 +446,14 @@ darkmode.showWidget();
 <p>斜率除以零，爆零两行泪</p>
 <p>浮点丢精度，爆零两行泪</p>
 </blockquote>
-<h2 id="一些sb的错误汇总"><a href="#一些sb的错误汇总" class="headerlink" title="一些sb的错误汇总"></a>一些sb的错误汇总</h2><ul>
-<li>AC自动机在做多模式匹配的时候<strong>一定要跳fail指针</strong>不然会<strong>漏遍历很多东西</strong>（AC自动机白学了）！！！(2021.11.20, P3715)</li>
-<li>写矩阵快速幂优化dp（尤其是dp[i]依赖于dp[i-2]这种）的时候一定要算好，不能重复加了(2021.11.20, P3715)</li>
-<li>取模的题目遇到<strong>特判</strong>一定记得输出<strong>取模</strong>，不然等着被hack吧。。。(2021.11.24, CF575A)</li>
-<li>换根$dp$不要在统计$pre$和$nxt$数组时就写$dfs$!!!数组整个改变!!!不然会死得很惨（指对着n=1000,m=100的大样例调1h）(2021.11.27, P3233)</li>
-<li>多测不清空，爆零两行泪/kk 多测<code>dfn</code>数组记得清空啊 (2021.11.29, P4606)</li>
-<li><code>(0 - 1) / x + 1 == 1</code>，要特判或者写成<code>(? + x - 1) / x</code> (2021.12.1 CF1320E)</li>
-<li><code>priority_queue&lt;_Tp&gt;</code>默认是<code>less&lt;_Tp&gt;</code>，自定义类型要么按照$\gt$的逻辑重载<code>operator&lt;()</code>，要么按照$\gt$的逻辑重载<code>operator&gt;()</code>并且修改默认参数（这个好像错了不止一次了）(2021.12.1 CF1320E)</li>
-<li>开<code>vector</code>当动态开点树状数组<code>resize</code>时没有$+1$ (2021.12.10, P6329)</li>
-<li>费用流需要注意的地方见<a href="/2021/12/17/top-networkflow/" title="这里">这里</a> (2021.12.21, P4016)</li>
-<li>费用流不能在残余网络上加边重新跑，否则无法保证最大/最小费用 (2021.12.30, P4013)</li>
-<li>FFT不仅要开<strong>两倍</strong>长数组，原函数区间$[n,2n)$内的系数还要<strong>清空</strong>，不要以为$\ge n$或者$\ge 2n$的系数会被忽略，它们会被计算到DFT的点值表达式中去，并且在IDFT时被错误地算回$\lt n$或者$\lt 2n$系数的贡献中 (2022.1.8, CF773F)</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/11/20/sb-mistakes/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -509,7 +503,7 @@ darkmode.showWidget();
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-22 19:47:58" itemprop="dateModified" datetime="2021-12-22T19:47:58+08:00">2021-12-22</time>
+                <time title="修改时间：2022-01-09 23:25:25" itemprop="dateModified" datetime="2022-01-09T23:25:25+08:00">2022-01-09</time>
               </span>
 
           
@@ -523,13 +517,15 @@ darkmode.showWidget();
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ul>
-<li>AC自动机build以后可以先把cnt数组预处理出来，这样就不用每次都跳fail指针了（也不知道算卡常还是说不预处理复杂度就不对，反正我的<a href="/2021/11/22/sol-cf710f/" title="CF710F">CF710F</a>就是加了这个优化才过了的）(2021.11.22, CF710F)</li>
-<li>计算树上最长路径和可以用<strong><a href="/2021/12/04/sol-cf526g/" title="长链剖分的奇妙性质">长链剖分的奇妙性质</a></strong>来维护 (2021.12.4, CF526G)</li>
-<li><strong>不要</strong>用变量<code>M_PI</code>!!! <strong>要</strong>用<code>acos(-1)</code>!!! (2021.12.5, P4245)</li>
-<li><code>scanf(&quot;%[^\n]&quot;, buf)</code>可以读入整行，其中<code>buf</code>是<code>char</code>数组。 (2021.12.22, P2762)</li>
-</ul>
-
+          <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/11/20/some-tips/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -579,7 +575,7 @@ darkmode.showWidget();
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-08 21:46:05" itemprop="dateModified" datetime="2022-01-08T21:46:05+08:00">2022-01-08</time>
+                <time title="修改时间：2022-01-09 23:18:51" itemprop="dateModified" datetime="2022-01-09T23:18:51+08:00">2022-01-09</time>
               </span>
 
           
@@ -593,8 +589,15 @@ darkmode.showWidget();
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="弱弱的获奖记录"><a href="#弱弱的获奖记录" class="headerlink" title="弱弱的获奖记录"></a>弱弱的获奖记录</h2><p><del>初三才拿TG1=的屑</del></p>
-
+          <h2 id="获奖记录"><a href="#获奖记录" class="headerlink" title="获奖记录"></a>获奖记录</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/11/20/noi-records/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -644,7 +647,7 @@ darkmode.showWidget();
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-22 21:23:44" itemprop="dateModified" datetime="2021-11-22T21:23:44+08:00">2021-11-22</time>
+                <time title="修改时间：2022-01-09 23:18:59" itemprop="dateModified" datetime="2022-01-09T23:18:59+08:00">2022-01-09</time>
               </span>
 
           
@@ -659,6 +662,14 @@ darkmode.showWidget();
 
       
           <h2 id="一些在OI中对我来说比较重要的时刻"><a href="#一些在OI中对我来说比较重要的时刻" class="headerlink" title="一些在OI中对我来说比较重要的时刻"></a>一些在OI中对我来说比较重要的时刻</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/11/20/date-records/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -708,7 +719,7 @@ darkmode.showWidget();
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-22 21:23:55" itemprop="dateModified" datetime="2021-11-22T21:23:55+08:00">2021-11-22</time>
+                <time title="修改时间：2022-01-09 23:19:07" itemprop="dateModified" datetime="2022-01-09T23:19:07+08:00">2022-01-09</time>
               </span>
 
           
@@ -780,7 +791,7 @@ darkmode.showWidget();
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-22 21:27:24" itemprop="dateModified" datetime="2021-11-22T21:27:24+08:00">2021-11-22</time>
+                <time title="修改时间：2022-01-09 23:12:58" itemprop="dateModified" datetime="2022-01-09T23:12:58+08:00">2022-01-09</time>
               </span>
 
           
@@ -794,8 +805,15 @@ darkmode.showWidget();
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="AtCoder-上的比赛记录"><a href="#AtCoder-上的比赛记录" class="headerlink" title="AtCoder 上的比赛记录"></a>AtCoder 上的比赛记录</h2><h3 id="2021-11-21-ARC129"><a href="#2021-11-21-ARC129" class="headerlink" title="2021.11.21 ARC129"></a>2021.11.21 ARC129</h3><p>被之前两道DS题搞得有点头晕，看了下题感觉<del>只会做A</del>挺思维的，于是切了下A题就去继续做<a href="/2021/11/20/missions/" title="任务计划">任务计划</a>了。<br>update 2021.11.22 （本以为肯定要掉好多分，结果分数<del>不减反增</del>）</p>
-
+          <p><a target="_blank" rel="noopener" href="https://atcoder.jp/users/yaoxi_std"><img src="https://atcoder.swift-zym.workers.dev/yaoxi_std" alt="atcoder"></a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/11/20/atcoder-records/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -845,7 +863,7 @@ darkmode.showWidget();
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-08 18:37:34" itemprop="dateModified" datetime="2022-01-08T18:37:34+08:00">2022-01-08</time>
+                <time title="修改时间：2022-01-09 23:13:10" itemprop="dateModified" datetime="2022-01-09T23:13:10+08:00">2022-01-09</time>
               </span>
 
           
@@ -895,15 +913,15 @@ darkmode.showWidget();
 }
 </style>
 
-<h2 id="CodeForces-上的比赛记录"><a href="#CodeForces-上的比赛记录" class="headerlink" title="CodeForces 上的比赛记录"></a>CodeForces 上的比赛记录</h2><h3 id="2021-11-22-CF1612"><a href="#2021-11-22-CF1612" class="headerlink" title="2021.11.22 CF1612"></a>2021.11.22 CF1612</h3><p>没算好恰饭的时间，<del>以后不打下午5点的CF了</del></p>
-<p>一样是切了ABCD，看了眼EFG走人<del>（太不专心了，也不知道掉多少分）</del><br><del>难道学校今天开家长会就是为了让我们打下午的Codeforces的。。。</del></p>
-<h3 id="2022-1-3-CF1621"><a href="#2022-1-3-CF1621" class="headerlink" title="2022.1.3 CF1621"></a>2022.1.3 CF1621</h3><font class="rated-user user-blue">yaoxi</font>
-$\to$
-<font class="rated-user user-violet">yaoxi</font>
-
-<p>时隔多<del>年</del>日再次捡起Codeforces</p>
-<p>没想到D题正解竟如此离谱，直接取$8$个点的$\min$就A了。</p>
-
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/profile/yaoxi"><img src="https://codeforces-status.yaoxi-std.workers.dev/shields?handle=yaoxi" alt="codeforces"></a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/11/20/codeforces-records/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -947,7 +965,7 @@ $\to$
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-01-09 12:07:09 / 修改时间：15:47:37" itemprop="dateCreated datePublished" datetime="2022-01-09T12:07:09+08:00">2022-01-09</time>
+              <time title="创建时间：2022-01-09 12:07:09 / 修改时间：23:17:31" itemprop="dateCreated datePublished" datetime="2022-01-09T12:07:09+08:00">2022-01-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -970,23 +988,15 @@ $\to$
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="CF553E-Kyoya-and-Train"><a href="#CF553E-Kyoya-and-Train" class="headerlink" title="CF553E Kyoya and Train"></a>CF553E Kyoya and Train</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF553E">题目链接</a></p>
-<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>考虑dp。$dp_{u,i}$表示点$u$处已花费时间$i$的最小代价。</p>
-<script type="math/tex; mode=display">
-dp_{u,i} = 
-\begin{cases}
-0 & (u = n, i \lt t) \\
-x & (u = n, i \ge t) \\
-\min\limits_{e:u \to v,w}{w+\sum\limits_{k=1}^{t}{p_{e,k} dp_{v,i+k}}} & (u \neq n, i \lt t) \\
-dist(u, n) & (u \neq n, i \ge t) \\
-\end{cases}</script><p>暴力解dp，复杂度$O(mt^2)$。</p>
-<p>时间复杂度的瓶颈在于第三行的求和，考虑优化它。</p>
-<p>设$g_{e,i} = w_e + \sum\limits_{k=1}^{t}{p_{e,k} dp_{v_e,i+k}}$，再设$f_{e,i+t} = g_{e,i}$，就有了</p>
-<script type="math/tex; mode=display">
-f_{e,i+t} = w_e + \sum_{k=1}^{t}{p_{e,k} dp_{v_e,i+k}}</script><p>设$p’_k=p_{t-k}$（翻转），这个求和就变成了卷积：</p>
-<script type="math/tex; mode=display">
-f_{e,i+t} = w_e + \sum_{k=1}^{t}{p'_{e,t-k} dp_{v_e,i+k}}</script><p>通过分治FFT转移，复杂度降到$O(mt \log^2 t)$，可以接受。</p>
-<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file:           CF553E.cpp</span></span><br><span class="line"><span class="comment"> * @author:         yaoxi-std</span></span><br><span class="line"><span class="comment"> * @url:            https://www.luogu.com.cn/problem/CF553E</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// #pragma GCC optimize (&quot;O2&quot;)</span></span><br><span class="line"><span class="comment">// #pragma GCC optimize (&quot;Ofast&quot;, &quot;inline&quot;, &quot;-ffast-math&quot;)</span></span><br><span class="line"><span class="comment">// #pragma GCC target (&quot;avx,sse2,sse3,sse4,mmx&quot;)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> resetIO(x) \</span></span><br><span class="line"><span class="meta">    freopen(#x <span class="meta-string">&quot;.in&quot;</span>, <span class="meta-string">&quot;r&quot;</span>, stdin), freopen(#x <span class="meta-string">&quot;.out&quot;</span>, <span class="meta-string">&quot;w&quot;</span>, stdout)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> debug(fmt, ...) \</span></span><br><span class="line"><span class="meta">    fprintf(stderr, <span class="meta-string">&quot;[%s:%d] &quot;</span> fmt <span class="meta-string">&quot;\n&quot;</span>, __FILE__, __LINE__, ##__VA_ARGS__)</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> _<span class="title">Tp</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> _Tp&amp; <span class="title">read</span><span class="params">(_Tp&amp; x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> sign = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">double</span> tmp = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>())</span><br><span class="line">        sign |= (ch == <span class="string">&#x27;-&#x27;</span>);</span><br><span class="line">    <span class="keyword">for</span> (x = <span class="number">0</span>; <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>())</span><br><span class="line">        x = x * <span class="number">10</span> + (ch ^ <span class="number">48</span>);</span><br><span class="line">    <span class="keyword">if</span> (ch == <span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> (ch = <span class="built_in">getchar</span>(); <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>())</span><br><span class="line">            tmp /= <span class="number">10.0</span>, x += tmp * (ch ^ <span class="number">48</span>);</span><br><span class="line">    <span class="keyword">return</span> sign ? (x = -x) : x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> _<span class="title">Tp</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(_Tp x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="built_in">putchar</span>(<span class="string">&#x27;-&#x27;</span>), x = -x;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">9</span>)</span><br><span class="line">        <span class="built_in">write</span>(x / <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">putchar</span>((x % <span class="number">10</span>) ^ <span class="number">48</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">55</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXM = <span class="number">120</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXK = <span class="number">1</span> &lt;&lt; <span class="number">17</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> EPS = <span class="number">1e-6</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1</span>);</span><br><span class="line"><span class="keyword">namespace</span> maths &#123;</span><br><span class="line"><span class="keyword">using</span> comp = complex&lt;<span class="keyword">double</span>&gt;;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> _<span class="title">Tp</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(_Tp* f, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> rev[MAXK] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i) &#123;</span><br><span class="line">        rev[i] = rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (i &amp; <span class="number">1</span>)</span><br><span class="line">            rev[i] |= len &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i)</span><br><span class="line">        <span class="keyword">if</span> (i &lt; rev[i])</span><br><span class="line">            <span class="built_in">swap</span>(f[i], f[rev[i]]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fft</span><span class="params">(comp* f, <span class="keyword">int</span> len, <span class="keyword">int</span> on)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">change</span>(f, len);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> h = <span class="number">2</span>; h &lt;= len; h &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="function">comp <span class="title">wn</span><span class="params">(cos(<span class="number">2</span> * PI / h), sin(<span class="number">2</span> * PI / h))</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j += h) &#123;</span><br><span class="line">            <span class="function">comp <span class="title">w</span><span class="params">(<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = j; k &lt; j + h / <span class="number">2</span>; ++k) &#123;</span><br><span class="line">                comp u = f[k], t = w * f[k + h / <span class="number">2</span>];</span><br><span class="line">                f[k] = u + t, f[k + h / <span class="number">2</span>] = u - t;</span><br><span class="line">                w *= wn;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (on == <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">reverse</span>(f + <span class="number">1</span>, f + len);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i)</span><br><span class="line">            f[i] /= len;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;  <span class="comment">// namespace maths</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> maths;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> u, v, w;</span><br><span class="line">    <span class="keyword">double</span> p[MAXK];</span><br><span class="line">    <span class="built_in">Edge</span>() &#123;&#125;</span><br><span class="line">    <span class="built_in">Edge</span>(<span class="keyword">int</span> _u, <span class="keyword">int</span> _v, <span class="keyword">int</span> _w) : <span class="built_in">u</span>(_u), <span class="built_in">v</span>(_v), <span class="built_in">w</span>(_w) &#123;&#125;</span><br><span class="line">&#125; edge[MAXM];</span><br><span class="line"><span class="keyword">int</span> n, m, t, x;</span><br><span class="line"><span class="keyword">int</span> dis[MAXN][MAXN];</span><br><span class="line"><span class="keyword">double</span> f[MAXM][MAXK], dp[MAXN][MAXK];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> comp tf[MAXK], tg[MAXK];</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> lx = r - mid, rx = r - l, len = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (len &lt;= lx + rx)</span><br><span class="line">        len &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> e = <span class="number">1</span>; e &lt;= m; ++e) &#123;</span><br><span class="line">        Edge&amp; ed = edge[e];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i)</span><br><span class="line">            tf[i] = tg[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lx; ++i)</span><br><span class="line">            tf[i] = dp[ed.v][i + mid + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; rx; ++i)</span><br><span class="line">            tg[i] = ed.p[rx - i];</span><br><span class="line">        <span class="built_in">fft</span>(tf, len, <span class="number">1</span>), <span class="built_in">fft</span>(tg, len, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i)</span><br><span class="line">            tf[i] *= tg[i];</span><br><span class="line">        <span class="built_in">fft</span>(tf, len, <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= mid; ++i)</span><br><span class="line">            f[e][i] += tf[i + rx - mid - <span class="number">1</span>].<span class="built_in">real</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> comp tf[MAXK], tg[MAXK];</span><br><span class="line">    <span class="keyword">if</span> (l == r) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i)</span><br><span class="line">            dp[edge[i].u][l] = <span class="built_in">min</span>(dp[edge[i].u][l], f[i][l] + edge[i].w);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">solve</span>(mid + <span class="number">1</span>, r);</span><br><span class="line">    <span class="built_in">calc</span>(l, r);</span><br><span class="line">    <span class="built_in">solve</span>(l, mid);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">read</span>(n), <span class="built_in">read</span>(m), <span class="built_in">read</span>(t), <span class="built_in">read</span>(x);</span><br><span class="line">    <span class="built_in">memset</span>(dis, <span class="number">0x3f</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(dis));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        dis[i][i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">        Edge&amp; ed = edge[i];</span><br><span class="line">        <span class="built_in">read</span>(ed.u), <span class="built_in">read</span>(ed.v), <span class="built_in">read</span>(ed.w);</span><br><span class="line">        dis[ed.u][ed.v] = <span class="built_in">min</span>(dis[ed.u][ed.v], ed.w);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= t; ++j)</span><br><span class="line">            <span class="built_in">read</span>(ed.p[j]) /= <span class="number">1e5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; ++k)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j)</span><br><span class="line">                <span class="keyword">if</span> (dis[i][j] &gt; dis[i][k] + dis[k][j])</span><br><span class="line">                    dis[i][j] = dis[i][k] + dis[k][j];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= t; ++j)</span><br><span class="line">            dp[i][j] = INF;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = t + <span class="number">1</span>; j &lt;= t + t; ++j)</span><br><span class="line">            dp[i][j] = dis[i][n] + x;</span><br><span class="line">    <span class="built_in">calc</span>(<span class="number">0</span>, t + t);</span><br><span class="line">    <span class="built_in">solve</span>(<span class="number">0</span>, t);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.10lf\n&quot;</span>, dp[<span class="number">1</span>][<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="CF553E-Kyoya-and-Train"><a href="#CF553E-Kyoya-and-Train" class="headerlink" title="CF553E Kyoya and Train"></a>CF553E Kyoya and Train</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/09/sol-cf553e/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
