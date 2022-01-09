@@ -94,4 +94,8 @@ LOJ6184
 
 ~~{% post_link 'sol-cf773f' 'CF773F' %}~~
 
+### 2022.1.9 (Sun)
+
+~~{% post_link 'sol-cf553e' 'CF553E' %}~~
+
 ### 待写的题解
