@@ -1,3 +1,175 @@
+---
+title: Live2D 搭建
+date: 2022-01-15 20:35:28
+tags: blog
+---
+
+## Live2D 搭建
+
+一日闲来无事，忽觉Live2D。网上找教程，却嫌不够详细。奈何？奈何？只得自己摸索。
+
+<!-- more -->
+
+~~写的什么烂诗~~
+
+---
+
+### 初级
+
+#### 说明
+
+这是最基础的Live2D，完成后只有一个人物在网页上，没有对话功能。
+
+且**初级与中级、高级之间没有任何联系**，如果想要更好的效果，请**跳过初级教程**。
+
+#### 操作
+
+先安装`hexo-helper-live2d`插件。
+
+```sh
+npm install --save hexo-helper-live2d
+```
+
+然后到[这里](https://github.com/xiazeyu/live2d-widget-models)找一个你喜欢的Live2D模型进行安装。如选择了`live2d-widget-model-wanko`：
+
+```sh
+npm install live2d-widget-model-wanko # 没有 --save
+```
+
+然后到**根目录**的`_config.yml`中添加配置：
+
+```yml
+# Live2D
+## https://github.com/EYHN/hexo-helper-live2d
+## https://l2dwidget.js.org/docs/class/src/index.js~L2Dwidget.html#instance-method-init
+live2d:
+  enable: true
+  #enable: false
+  scriptFrom: local # 默认
+  pluginRootPath: live2dw/ # 插件在站点上的根目录(相对路径)
+  pluginJsPath: lib/ # 脚本文件相对与插件根目录路径
+  pluginModelPath: assets/ # 模型文件相对与插件根目录路径
+  # scriptFrom: jsdelivr # jsdelivr CDN
+  # scriptFrom: unpkg # unpkg CDN
+  # scriptFrom: https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js # 你的自定义 url
+  tagMode: false # 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中
+  debug: false # 调试, 是否在控制台输出日志
+  model
+    use: live2d-widget-model-wanko # 替换成你的模型名
+    # use: live2d-widget-model-wanko # npm-module package name
+    # use: wanko # 博客根目录/live2d_models/ 下的目录名
+    # use: ./wives/wanko # 相对于博客根目录的路径
+    # use: https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json # 你的自定义 url
+  display:
+    position: right
+    width: 145
+    height: 315
+  mobile:
+    show: true # 是否在移动设备上显示
+    scale: 0.5 # 移动设备上的缩放       
+  react:
+    opacityDefault: 0.7
+    opacityOnHover: 0.8
+```
+
+运行`hexo c && hexo g && hexo s`，就可以在本地看到Live2D模型了。
+
+---
+
+### 中级
+
+#### 说明
+
+阅读高级教程之前，请先阅读中级教程。
+
+#### 操作
+
+先关闭`hexo-helper-live2d`（如果已经按照初级教程开启过的话）：
+
+```sh
+npm uninstall hexo-helper-live2d
+npm uninstall live2d-widget-model-wanko # 替换成你的模型名
+```
+
+克隆[live2d-widget](https://github.com/stevenjoezhang/live2d-widget)到本地`themes/next/live2d-widget`（我这里是`next`主题）中：
+
+```sh
+cd themes/next
+git clone https://github.com/stevenjoezhang/live2d-widget.git
+```
+
+修改`next`主题配置文件：
+
+打开`themes/next/layout/_layout.swig`，在`<footer>`标签中添加以下代码：
+
+```html
+<!-- Live2D -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/live2d-widget/autoload.js" type="text/javascript"></script>
+```
+
+并在文件的`<head>`标签中添加
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+```
+
+然后重新生成并运行。
+
+---
+
+### 高级
+
+### 说明
+
+相比中级，增加了换装功能。
+
+### 操作
+
+**先按照中级完成操作**
+
+打开`themes/next/layout/_layout.swig`，在`<footer>`标签中的`<script src="/live2d-widget/autoload.js>`之前的部分添加`jquery`和`jquery-ui`，代码如下：
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
+```
+
+修改`themes/next/live2d-widget/autoload.js`，删掉原有内容替换如下：
+
+```javascript
+// 加载 CSS
+$("<link>").attr({href: "/live2d-widget/waifu.css", rel: "stylesheet", type: "text/css"}).appendTo('head');
+
+// 插入 DIV
+$('body').append('<div class="waifu"><div class="waifu-tips"></div><canvas id="live2d" class="live2d"></canvas><div class="waifu-tool"><span class="fui-home"></span> <span class="fui-chat"></span> <span class="fui-eye"></span> <span class="fui-user"></span> <span class="fui-photo"></span> <span class="fui-info-circle"></span> <span class="fui-cross"></span></div></div>');
+
+// 加载 JS
+$.ajax({
+	url: '/live2d-widget/waifu-tips.js',
+	dataType:"script",
+	cache: true,
+	async: false
+});
+$.ajax({
+	url: '/live2d-widget/live2d.min.js',
+	dataType:"script",
+	cache: true,
+	async: false
+});
+
+// 初始化看板娘，加载 waifu-tips.json
+
+/* 可直接修改部分参数 */
+live2d_settings['modelId'] = 1;                  // 默认模型 ID
+live2d_settings['modelTexturesId'] = 88;          // 默认材质 ID
+/* 在 initModel 前添加 */
+initModel('/live2d-widget/waifu-tips.json');
+```
+
+修改`themes/next/live2d-widget/waifu-tips.js`，删掉原有内容替换如下：
+
+```javascript
 window.live2d_settings = Array(); /*
 
     く__,.ヘヽ.　　　　/　,ー､ 〉
@@ -26,7 +198,7 @@ live2d_settings['hitokotoAPI']          = 'hitokoto.cn';                  // 一
 
 // 默认模型
 live2d_settings['modelId']              = 1;            // 默认模型 ID，可在 F12 控制台找到
-live2d_settings['modelTexturesId']      = 88;           // 默认材质 ID，可在 F12 控制台找到
+live2d_settings['modelTexturesId']      = 1;           // 默认材质 ID，可在 F12 控制台找到
 
 // 工具栏设置
 live2d_settings['showToolMenu']         = true;         // 显示 工具栏          ，可选 true(真), false(假)
@@ -403,3 +575,408 @@ function loadTipsMessage(result) {
     $('.waifu-tool .fui-user').click(function (){loadRandTextures()});
     $('.waifu-tool .fui-chat').click(function (){showHitokoto()});
 }
+```
+
+修改`themes/next/live2d-widget/waifu-tips.json`，删掉原有内容替换如下：
+
+```json
+{
+    "waifu": {
+        "console_open_msg": ["哈哈，你打开了控制台，是想要看看我的秘密吗？"],
+        "copy_message": ["你都复制了些什么呀，转载要记得加上出处哦"],
+        "screenshot_message": ["照好了嘛，是不是很可爱呢？"],
+        "hidden_message": ["我们还能再见面的吧…"],
+        "load_rand_textures": ["我还没有其他衣服呢", "我的新衣服好看嘛"],
+        "hour_tips": {
+            "t5-7": ["早上好！一日之计在于晨，美好的一天就要开始了"],
+            "t7-11": ["上午好！工作顺利嘛，不要久坐，多起来走动走动哦！"],
+            "t11-14": ["中午了，工作了一个上午，现在是午餐时间！"],
+            "t14-17": ["午后很容易犯困呢，今天的运动目标完成了吗？"],
+            "t17-19": ["傍晚了！窗外夕阳的景色很美丽呢，最美不过夕阳红~"],
+            "t19-21": ["晚上好，今天过得怎么样？"],
+            "t21-23": ["已经这么晚了呀，早点休息吧，晚安~"],
+            "t23-5": ["你是夜猫子呀？这么晚还不睡觉，明天起的来嘛"],
+            "default": ["嗨~ 快来逗我玩吧！"]
+        },
+        "referrer_message": {
+            "localhost": ["欢迎阅读<span style=\"color:#0099cc;\">『", "』</span>", " - "],
+            "baidu": ["Hello! 来自 百度搜索 的朋友<br>你是搜索 <span style=\"color:#0099cc;\">", "</span> 找到的我吗？"],
+            "so": ["Hello! 来自 360搜索 的朋友<br>你是搜索 <span style=\"color:#0099cc;\">", "</span> 找到的我吗？"],
+            "google": ["Hello! 来自 谷歌搜索 的朋友<br>欢迎阅读<span style=\"color:#0099cc;\">『", "』</span>", " - "],
+            "default": ["Hello! 来自 <span style=\"color:#0099cc;\">", "</span> 的朋友"],
+            "none": ["欢迎阅读<span style=\"color:#0099cc;\">『", "』</span>", " - "]
+        },
+        "referrer_hostname": {
+            "yaoxi-std.github.io": ["yaoxi-std"]
+        },
+        "model_message": {
+            "1": ["来自 Potion Maker 的 Pio 酱 ~"],
+            "2": ["来自 Potion Maker 的 Tia 酱 ~"]  
+        },
+        "hitokoto_api_message": {
+            "lwl12.com": ["这句一言来自 <span style=\"color:#0099cc;\">『{source}』</span>", "，是 <span style=\"color:#0099cc;\">{creator}</span> 投稿的", "。"],
+            "fghrsh.net": ["这句一言出处是 <span style=\"color:#0099cc;\">『{source}』</span>，是 <span style=\"color:#0099cc;\">FGHRSH</span> 在 {date} 收藏的！"],
+            "jinrishici.com": ["这句诗词出自 <span style=\"color:#0099cc;\">《{title}》</span>，是 {dynasty}诗人 {author} 创作的！"],
+            "hitokoto.cn": ["这句一言来自 <span style=\"color:#0099cc;\">『{source}』</span>，是 <span style=\"color:#0099cc;\">{creator}</span> 在 hitokoto.cn 投稿的。"]
+        }
+    },
+    "mouseover": [
+        { "selector": ".container a[href^='http']", "text": ["要看看 <span style=\"color:#0099cc;\">{text}</span> 么？"] },
+        { "selector": ".fui-home", "text": ["点击前往首页，想回到上一页可以使用浏览器的后退功能哦"] },
+        { "selector": ".fui-chat", "text": ["一言一语，一颦一笑。一字一句，一颗赛艇。"] },
+        { "selector": ".fui-eye", "text": ["嗯··· 要切换 看板娘 吗？"] },
+        { "selector": ".fui-user", "text": ["喜欢换装 Play 吗？"] },
+        { "selector": ".fui-photo", "text": ["要拍张纪念照片吗？"] },
+        { "selector": ".fui-info-circle", "text": ["这里有关于我的信息呢"] },
+        { "selector": ".fui-cross", "text": ["你不喜欢我了吗..."] },
+        { "selector": "#tor_show", "text": ["翻页比较麻烦吗，点击可以显示这篇文章的目录呢"] },
+        { "selector": "#comment_go", "text": ["想要去评论些什么吗？"] },
+        { "selector": "#night_mode", "text": ["深夜时要爱护眼睛呀"] },
+        { "selector": "#qrcode", "text": ["手机扫一下就能继续看，很方便呢"] },
+        { "selector": ".comment_reply", "text": ["要吐槽些什么呢"] },
+        { "selector": "#back-to-top", "text": ["回到开始的地方吧"] },
+        { "selector": "#author", "text": ["该怎么称呼你呢"] },
+        { "selector": "#mail", "text": ["留下你的邮箱，不然就是无头像人士了"] },
+        { "selector": "#url", "text": ["你的家在哪里呢，好让我去参观参观"] },
+        { "selector": "#textarea", "text": ["认真填写哦，垃圾评论是禁止事项"] },
+        { "selector": ".OwO-logo", "text": ["要插入一个表情吗"] },
+        { "selector": "#csubmit", "text": ["要[提交]^(Commit)了吗，首次评论需要审核，请耐心等待~"] },
+        { "selector": ".ImageBox", "text": ["点击图片可以放大呢"] },
+        { "selector": "input[name=s]", "text": ["找不到想看的内容？搜索看看吧"] },
+        { "selector": ".previous", "text": ["去上一页看看吧"] },
+        { "selector": ".next", "text": ["去下一页看看吧"] },
+        { "selector": ".dropdown-toggle", "text": ["这里是菜单"] },
+        { "selector": "c-player a.play-icon", "text": ["想要听点音乐吗"] },
+        { "selector": "c-player div.time", "text": ["在这里可以调整<span style=\"color:#0099cc;\">播放进度</span>呢"] },
+        { "selector": "c-player div.volume", "text": ["在这里可以调整<span style=\"color:#0099cc;\">音量</span>呢"] },
+        { "selector": "c-player div.list-button", "text": ["<span style=\"color:#0099cc;\">播放列表</span>里都有什么呢"] },
+        { "selector": "c-player div.lyric-button", "text": ["有<span style=\"color:#0099cc;\">歌词</span>的话就能跟着一起唱呢"] },
+        { "selector": ".waifu #live2d", "text": ["干嘛呢你，快把手拿开", "鼠…鼠标放错地方了！"] }
+    ],
+    "click": [
+        {
+            "selector": ".waifu #live2d",
+            "text": [
+                "是…是不小心碰到了吧",
+                "萝莉控是什么呀",
+                "你看到我的小熊了吗",
+                "再摸的话我可要报警了！⌇●﹏●⌇",
+                "110吗，这里有个变态一直在摸我(ó﹏ò｡)"
+            ]
+        }
+    ],
+    "seasons": [
+        { "date": "01/01", "text": ["<span style=\"color:#0099cc;\">元旦</span>了呢，新的一年又开始了，今年是{year}年~"] },
+        { "date": "02/14", "text": ["又是一年<span style=\"color:#0099cc;\">情人节</span>，{year}年找到对象了嘛~"] },
+        { "date": "03/08", "text": ["今天是<span style=\"color:#0099cc;\">妇女节</span>！"] },
+        { "date": "03/12", "text": ["今天是<span style=\"color:#0099cc;\">植树节</span>，要保护环境呀"] },
+        { "date": "04/01", "text": ["悄悄告诉你一个秘密~<span style=\"background-color:#34495e;\">今天是愚人节，不要被骗了哦~</span>"] },
+        { "date": "05/01", "text": ["今天是<span style=\"color:#0099cc;\">五一劳动节</span>，计划好假期去哪里了吗~"] },
+        { "date": "06/01", "text": ["<span style=\"color:#0099cc;\">儿童节</span>了呢，快活的时光总是短暂，要是永远长不大该多好啊…"] },
+        { "date": "09/03", "text": ["<span style=\"color:#0099cc;\">中国人民抗日战争胜利纪念日</span>，铭记历史、缅怀先烈、珍爱和平、开创未来。"] },
+        { "date": "09/10", "text": ["<span style=\"color:#0099cc;\">教师节</span>，在学校要给老师问声好呀~"] },
+        { "date": "10/01", "text": ["<span style=\"color:#0099cc;\">国庆节</span>，新中国已经成立了呢"] },
+        { "date": "11/05-11/12", "text": ["今年的<span style=\"color:#0099cc;\">双十一</span>是和谁一起过的呢~"] },
+        { "date": "12/20-12/31", "text": ["这几天是<span style=\"color:#0099cc;\">圣诞节</span>，主人肯定又去剁手买买买了~"] }
+    ]
+}
+```
+
+修改`themes/next/live2d-widget/waifu-tips.css`，**不要删掉**原有内容，在文档末尾添加如下代码：
+
+```css
+.waifu {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    font-size: 0;
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+}
+.waifu:hover {
+    -webkit-transform: translateY(15px);
+    transform: translateY(15px);
+}
+.waifu-tips {
+    opacity: 0;
+    margin: -20px 20px;
+    padding: 5px 10px;
+    border: 1px solid rgba(224, 186, 140, 0.62);
+    border-radius: 12px;
+    background-color: rgba(236, 217, 188, 0.5);
+    box-shadow: 0 3px 15px 2px rgba(191, 158, 118, 0.2);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    animation-delay: 5s;
+    animation-duration: 50s;
+    animation-iteration-count: infinite;
+    animation-name: shake;
+    animation-timing-function: ease-in-out;
+}
+.waifu-tool {
+    display: none;
+    color: #aaa;
+    top: 50px;
+    right: 10px;
+    position: absolute;
+}
+.waifu:hover .waifu-tool {
+    display: block;
+}
+.waifu-tool span {
+    display: block;
+    cursor: pointer;
+    color: #5b6c7d;
+    transition: 0.2s;
+}
+.waifu-tool span:hover {
+    color: #34495e;
+}
+.waifu #live2d{
+    position: relative;
+}
+
+@keyframes shake {
+    2% {
+        transform: translate(0.5px, -1.5px) rotate(-0.5deg);
+    }
+
+    4% {
+        transform: translate(0.5px, 1.5px) rotate(1.5deg);
+    }
+
+    6% {
+        transform: translate(1.5px, 1.5px) rotate(1.5deg);
+    }
+
+    8% {
+        transform: translate(2.5px, 1.5px) rotate(0.5deg);
+    }
+
+    10% {
+        transform: translate(0.5px, 2.5px) rotate(0.5deg);
+    }
+
+    12% {
+        transform: translate(1.5px, 1.5px) rotate(0.5deg);
+    }
+
+    14% {
+        transform: translate(0.5px, 0.5px) rotate(0.5deg);
+    }
+
+    16% {
+        transform: translate(-1.5px, -0.5px) rotate(1.5deg);
+    }
+
+    18% {
+        transform: translate(0.5px, 0.5px) rotate(1.5deg);
+    }
+
+    20% {
+        transform: translate(2.5px, 2.5px) rotate(1.5deg);
+    }
+
+    22% {
+        transform: translate(0.5px, -1.5px) rotate(1.5deg);
+    }
+
+    24% {
+        transform: translate(-1.5px, 1.5px) rotate(-0.5deg);
+    }
+
+    26% {
+        transform: translate(1.5px, 0.5px) rotate(1.5deg);
+    }
+
+    28% {
+        transform: translate(-0.5px, -0.5px) rotate(-0.5deg);
+    }
+
+    30% {
+        transform: translate(1.5px, -0.5px) rotate(-0.5deg);
+    }
+
+    32% {
+        transform: translate(2.5px, -1.5px) rotate(1.5deg);
+    }
+
+    34% {
+        transform: translate(2.5px, 2.5px) rotate(-0.5deg);
+    }
+
+    36% {
+        transform: translate(0.5px, -1.5px) rotate(0.5deg);
+    }
+
+    38% {
+        transform: translate(2.5px, -0.5px) rotate(-0.5deg);
+    }
+
+    40% {
+        transform: translate(-0.5px, 2.5px) rotate(0.5deg);
+    }
+
+    42% {
+        transform: translate(-1.5px, 2.5px) rotate(0.5deg);
+    }
+
+    44% {
+        transform: translate(-1.5px, 1.5px) rotate(0.5deg);
+    }
+
+    46% {
+        transform: translate(1.5px, -0.5px) rotate(-0.5deg);
+    }
+
+    48% {
+        transform: translate(2.5px, -0.5px) rotate(0.5deg);
+    }
+
+    50% {
+        transform: translate(-1.5px, 1.5px) rotate(0.5deg);
+    }
+
+    52% {
+        transform: translate(-0.5px, 1.5px) rotate(0.5deg);
+    }
+
+    54% {
+        transform: translate(-1.5px, 1.5px) rotate(0.5deg);
+    }
+
+    56% {
+        transform: translate(0.5px, 2.5px) rotate(1.5deg);
+    }
+
+    58% {
+        transform: translate(2.5px, 2.5px) rotate(0.5deg);
+    }
+
+    60% {
+        transform: translate(2.5px, -1.5px) rotate(1.5deg);
+    }
+
+    62% {
+        transform: translate(-1.5px, 0.5px) rotate(1.5deg);
+    }
+
+    64% {
+        transform: translate(-1.5px, 1.5px) rotate(1.5deg);
+    }
+
+    66% {
+        transform: translate(0.5px, 2.5px) rotate(1.5deg);
+    }
+
+    68% {
+        transform: translate(2.5px, -1.5px) rotate(1.5deg);
+    }
+
+    70% {
+        transform: translate(2.5px, 2.5px) rotate(0.5deg);
+    }
+
+    72% {
+        transform: translate(-0.5px, -1.5px) rotate(1.5deg);
+    }
+
+    74% {
+        transform: translate(-1.5px, 2.5px) rotate(1.5deg);
+    }
+
+    76% {
+        transform: translate(-1.5px, 2.5px) rotate(1.5deg);
+    }
+
+    78% {
+        transform: translate(-1.5px, 2.5px) rotate(0.5deg);
+    }
+
+    80% {
+        transform: translate(-1.5px, 0.5px) rotate(-0.5deg);
+    }
+
+    82% {
+        transform: translate(-1.5px, 0.5px) rotate(-0.5deg);
+    }
+
+    84% {
+        transform: translate(-0.5px, 0.5px) rotate(1.5deg);
+    }
+
+    86% {
+        transform: translate(2.5px, 1.5px) rotate(0.5deg);
+    }
+
+    88% {
+        transform: translate(-1.5px, 0.5px) rotate(1.5deg);
+    }
+
+    90% {
+        transform: translate(-1.5px, -0.5px) rotate(-0.5deg);
+    }
+
+    92% {
+        transform: translate(-1.5px, -1.5px) rotate(1.5deg);
+    }
+
+    94% {
+        transform: translate(0.5px, 0.5px) rotate(-0.5deg);
+    }
+
+    96% {
+        transform: translate(2.5px, -0.5px) rotate(-0.5deg);
+    }
+
+    98% {
+        transform: translate(-1.5px, -1.5px) rotate(-0.5deg);
+    }
+
+    0%, 100% {
+        transform: translate(0, 0) rotate(0);
+    }
+}
+@font-face {
+  font-family: 'Flat-UI-Icons';
+  src: url('flat-ui-icons-regular.eot');
+  src: url('flat-ui-icons-regular.eot?#iefix') format('embedded-opentype'), url('flat-ui-icons-regular.woff') format('woff'), url('flat-ui-icons-regular.ttf') format('truetype'), url('flat-ui-icons-regular.svg#flat-ui-icons-regular') format('svg');
+}
+[class^="fui-"],
+[class*="fui-"] {
+  font-family: 'Flat-UI-Icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fui-cross:before {
+  content: "\e609";
+}
+.fui-info-circle:before {
+  content: "\e60f";
+}
+.fui-photo:before {
+  content: "\e62a";
+}
+.fui-eye:before {
+  content: "\e62c";
+}
+.fui-chat:before {
+  content: "\e62d";
+}
+.fui-home:before {
+  content: "\e62e";
+}
+.fui-user:before {
+  content: "\e631";
+}
+```
+
+到[这里](https://github.com/fghrsh/live2d_demo)下载以`flat-ui-icons`开头的$4$个图标文件，放在`themes/next/live2d-widget/`文件夹中。
+
+至此工作全部完成，清理目录并重新生成`html`文件，打开`localhost`，你会发现角色可以正常换装了。
