@@ -6,8 +6,6 @@ top: 1600
 comments: false
 ---
 
-### 参考 [<font color=black>t</font><font color=red>zc_wk</font> 的做题记录](https://www.cnblogs.com/ET2006/p/rwjh.html)
-
 ### 2021.11.20 (Sat)
 ~~{% post_link 'sol-p3715' 'P3715' %}~~
 
