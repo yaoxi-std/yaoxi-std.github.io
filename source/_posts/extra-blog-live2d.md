@@ -198,7 +198,7 @@ live2d_settings['hitokotoAPI']          = 'hitokoto.cn';                  // 一
 
 // 默认模型
 live2d_settings['modelId']              = 1;            // 默认模型 ID，可在 F12 控制台找到
-live2d_settings['modelTexturesId']      = 1;           // 默认材质 ID，可在 F12 控制台找到
+live2d_settings['modelTexturesId']      = 88;           // 默认材质 ID，可在 F12 控制台找到
 
 // 工具栏设置
 live2d_settings['showToolMenu']         = true;         // 显示 工具栏          ，可选 true(真), false(假)
@@ -355,22 +355,22 @@ function initModel(waifuPath, type) {
     if (!live2d_settings.canTurnToAboutPage) $('.waifu-tool .fui-info-circle').hide();
 
     if (waifuPath === undefined) waifuPath = '';
-    var modelId = live2d_settings['modelId'];
-    var modelTexturesId = live2d_settings['modelTexturesId'];
+    var modelId = sessionStorage.getItem('modelId');
+    var modelTexturesId = sessionStorage.getItem('modelTexturesId');
     
     if (!live2d_settings.modelStorage || modelId == null) {
-        var modelId = live2d_settings.modelId;
-        var modelTexturesId = live2d_settings.modelTexturesId;
+        modelId = live2d_settings.modelId;
+        modelTexturesId = live2d_settings.modelTexturesId;
     } loadModel(modelId, modelTexturesId);
 }
 
 function loadModel(modelId, modelTexturesId=0) {
     if (live2d_settings.modelStorage) {
-        live2d_settings['modelId'] = modelId;
-        live2d_settings['modelTexturesId'] = modelTexturesId;
-    } else {
         sessionStorage.setItem('modelId', modelId);
         sessionStorage.setItem('modelTexturesId', modelTexturesId);
+    } else {
+        live2d_settings['modelId'] = modelId;
+        live2d_settings['modelTexturesId'] = modelTexturesId;
     } loadlive2d('live2d', live2d_settings.modelAPI+'get/?id='+modelId+'-'+modelTexturesId, (live2d_settings.showF12Status ? console.log('[Status]','live2d','模型',modelId+'-'+modelTexturesId,'加载完成'):null));
 }
 
@@ -502,7 +502,7 @@ function loadTipsMessage(result) {
         });
     }
     
-    function modelStorageGetItem(key) { return live2d_settings.modelStorage ? live2d_settings[key] : sessionStorage.getItem(key); }
+    function modelStorageGetItem(key) { return live2d_settings.modelStorage ? sessionStorage.getItem(key) : live2d_settings[key]; }
     
     /* 检测用户活动状态，并在空闲时显示一言 */
     if (live2d_settings.showHitokoto) {
