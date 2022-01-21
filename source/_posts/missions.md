@@ -104,6 +104,6 @@ LOJ6184
 
 ~~{% post_link 'sol-p4002' 'P4002' %}~~ ~~{% post_link 'sol-p5850' 'P5850' %}~~ ~~{% post_link 'sol-p4223' 'P4223' %}~~
 
-P4491
+~~{% post_link 'sol-cf297e' 'CF297E' %}~~ P4491
 
 ### 待写的题解
