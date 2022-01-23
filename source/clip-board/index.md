@@ -582,3 +582,95 @@ struct suffix_array {
     }
 };
 ```
+
+#### Link Cut Tree
+居然比Splay短！
+```cpp
+struct LCT {
+    int fa[MAXN], ch[MAXN][2];
+    int val[MAXN], sum[MAXN], tag[MAXN];
+    void pushup(int x) { sum[x] = sum[ch[x][0]] ^ sum[ch[x][1]] ^ val[x]; }
+    void connect(int x, int f, int w) { fa[x] = f, (~w) && (ch[f][w] = x); }
+    int get(int x) {
+        if (ch[fa[x]][0] == x)
+            return 0;
+        if (ch[fa[x]][1] == x)
+            return 1;
+        return -1;
+    }
+    void pushdown(int x) {
+        if (tag[x]) {
+            swap(ch[x][0], ch[x][1]);
+            if (ch[x][0])
+                tag[ch[x][0]] ^= 1;
+            if (ch[x][1])
+                tag[ch[x][1]] ^= 1;
+            tag[x] = 0;
+        }
+    }
+    void pushall(int x) {
+        if (~get(x))
+            pushall(fa[x]);
+        pushdown(x);
+    }
+    void rotate(int x) {
+        int y = fa[x], z = fa[y], w = get(x);
+        if (~w)
+            connect(ch[x][w ^ 1], y, w);
+        connect(x, z, get(y));
+        connect(y, x, w ^ 1);
+        pushup(y);
+        pushup(x);
+    }
+    void splay(int x) {
+        pushall(x);
+        for (int f = fa[x]; f = fa[x], ~get(x); rotate(x))
+            if (~get(f))
+                rotate(get(f) == get(x) ? f : x);
+    }
+    void access(int x) {
+        int pre = 0;
+        while (x) {
+            splay(x);
+            ch[x][1] = pre;
+            pushup(x);
+            pre = x;
+            x = fa[x];
+        }
+    }
+    void makeroot(int x) {
+        access(x);
+        splay(x);
+        tag[x] ^= 1;
+    }
+    void split(int x, int y) {
+        makeroot(x);
+        access(y);
+        splay(y);
+    }
+    int findroot(int x) {
+        access(x);
+        splay(x);
+        while (ch[x][0])
+            pushdown(x), x = ch[x][0];
+        splay(x);
+        return x;
+    }
+    bool link(int x, int y) {
+        makeroot(x);
+        if (findroot(y) == x)
+            return false;
+        fa[x] = y;
+        return true;
+    }
+    bool cut(int x, int y) {
+        if (findroot(x) != findroot(y))
+            return false;
+        split(x, y);
+        if (fa[x] != y || ch[x][1])
+            return false;
+        fa[x] = ch[y][0] = 0;
+        return true;
+    }
+};
+```
