@@ -1182,3 +1182,5 @@ function loadTipsMessage(result) {
 到[这里](https://github.com/fghrsh/live2d_demo)下载以`flat-ui-icons`开头的$4$个图标文件，放在`themes/next/live2d-widget/`文件夹中。
 
 至此工作全部完成，清理目录并重新生成`html`文件，打开`localhost`，你会发现角色可以正常换装了。
+
+我一直开着一言直到某天蹦出了一句“这瓜多少钱一斤”（？？？

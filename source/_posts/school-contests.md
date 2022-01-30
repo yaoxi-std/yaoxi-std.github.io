@@ -8,3 +8,6 @@ comments: false
 
 ## 校内训练模拟赛
 <!-- more -->
+
+<script src="/dp/load.js"></script>
+<table id="dp"></table>
