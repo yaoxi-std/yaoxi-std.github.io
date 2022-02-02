@@ -110,4 +110,8 @@ LOJ6184
 
 ~~{% post_link 'sol-uva11107' 'UVA11107' %}~~
 
+### 2022.2.2 (Wed)
+
+~~{% post_link 'sol-p2336' 'P2336' %}~~ ~~{% post_link 'sol-p3649' 'P3649' %}~~
+
 ### 待写的题解

@@ -674,3 +674,35 @@ struct LCT {
     }
 };
 ```
+
+#### PAM
+```cpp
+struct PAM {
+    int siz, tot, last;
+    int cnt[MAXN], len[MAXN], fail[MAXN], nxt[MAXN][26];
+    char str[MAXN];
+    int newnode(int l) { return len[++siz] = l, siz; }
+    void clear() {
+        siz = -1, last = 0;
+        str[tot = 0] = '$';
+        newnode(0), newnode(-1);
+        fail[0] = 1;
+    }
+    int getfail(int x) {
+        while (str[tot - len[x] - 1] != str[tot])
+            x = fail[x];
+        return x;
+    }
+    void insert(char c) {
+        str[++tot] = c;
+        int now = getfail(last);
+        if (!nxt[now][c - 'a']) {
+            int x = newnode(len[now] + 2);
+            fail[x] = nxt[getfail(fail[now])][c - 'a'];
+            nxt[now][c - 'a'] = x;
+        }
+        last = nxt[now][c - 'a'];
+        ++cnt[last];
+    }
+} pam;
+```
