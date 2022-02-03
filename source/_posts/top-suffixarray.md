@@ -43,7 +43,13 @@ date: 2021-12-17 18:28:14
 
 {% post_link 'sol-p3181' %} </br>
 
-{% post_link 'sol-uva11107' %}
+{% post_link 'sol-uva11107' %} </br>
+
+{% post_link 'sol-p2336' %} </br>
+
+{% post_link 'sol-p4341' %} </br>
+
+{% post_link 'sol-p4070' %}
 
 ### 模版代码
 ```cpp
