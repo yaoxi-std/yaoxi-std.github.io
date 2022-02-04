@@ -116,4 +116,6 @@ LOJ6184
 
 ~~{% post_link 'sol-p4341' 'P4341' %}~~ ~~{% post_link 'sol-p4070' 'P4070' %}~~ ~~{% post_link 'sol-p5028' 'P5028' %}~~ ~~{% post_link 'sol-p4081' 'P4081' %}~~ 边做纸糊船边补魔禁，多是件美事啊
 
+~~{% post_link 'sol-p4094' 'P4094' %}~~ ~~{% post_link 'sol-p1117' 'P1117' %}~~
+
 ### 待写的题解
