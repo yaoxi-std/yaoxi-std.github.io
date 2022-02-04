@@ -7,6 +7,8 @@ date: 2021-12-17 18:28:14
 
 ## 【专题】后缀数组 SA
 
+**警告：SA多次使用一定要清空，我也不知道为什么。**
+
 ~~虽然有不少此类题目可以用字符串hash瞎搞~~
 
 记住代码中每个数组的含义：
@@ -61,26 +63,34 @@ date: 2021-12-17 18:28:14
 
 ### 模版代码
 ```cpp
-struct suffix_array {
-    int n, sa[MAXN], rk[MAXN], tp[MAXN], ht[MAXN];
-    void radix_sort(int m) {
-        static int buk[MAXN];
-        for (int i = 0; i <= m; ++i)
-            buk[i] = 0;
-        for (int i = 1; i <= n; ++i)
-            buk[rk[i]]++;
-        for (int i = 1; i <= m; ++i)
-            buk[i] += buk[i - 1];
-        for (int i = n; i >= 1; --i)
-            sa[buk[rk[tp[i]]]--] = tp[i];
+struct SuffixArray {
+    int n, sa[MAXN], rk[MAXN], tp[MAXN], ht[MAXN], he[MAXN];
+    void clear() {
+        fill(sa, sa + n + 1, 0);
+        fill(rk, rk + n + 1, 0);
+        fill(tp, tp + n + 1, 0);
+        fill(ht, ht + n + 1, 0);
+        fill(he, he + n + 1, 0);
+        n = 0;
     }
-    void init(char *s, int n) {
-        this->n = n;
-        int m = 100;
+    void radix_sort(int m) {
+        static int buc[MAXN];
+        for (int i = 0; i <= m; ++i)
+            buc[i] = 0;
         for (int i = 1; i <= n; ++i)
-            rk[i] = s[i] - '0' + 1, tp[i] = i;
+            buc[rk[i]]++;
+        for (int i = 1; i <= m; ++i)
+            buc[i] += buc[i - 1];
+        for (int i = n; i >= 1; --i)
+            sa[buc[rk[tp[i]]]--] = tp[i];
+    }
+    void init(int n, char* s) {
+        this->n = n;
+        int m = 200;
+        for (int i = 1; i <= n; ++i)
+            rk[i] = s[i] + 1, tp[i] = i;
         radix_sort(m);
-        for (int p = 0, w = 1; p < n; m = p, w <<= 1) {
+        for (int w = 1, p = 0; p < n; m = p, w <<= 1) {
             p = 0;
             for (int i = 1; i <= w; ++i)
                 tp[++p] = n - w + i;
@@ -102,7 +112,7 @@ struct suffix_array {
                 k--;
             while (s[i + k] == s[sa[rk[i] - 1] + k])
                 k++;
-            ht[i] = k;
+            ht[i] = he[rk[i]] = k;
         }
     }
 };
