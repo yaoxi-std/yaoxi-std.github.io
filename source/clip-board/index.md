@@ -714,3 +714,26 @@ struct PAM {
     }
 } pam;
 ```
+
+#### Manacher
+这个其实不需要记板子吧
+```cpp
+int manacher(char* s, int tlen) {
+    static int d[MAXM];
+    static char t[MAXM];
+    int len = 0;
+    for (int i = 1; i <= tlen; ++i)
+        t[++len] = '#', t[++len] = s[i];
+    t[++len] = '#', t[++len] = '$';
+    int mx = 0, id = 0, ans = 0;
+    for (int i = 1; i <= len; ++i) {
+        d[i] = mx > i ? min(d[id * 2 - i], mx - i) : 1;
+        while (t[i + d[i]] == t[i - d[i]])
+            ++d[i];
+        if (i + d[i] > mx)
+            mx = i + d[i], id = i;
+        ans = max(ans, d[i] - 1);
+    }
+    return ans;
+}
+```
