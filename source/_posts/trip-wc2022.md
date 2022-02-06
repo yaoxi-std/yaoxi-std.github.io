@@ -2,6 +2,7 @@
 title: WC2022游寄
 date: 2022-01-27 18:58:57
 tags: trip
+category: 游记
 ---
 
 ## WC2022游寄

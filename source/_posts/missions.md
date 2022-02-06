@@ -120,6 +120,6 @@ LOJ6184
 
 ~~{% post_link 'sol-p3900' 'P3900' %}~~ ~~{% post_link 'sol-p6095' 'P6095' %}~~
 
-~~{% post_link 'sol-p4770' 'P4770' %}~~
+~~{% post_link 'sol-p4770' 'P4770' %}~~ ~~{% post_link 'sol-cf986e' 'CF986E' %}~~
 
 ### 待写的题解
