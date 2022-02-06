@@ -61,7 +61,11 @@ date: 2021-12-17 18:28:14
 
 {% post_link 'sol-p1117' %} </br>
 
-{% post_link 'sol-p3900' %}
+{% post_link 'sol-p3900' %} </br>
+
+{% post_link 'sol-p4770' %} </br>
+
+{% post_link 'sol-p6095' %}
 
 ### 模版代码
 ```cpp

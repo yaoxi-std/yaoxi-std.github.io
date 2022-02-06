@@ -118,6 +118,8 @@ LOJ6184
 
 ~~{% post_link 'sol-p4094' 'P4094' %}~~ ~~{% post_link 'sol-p1117' 'P1117' %}~~
 
-~~{% post_link 'sol-p3900' 'P3900' %}~~
+~~{% post_link 'sol-p3900' 'P3900' %}~~ ~~{% post_link 'sol-p6095' 'P6095' %}~~
+
+~~{% post_link 'sol-p4770' 'P4770' %}~~
 
 ### 待写的题解
