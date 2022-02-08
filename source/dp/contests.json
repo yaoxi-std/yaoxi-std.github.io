@@ -1,6 +1,6 @@
 [
   {
-    "name": "JSOIP2022练习赛1",
+    "name": "JSOIP2022模拟赛1",
     "begin": 1643331600,
     "end": 1643349600,
     "score": 160,
@@ -64,6 +64,74 @@
         "time": 80,
         "url": "http://www.nfls.com.cn:20034/contest/424/problem/3",
         "summary": "边想$T2$边想$T3$想了蛮久，只剩下不到$1h$做这题，$n^2d$的$dp$也是草草了事，更没有去用线段树优化（话说我$subtask2$都写了个线段树了，这$dp$不优化一下是怎么想的，不过$subtask2$写挂了）。"
+      }
+    ]
+  },
+  {
+    "name": "JSOIP2022模拟赛3",
+    "begin": 1644192000,
+    "end": 1644210000,
+    "score": 160,
+    "url": "http://www.nfls.com.cn:20034/contest/426",
+    "summary": "",
+    "problems": [
+      {
+        "name": "大融合",
+        "corrected": true,
+        "score": 100,
+        "time": 80,
+        "url": "http://www.nfls.com.cn:20034/contest/426/problem/1",
+        "summary": ""
+      },
+      {
+        "name": "[WC2022模拟赛0120北大附] 光滑数",
+        "corrected": true,
+        "score": 50,
+        "time": 80,
+        "url": "http://www.nfls.com.cn:20034/contest/426/problem/2",
+        "summary": ""
+      },
+      {
+        "name": "Zbox loves stack",
+        "corrected": true,
+        "score": 10,
+        "time": 140,
+        "url": "http://www.nfls.com.cn:20034/contest/426/problem/3",
+        "summary": ""
+      }
+    ]
+  },
+  {
+    "name": "JSOIP2022模拟赛4",
+    "begin": 1644278400,
+    "end": 1644296400,
+    "score": 263,
+    "url": "http://www.nfls.com.cn:20034/contest/429",
+    "summary": "这场考试$T2$难度不太够，其他就是$T3$补起来太$ex$了……",
+    "problems": [
+      {
+        "name": "[JXOI2018] 游戏",
+        "corrected": true,
+        "score": 100,
+        "time": 50,
+        "url": "http://www.nfls.com.cn:20034/contest/429/problem/1",
+        "summary": "水～"
+      },
+      {
+        "name": "[HNOI2016模拟题matthew99-A] 最短路",
+        "corrected": true,
+        "score": 100,
+        "time": 50,
+        "url": "http://www.nfls.com.cn:20034/contest/429/problem/2",
+        "summary": "水～\n为什么jth用$dijkstra$就能跑过$O((n^2+nm)\\log(n^2+nm))$啊，$T$了以后只好改写$dp$计算路径了。"
+      },
+      {
+        "name": "[WC2022模拟赛0104华二] 移动箱子",
+        "corrected": true,
+        "score": 63,
+        "time": 200,
+        "url": "http://www.nfls.com.cn:20034/contest/429/problem/3",
+        "summary": "这题真不错（指调了一下午和一晚上，最后读入的$x_i=10^{11}$导致乘法溢出）。\n其实自己考场上花了蛮久已经想到前缀/后缀和的各种性质+凸包维护$n$个块各种合并，甚至已经求出来每个块的$ans$与$k$以及$\\left\\lfloor \\frac{sum}{k} \\right\\rfloor$有关而且稍微想了下数论分块（没有继续想下去，感觉做不了），但是最终卡在了维护答案的部分，没想到就是用数论分块搞。"
       }
     ]
   }
