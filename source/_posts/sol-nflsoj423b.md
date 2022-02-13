@@ -1,6 +1,6 @@
 ---
 title: NFLSOJ-423B
-tags: solutions
+tags: [solutions, school]
 category: 题解
 date: 2022-02-06 22:17:35
 ---

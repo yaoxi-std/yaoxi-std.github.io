@@ -19,7 +19,6 @@ comments: false
 // #pragma GCC target ("avx,sse2,sse3,sse4,mmx")
 #include <bits/stdc++.h>
 using namespace std;
-#define int long long
 #define resetIO(x) \
     freopen(#x ".in", "r", stdin), freopen(#x ".out", "w", stdout)
 #define debug(fmt, ...) \
@@ -46,8 +45,9 @@ inline void write(_Tp x) {
         write(x / 10);
     putchar((x % 10) ^ 48);
 }
+using ll = long long;
 const int MAXN = 1e5 + 10;
-const int INF = 0x3f3f3f3f3f3f3f3f;
+const int INF = 0x3f3f3f3f;
 
 signed main() {
     // resetIO();
@@ -71,7 +71,6 @@ signed main() {
         "// #pragma GCC target (\"avx,sse2,sse3,sse4,mmx\")",
         "#include <bits/stdc++.h>",
         "using namespace std;",
-        "#define int long long",
         "#define resetIO(x) \\",
         "    freopen(#x \".in\", \"r\", stdin), freopen(#x \".out\", \"w\", stdout)",
         "#define debug(fmt, ...) \\",
@@ -98,8 +97,9 @@ signed main() {
         "        write(x / 10);",
         "    putchar((x % 10) ^ 48);",
         "}",
+        "using ll = long long;",
         "const int MAXN = 1e5 + 10;",
-        "const int INF = 0x3f3f3f3f3f3f3f3f;",
+        "const int INF = 0x3f3f3f3f;",
         "",
         "signed main() {",
         "    // resetIO();",
@@ -166,6 +166,19 @@ signed main() {
 #pragma GCC optimize ("O2")
 #pragma GCC optimize ("Ofast", "inline", "-ffast-math")
 #pragma GCC target ("avx,sse2,sse3,sse4,mmx")
+```
+
+### fread & fwrite (卡常用)
+```cpp
+namespace fastio {
+const int MAXBUF = 1 << 23;
+char buf[MAXBUF], *p1 = buf, *p2 = buf;
+char pbuf[MAXBUF], *pp = pbuf;
+inline char getc() { return (p1 == p2) && (p2 = (p1 = buf) + fread(buf, 1, MAXBUF, stdin)), *p1++; }
+inline void putc(char c) { (pp == pbuf + MAXBUF) && (fwrite(pbuf, 1, MAXBUF, stdout), pp = pbuf), *pp++ = c; }
+inline void print_final() { fwrite(pbuf, 1, pp - pbuf, stdout), pp = pbuf; }
+};  // namespace fastio
+using namespace fastio;
 ```
 
 ### 算法板子

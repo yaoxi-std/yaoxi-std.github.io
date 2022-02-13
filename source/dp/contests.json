@@ -73,7 +73,7 @@
     "end": 1644210000,
     "score": 160,
     "url": "http://www.nfls.com.cn:20034/contest/426",
-    "summary": "",
+    "summary": "$T3$花了最多的时间，拿了最少的分。",
     "problems": [
       {
         "name": "大融合",
@@ -81,7 +81,7 @@
         "score": 100,
         "time": 80,
         "url": "http://www.nfls.com.cn:20034/contest/426/problem/1",
-        "summary": ""
+        "summary": "一道水题"
       },
       {
         "name": "[WC2022模拟赛0120北大附] 光滑数",
@@ -89,7 +89,7 @@
         "score": 50,
         "time": 80,
         "url": "http://www.nfls.com.cn:20034/contest/426/problem/2",
-        "summary": ""
+        "summary": "注意到使用线性筛可以通过测试点$1-3$，卡卡常可以通过测试点$6-7$。对于测试点$4-5$，可以枚举$\\le p$的质因子然后对$[L,R]$的数暴力除，这样似乎是$O(n\\log n \\log\\log n)$的（然而我没有想到）。然后这题可以$Min25$筛硬上？"
       },
       {
         "name": "Zbox loves stack",
@@ -97,7 +97,7 @@
         "score": 10,
         "time": 140,
         "url": "http://www.nfls.com.cn:20034/contest/426/problem/3",
-        "summary": ""
+        "summary": "注意到可以离线以后分别扫描出每个栈的操作序列，然后就不知道这么搞了，只好打了暴力"
       }
     ]
   },
@@ -132,6 +132,40 @@
         "time": 200,
         "url": "http://www.nfls.com.cn:20034/contest/429/problem/3",
         "summary": "这题真不错（指调了一下午和一晚上，最后读入的$x_i=10^{11}$导致乘法溢出）。\n其实自己考场上花了蛮久已经想到前缀/后缀和的各种性质+凸包维护$n$个块各种合并，甚至已经求出来每个块的$ans$与$k$以及$\\left\\lfloor \\frac{sum}{k} \\right\\rfloor$有关而且稍微想了下数论分块（没有继续想下去，感觉做不了），但是最终卡在了维护答案的部分，没想到就是用数论分块搞。"
+      }
+    ]
+  },
+  {
+    "name": "JSOIP2022模拟赛5",
+    "begin": 1644451200,
+    "end": 1644469200,
+    "score": 175,
+    "url": "http://www.nfls.com.cn:20034/contest/431",
+    "summary": "不要眼瞎",
+    "problems": [
+      {
+        "name": "普通计算姬",
+        "corrected": true,
+        "score": 90,
+        "time": 90,
+        "url": "http://www.nfls.com.cn:20034/contest/431/problem/1",
+        "summary": "$nnd$为什么线段树合并瞎搞的分还没有暴力高"
+      },
+      {
+        "name": "[NOI2012] 迷失游乐园",
+        "corrected": true,
+        "score": 80,
+        "time": 200,
+        "url": "http://www.nfls.com.cn:20034/contest/431/problem/2",
+        "summary": "眼瞎没看到环$\\le 20$的条件，写$O(n)$的算法调了3h没调出来，最后交了暴力\n其实$O(n+k^2)$多好写啊"
+      },
+      {
+        "name": "[JSOI22模拟赛0208成七] 送分题",
+        "corrected": true,
+        "score": 5,
+        "time": 10,
+        "url": "http://www.nfls.com.cn:20034/contest/431/problem/3",
+        "summary": "快速写完暴力是一种美德 ——jth"
       }
     ]
   }
