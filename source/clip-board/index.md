@@ -750,3 +750,82 @@ int manacher(char* s, int tlen) {
     return ans;
 }
 ```
+
+#### HLPP
+
+```cpp
+struct HLPP {
+    struct Edge {
+        int v; ll flow;
+    } edge[MAXM * 2];
+    int n, s, t, tot = 1;
+    int head[MAXN], nxt[MAXM * 2];
+    int h[MAXN], gap[MAXN * 2], inq[MAXN];
+    ll e[MAXN];
+    priority_queue<pair<int, int>> pq;
+    inline void init(int n) { this->n = n; }
+    inline void addedge(int u, int v, ll f) {
+        edge[++tot] = {v, f}, nxt[tot] = head[u], head[u] = tot;
+        edge[++tot] = {u, 0}, nxt[tot] = head[v], head[v] = tot;
+    }
+    inline bool bfs() {
+        static int que[MAXN];
+        int fr = 0, bk = 0;
+        fill(h + 1, h + n + 1, INF);
+        h[t] = 0, que[bk++] = t;
+        while (fr < bk) {
+            int u = que[fr++];
+            for (int i = head[u]; i; i = nxt[i])
+                if (h[edge[i].v] > h[u] + 1 && edge[i ^ 1].flow)
+                    h[edge[i].v] = h[u] + 1, que[bk++] = edge[i].v;
+        }
+        return h[s] != INF;
+    }
+    inline void push(int u) {
+        for (int i = head[u]; i; i = nxt[i])
+            if (h[edge[i].v] + 1 == h[u] && edge[i].flow) {
+                ll tmp = min(e[u], edge[i].flow);
+                edge[i].flow -= tmp, edge[i ^ 1].flow += tmp;
+                e[u] -= tmp, e[edge[i].v] += tmp;
+                if (edge[i].v != s && edge[i].v != t && !inq[edge[i].v])
+                    pq.push({h[edge[i].v], edge[i].v}), inq[edge[i].v] = 1;
+                if (!e[u]) break;
+            }
+    }
+    inline void relabel(int u) {
+        h[u] = INF;
+        for (int i = head[u]; i; i = nxt[i])
+            if (h[u] > h[edge[i].v] + 1 && edge[i].flow)
+                h[u] = h[edge[i].v] + 1;
+    }
+    inline ll maxflow(int s, int t) {
+        this->s = s, this->t = t;
+        if (!bfs()) return 0;
+        h[s] = n;
+        fill(gap, gap + n + n + 1, 0);
+        for (int i = 1; i <= n; ++i)
+            if (h[i] < INF) ++gap[h[i]];
+        for (int i = head[s]; i; i = nxt[i])
+            if (ll d = edge[i].flow) {
+                edge[i].flow -= d, edge[i ^ 1].flow += d;
+                e[s] -= d, e[edge[i].v] += d;
+                if (edge[i].v != s && edge[i].v != t && !inq[edge[i].v])
+                    pq.push({h[edge[i].v], edge[i].v}), inq[edge[i].v] = 1;
+            }
+        while (!pq.empty()) {
+            int u = pq.top().second; pq.pop();
+            inq[u] = 0, push(u);
+            if (e[u]) {
+                if (!--gap[h[u]]) {
+                    for (int i = 1; i <= n; ++i)
+                        if (i != s && i != t && h[u] < h[i] && h[i] < n + 1)
+                            h[i] = n + 1;
+                }
+                relabel(u), ++gap[h[u]];
+                pq.push({h[u], u});
+            }
+        }
+        return e[t];
+    }
+} network;
+```
