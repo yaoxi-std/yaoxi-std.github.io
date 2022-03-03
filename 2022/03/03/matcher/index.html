@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+<meta name="google-site-verification" content="eoY_qGyIeBNR2-mEFtUDVnbJFIvQ_uACaYJxaZXNaO8" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yaoxi-std.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="论对拍在OI中的妙用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论对拍在OI中的妙用">
+<meta property="og:url" content="http://yaoxi-std.github.io/2022/03/03/matcher/index.html">
+<meta property="og:site_name" content="yaoxi-std 的博客">
+<meta property="og:description" content="论对拍在OI中的妙用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-03T13:51:35.000Z">
+<meta property="article:modified_time" content="2022-03-03T15:57:13.122Z">
+<meta property="article:author" content="yaoxi-std">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yaoxi-std.github.io/2022/03/03/matcher/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>论对拍在OI中的妙用 | yaoxi-std 的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">yaoxi-std 的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">$\text{开}\mathop{\text{卷}}\limits^{ju\check{a}n}\text{有益}$</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedules">
+
+    <a href="/schedules/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程</a>
+
+  </li>
+        <li class="menu-item menu-item-clip-board">
+
+    <a href="/clip-board/" rel="section"><i class="fa fa-clipboard fa-fw"></i>云剪贴板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: '32px',
+  left: 'unset',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/yaoxi-std" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yaoxi-std.github.io/2022/03/03/matcher/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yaoxi-std">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yaoxi-std 的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          论对拍在OI中的妙用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-03 21:51:35 / 修改时间：23:57:13" itemprop="dateCreated datePublished" datetime="2022-03-03T21:51:35+08:00">2022-03-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="论对拍在OI中的妙用"><a href="#论对拍在OI中的妙用" class="headerlink" title="论对拍在OI中的妙用"></a>论对拍在OI中的妙用</h1><span id="more"></span>
+<hr>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>众所周知，国内的OI比赛中，一般都是以选手的最后一次提交得分为准，且选手无法在比赛当中实时查看得分。这就导致了很多时候选手的最终得分与期望得分不符的情况，也就是所谓的“挂分”。为了避免这种情况的发生，选手一般会在比赛中自己造数据，分别让暴力程序和待检验的程序计算，检验输出是否相同，这就是所谓“对拍”。</p>
+<blockquote>
+<p>对拍是一种进行检验或调试的方法，通过对比两个程序的输出来检验程序的正确性。可以将自己程序的输出与其他程序的输出进行对比，从而判断自己的程序是否正确。 </p>
+<p> —— OI Wiki</p>
+</blockquote>
+<p>对拍过程需要多次进行，因此需要选手实现自动化对拍。</p>
+<p>最基础的对拍程序框架如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> cas = <span class="number">1000</span>; <span class="comment">// 对拍次数</span></span><br><span class="line">    <span class="keyword">while</span> (cas--) &#123;</span><br><span class="line">        <span class="comment">// 在 Linux / macOS 下运行当前目录下文件时需要加 `./` 前缀，Windows 可以不加</span></span><br><span class="line">        <span class="built_in">system</span>(<span class="string">&quot;./_generator.exe &gt; task.in&quot;</span>);         <span class="comment">// 造数据</span></span><br><span class="line">        <span class="built_in">system</span>(<span class="string">&quot;./_brute.exe &lt; task.in &gt; task.ans&quot;</span>);  <span class="comment">// 获得暴力程序的输出</span></span><br><span class="line">        <span class="built_in">system</span>(<span class="string">&quot;./task.exe &lt; task.in &gt; task.out&quot;</span>);    <span class="comment">// 获得待检验程序的输出</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">system</span>(<span class="string">&quot;fc.exe task.out task.ans&quot;</span>)) &#123;</span><br><span class="line">            <span class="comment">// Windows 下使用 `fc` 命令比较文件是否相同</span></span><br><span class="line">            <span class="comment">// 如果相同，`system` 调用会返回 0，否则返回 1 表示不同</span></span><br><span class="line">            <span class="comment">// Linux / macOS 下没有 `fc` 命令，用 `diff` 替代如下：</span></span><br><span class="line">            <span class="comment">// system(&quot;diff task.out task.ans&quot;);</span></span><br><span class="line">            std::cerr &lt;&lt; <span class="string">&quot;Wrong Answer&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cerr &lt;&lt; <span class="string">&quot;Accepted&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中的 <code>_generator.exe</code> 是数据生成器的可执行文件，<code>_brute.exe</code> 为暴力可执行文件，<code>task.exe</code> 为待检验程序的可执行文件，这三个文件需要与对拍程序的可执行文件（我一般称作 <code>matcher.exe</code>）放在同一个目录下。</p>
+<p>这种对拍虽然简单，但有时在比赛中不能获得很好的效果，比如只能将待检验程序与暴力进行对拍，无法检测数组越界等。</p>
+<p>本文就来讲讲“对拍在OI中的妙用”，即<strong>高阶的对拍技巧</strong>。</p>
+<hr>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="数据生成器的写法"><a href="#数据生成器的写法" class="headerlink" title="数据生成器的写法"></a>数据生成器的写法</h2><p>在考场上，我们不会去写那种非常标准的 <code>generator</code>（毕竟考场上也不会给你提供 <code>testlib.h</code>）。为了便于生成不同子任务对应的数据范围，我一般会使用一下框架编写生成器：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 头文件省略</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 随机数部分，保证数据的随机性</span></span><br><span class="line">random_device rd;</span><br><span class="line"><span class="function">mt19937 <span class="title">rng</span><span class="params">(rd())</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//// 生成随机整数，范围 [l, r]</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">rand_int</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="function">uniform_int_distribution&lt;<span class="type">int</span>&gt; <span class="title">qwq</span><span class="params">(l, r)</span></span>;    <span class="comment">// C++11 自带的均匀分布</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">qwq</span>(rng);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//// 生成随机浮点数，范围 [l, r)</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">rand_double</span><span class="params">(<span class="type">double</span> l, <span class="type">double</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="function">uniform_real_distribution&lt;<span class="type">double</span>&gt; <span class="title">qwq</span><span class="params">(l, r)</span></span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">qwq</span>(rng);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 对应子任务的数据范围</span></span><br><span class="line"><span class="comment">// 使用 namespace 较为优雅</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//// 对应的第一个 subtask</span></span><br><span class="line"><span class="keyword">namespace</span> subtask1 &#123;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N_MIN = <span class="number">100</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N_MAX = <span class="number">200</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> A_MAX = <span class="number">1e5</span>;</span><br><span class="line">&#125;;  <span class="comment">// namespace subtask1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//// 对应的第二个 subtask</span></span><br><span class="line"><span class="keyword">namespace</span> subtask2 &#123;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N_MIN = <span class="number">1e3</span>;</span><br><span class="line"><span class="comment">//// ......</span></span><br><span class="line">&#125;;  <span class="comment">// namespace subtask2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//// 需要修改数据范围时，只需要修改下面这一句就行</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> subtask1;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局变量储存</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, a[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 主函数部分</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//// 造数据</span></span><br><span class="line">    n = <span class="built_in">rand_int</span>(N_MIN, N_MAX);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        a[i] = <span class="built_in">rand_int</span>(<span class="number">1</span>, A_MAX);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//// 输出数据</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d%c&quot;</span>, a[i], <span class="string">&quot; \n&quot;</span>[i == n]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>自己研究出来的 <code>generator</code> 不得不说真的挺优雅～</p>
+<h3 id="数据的随机性"><a href="#数据的随机性" class="headerlink" title="数据的随机性"></a>数据的随机性</h3><p>这份生成器在 Linux / macOS 下完美运行并且可以生成完全随机的数据。但是如果你在 Windows 下使用 MinGW 编译，就会发现每次输出的数据 !完!全!相!同! </p>
+<p>这是由于 MinGW 的 <code>random_device</code> 实现不好，没有调用系统熵，从而不能做到真随机。至于在 MinGW 下的真随机，笔者也没有找到较好的方法。鉴于大部分 NOI 系列比赛中都会提供 NOI Linux <del>（除了 JSOI 这种毒瘤）</del>，还是建议大家在 Linux 下对拍吧！</p>
+<h2 id="各种错误的处理"><a href="#各种错误的处理" class="headerlink" title="各种错误的处理"></a>各种错误的处理</h2><h3 id="Wrong-Answer-的处理"><a href="#Wrong-Answer-的处理" class="headerlink" title="Wrong Answer 的处理"></a>Wrong Answer 的处理</h3><p>对于常规情况，我们只需要使用上文提到的 <code>fc</code> 或 <code>diff</code> 命令即可检验两个文件是否相同。</p>
+<h4 id="忽略空白符"><a href="#忽略空白符" class="headerlink" title="忽略空白符"></a>忽略空白符</h4><p>然而有时会遇到这样的情况:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ diff 1.out 1.ans</span><br><span class="line">2d1</span><br><span class="line">&lt;</span><br></pre></td></tr></table></figure>
+<p>打开文件一看，<code>1.out</code> 如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">114514 1919810</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>1.ans</code> 如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">114514 1919810</span><br></pre></td></tr></table></figure>
+<p>这样的输出让你感到奇怪：明明两个输出的数字都一样，为什么 <code>diff</code> 出来会报错呢？仔细看了一会儿发现 <code>1.out</code> 多了一个行末回车。这是比较好的情况，万一 <code>.ans</code> 文件是在 Windows 下制造的，很有可能会使得 <code>.ans</code> 文件的回车符全都变成了 <code>CRLF</code> 而非在类 Unix 操作系统下的 <code>LF</code>，此时肉眼看不出两个文件的差别，<code>diff</code> 却会报错。</p>
+<p>如何避免这种情况呢？<code>diff</code> 有一个忽略空白符的选项 <code>diff -w</code>，或者在 Windows 下使用 <code>fc.exe /w</code> 可以忽略空白符。</p>
+<p>只需要在上文的对拍程序中稍作修改即可：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">system</span>(<span class="string">&quot;fc.exe /w task.out task.ans&quot;</span>)) <span class="comment">// 或者 system(&quot;diff -w task.out task.ans&quot;)</span></span><br></pre></td></tr></table></figure>
+<h4 id="Special-Judge"><a href="#Special-Judge" class="headerlink" title="Special Judge"></a>Special Judge</h4><p><a target="_blank" rel="noopener" href="https://oi-wiki.org/tools/special-judge/">spj的写法</a>这里不再赘述。</p>
+<p>对拍时也只需要修改一点点，将原本调用 <code>fc</code> 或 <code>diff</code> 改为调用 <code>_spj.exe</code> 即可:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">system</span>(<span class="string">&quot;./_spj.exe task.in task.out task.ans&quot;</span>)) <span class="comment">// 需要保证 `_spj.exe` 与对拍程序处于同一目录下</span></span><br></pre></td></tr></table></figure>
+<p><strong>善意的提醒：</strong> 一定要多造一些极端数据！！！</p>
+<h3 id="Runtime-Error-的处理"><a href="#Runtime-Error-的处理" class="headerlink" title="Runtime Error 的处理"></a>Runtime Error 的处理</h3><p>程序出现 Runtime Error 时，会返回一个非 $0$ 的返回值。由此我们可以根据程序的返回值来判断是否出现运行错误。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第三个 system 改成这样</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">system</span>(<span class="string">&quot;./task.exe &lt; task.in &gt; task.out&quot;</span>)) &#123;</span><br><span class="line">    <span class="comment">// 如果运行到这里，说明返回值非 0，就是运行错误了。</span></span><br><span class="line">    std::cerr &lt;&lt; <span class="string">&quot;Runtime Error&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>However，有时数组越界了，可程序却正常运行跑过去了，没有出现 RE 的情况（这是比较玄学的），上面的程序也无法判断。</p>
+<p>这时就要请出 C++ 的大杀器 <strong>Address Sanitizer</strong> 了。（其实我第一次听说还是从大毒瘤 JSOI 的在线系统里）</p>
+<p>这个东西我也不多介绍了，总之就是能够有效地判断数组越界或者内存访问越界问题。</p>
+<p>至于如何开启，就要手动修改编译命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -O2 -std=c++14 -fsanitize=address -o task.exe task.cpp <span class="comment"># 只是举个例子</span></span><br></pre></td></tr></table></figure>
+<p>Dev-Cpp 如何修改编译命令请自行百度。</p>
+<p>顺嘴提一句，<strong>检查RE的时候一定要用大数据来测！！！</strong></p>
+<h3 id="Time-Limit-Exceeded-的处理"><a href="#Time-Limit-Exceeded-的处理" class="headerlink" title="Time Limit Exceeded 的处理"></a>Time Limit Exceeded 的处理</h3><p>这就涉及到 C++ 的计时模块了。由于我们只是写个对拍，没必要到时间就把程序掐掉，只是计算下程序运行的时间即可。</p>
+<p>建议使用 C++11 自带的 <code>std::chrono::steady_clock</code>，需要添加头文件 <code>chrono.h</code>（已包含在万能头中）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std::chrono;</span><br><span class="line"><span class="keyword">auto</span> t1 = steady_clock::<span class="built_in">now</span>();</span><br><span class="line"><span class="comment">// do something like `system(&quot;...&quot;)`</span></span><br><span class="line"><span class="built_in">system</span>(<span class="string">&quot;something&quot;</span>);</span><br><span class="line"><span class="keyword">auto</span> t2 = steady_clock::<span class="built_in">now</span>();</span><br><span class="line"><span class="type">double</span> dif = duration_cast&lt;duration&lt;<span class="type">double</span>&gt;&gt;(t2 - t1).<span class="built_in">count</span>();</span><br><span class="line"><span class="comment">// dif 就是运行的时间，以秒为单位，较为精确</span></span><br><span class="line"><span class="keyword">if</span> (dif &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    std::cerr &lt;&lt; <span class="string">&quot;Time Limit Exceeded&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>检查TLE的时候也一定要用大数据来测！！！</strong></p>
+<h3 id="Memory-Limit-Exceeded-的处理"><a href="#Memory-Limit-Exceeded-的处理" class="headerlink" title="Memory Limit Exceeded 的处理"></a>Memory Limit Exceeded 的处理</h3><h4 id="静态内存空间"><a href="#静态内存空间" class="headerlink" title="静态内存空间"></a>静态内存空间</h4><p>在你的程序代码中，最开头定义一个 <code>bool</code> 变量 <code>m_be</code>，主函数前定义 <code>m_ed</code>，将两者地址做差，就得到了区间内定义的静态变量总大小。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 头文件</span></span><br><span class="line"><span class="type">bool</span> m_be;</span><br><span class="line"><span class="type">int</span> arr[MAXN], brr[MAXN]; <span class="comment">// ...</span></span><br><span class="line"><span class="type">bool</span> m_ed;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cerr &lt;&lt; <span class="built_in">fabs</span>(&amp;m_ed - &amp;m_be) / <span class="number">1024</span> / <span class="number">1024</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="comment">// something else</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出的是以MB为单位的静态空间大小。</p>
+<p>为什么要使用 <code>fabs</code> 呢？这是因为在不同编译器的不同实现中，有可能会有不同的效果。在我的 macOS 上，使用 clang 编译的就是 <code>&amp;m_be &lt; &amp;m_ed</code>，g++ 则是 <code>&amp;m_ed &lt; &amp;m_be</code>，但是绝对值相同。</p>
+<p>至于动态空间大小，我想应该没有人会无聊到在OI中开一大堆 <code>vector</code> 之类的东西吧。。。好像暂时也没看到什么比较好的方法测动态内存，就跳过了。</p>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>贴一下最终的对拍程序代码吧（Linux / macOS版）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std::chrono;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> tot = <span class="number">1000</span>;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;g++ -std=c++14 -O2 -o _generator.exe _generator.cpp&quot;</span>);</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;g++ -std=c++14 -O2 -o _brute_.exe _brute_.cpp&quot;</span>);</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;g++ -std=c++14 -O2 -fsanitize=address -o task.exe task.cpp&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> cas = <span class="number">1</span>; cas &lt;= tot; ++cas) &#123;</span><br><span class="line">        <span class="built_in">system</span>(<span class="string">&quot;./_generator.exe &gt; task.in&quot;</span>);</span><br><span class="line">        <span class="built_in">system</span>(<span class="string">&quot;./_brute.exe &lt; task.in &gt; task.ans&quot;</span>);</span><br><span class="line">        <span class="keyword">auto</span> t1 = steady_clock::<span class="built_in">now</span>();</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">system</span>(<span class="string">&quot;./task.exe &lt; task.in &gt; task.out&quot;</span>)) &#123;</span><br><span class="line">            cerr &lt;&lt; <span class="string">&quot;Runtime Error&quot;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">auto</span> t2 = steady_clock::<span class="built_in">now</span>();</span><br><span class="line">        <span class="type">double</span> dif = duration_cast&lt;duration&lt;<span class="type">double</span>&gt;&gt;(t2 - t1).<span class="built_in">count</span>();</span><br><span class="line">        <span class="keyword">if</span> (dif &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            cerr &lt;&lt; <span class="string">&quot;Time Limit Exceeded&quot;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">system</span>(<span class="string">&quot;diff -w task.out task.ans&quot;</span>)) &#123;</span><br><span class="line">            cerr &lt;&lt; <span class="string">&quot;Wrong Answer&quot;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Test &quot;</span> &lt;&lt; cas &lt;&lt; <span class="string">&quot; Passed&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    cerr &lt;&lt; <span class="string">&quot;Accepted&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/08/sol-p4719/" rel="prev" title="P4719 【模版】动态DP&动态树分治">
+      <i class="fa fa-chevron-left"></i> P4719 【模版】动态DP&动态树分治
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E5%AF%B9%E6%8B%8D%E5%9C%A8OI%E4%B8%AD%E7%9A%84%E5%A6%99%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">论对拍在OI中的妙用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">3.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E5%86%99%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">数据生成器的写法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%80%A7"><span class="nav-number">3.1.1.</span> <span class="nav-text">数据的随机性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%84%E7%A7%8D%E9%94%99%E8%AF%AF%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">各种错误的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Wrong-Answer-%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">3.2.1.</span> <span class="nav-text">Wrong Answer 的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%BD%E7%95%A5%E7%A9%BA%E7%99%BD%E7%AC%A6"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">忽略空白符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Special-Judge"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">Special Judge</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-Error-%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">3.2.2.</span> <span class="nav-text">Runtime Error 的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Time-Limit-Exceeded-%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">3.2.3.</span> <span class="nav-text">Time Limit Exceeded 的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Memory-Limit-Exceeded-%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">3.2.4.</span> <span class="nav-text">Memory Limit Exceeded 的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4"><span class="nav-number">3.2.4.1.</span> <span class="nav-text">静态内存空间</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">yaoxi-std</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yaoxi-std</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+
+      <!-- Live2D -->
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
+      <script src="/live2d-widget/autoload.js" type="text/javascript"></script>
+      
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '18dd18baae150ef9ab44',
+      clientSecret: '22b3c495c79f197d74c81171f0603dca0f60849a',
+      repo        : 'yaoxi-std.github.io',
+      owner       : 'yaoxi-std',
+      admin       : ['yaoxi-std'],
+      id          : '26f3ed5b963cfd776a579b03816062d0',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
