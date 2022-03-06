@@ -7,7 +7,7 @@ tag: important
 comments: false
 ---
 
-### 板子
+# 板子
 ```cpp
 /**
  * @file:           {}.cpp
@@ -56,7 +56,7 @@ signed main() {
 }
 ```
 
-### 板子-vscode版本
+# 板子-vscode版本
 ```json
 "CPP Base": {
     "prefix": "cpp_base",
@@ -110,7 +110,7 @@ signed main() {
 }
 ```
 
-### 火车头（有用的东西）
+# 火车头（有用的东西）
 ```cpp
 #pragma GCC optimize(3)
 #pragma GCC target("avx")
@@ -161,14 +161,14 @@ signed main() {
 #pragma GCC optimize("-fdelete-null-pointer-checks")
 ```
 
-### 短小精悍的火车头（雾
+# 短小精悍的火车头（雾
 ```cpp
 #pragma GCC optimize ("O2")
 #pragma GCC optimize ("Ofast", "inline", "-ffast-math")
 #pragma GCC target ("avx,sse2,sse3,sse4,mmx")
 ```
 
-### fread & fwrite (卡常用)
+# fread & fwrite (卡常用)
 ```cpp
 namespace fastio {
 const int MAXBUF = 1 << 23;
@@ -181,13 +181,13 @@ inline void print_final() { fwrite(pbuf, 1, pp - pbuf, stdout), pp = pbuf; }
 using namespace fastio;
 ```
 
-### 算法板子
+# 算法板子
 
 **不要抄板子，要自己写，只是防止自己忘记**
 
 也就是说每次考前要复习一下这些板子
 
-#### {% post_link 'sol-p3803' 'FFT && NTT' %}
+## {% post_link 'sol-p3803' 'FFT && NTT' %}
 
 ```cpp
 using comp = complex<double>;
@@ -253,7 +253,7 @@ void ntt(int* f, int len, int on) {
 }
 ```
 
-#### 多项式全家桶
+## 多项式全家桶
 
 ```cpp
 const int MOD = 998244353;
@@ -374,7 +374,7 @@ int exp(const int* f, int n, int* ans) {
 };  // namespace polynomial
 ```
 
-#### 虚树
+## 虚树
 
 ```cpp
 void build_vtr() {
@@ -397,7 +397,7 @@ void build_vtr() {
 }
 ```
 
-#### 圆方树
+## 圆方树
 
 ```cpp
 void tarjan(int u) {
@@ -425,7 +425,7 @@ void tarjan(int u) {
 }
 ```
 
-#### Splay
+## Splay
 
 ```cpp
 struct Splay {
@@ -547,7 +547,7 @@ struct Splay {
 };
 ```
 
-#### 后缀数组 suffix array
+## 后缀数组 suffix array
 ```cpp
 struct SuffixArray {
     int n, sa[MAXN], rk[MAXN], tp[MAXN], ht[MAXN], he[MAXN];
@@ -604,7 +604,7 @@ struct SuffixArray {
 };
 ```
 
-#### Link Cut Tree
+## Link Cut Tree
 居然比Splay短！
 ```cpp
 struct LCT {
@@ -696,7 +696,7 @@ struct LCT {
 };
 ```
 
-#### PAM
+## PAM
 ```cpp
 struct PAM {
     int siz, tot, last;
@@ -728,7 +728,7 @@ struct PAM {
 } pam;
 ```
 
-#### Manacher
+## Manacher
 这个其实不需要记板子吧
 ```cpp
 int manacher(char* s, int tlen) {
@@ -751,7 +751,7 @@ int manacher(char* s, int tlen) {
 }
 ```
 
-#### HLPP
+## HLPP
 
 ```cpp
 struct HLPP {
@@ -828,4 +828,38 @@ struct HLPP {
         return e[t];
     }
 } network;
+```
+
+## FHQ-Treap
+
+~~狗都不写splay~~
+
+```cpp
+random_device rd;
+mt19937 rng(rd());
+struct FHQ_Treap {
+    int rt, tot, x, y, z, ret, ch[MAXN][2], val[MAXN], rnd[MAXN], siz[MAXN];
+    inline void pushup(int u) { siz[u] = siz[ch[u][0]] + siz[ch[u][1]] + 1; }
+    inline int newnode(int k) { return val[++tot] = k, rnd[tot] = rng(), siz[tot] = 1, ch[tot][0] = ch[tot][1] = 0, tot; }
+    inline int merge(int x, int y) {
+        if (!x || !y) return x | y;
+        return (rnd[x] < rnd[y]) ? (ch[x][1] = merge(ch[x][1], y), pushup(x), x) : (ch[y][0] = merge(x, ch[y][0]), pushup(y), y);
+    }
+    inline void split(int u, int k, int& x, int& y) {
+        if (!u) return void(x = y = 0);
+        (val[u] <= k) ? (x = u, split(ch[u][1], k, ch[x][1], y)) : (y = u, split(ch[u][0], k, x, ch[y][0])), pushup(u);
+    }
+    inline void insert(int k) { split(rt, k, x, y), rt = merge(merge(x, newnode(k)), y); }
+    inline void erase(int k) { split(rt, k, x, z), split(x, k - 1, x, y), y = merge(ch[y][0], ch[y][1]), rt = merge(merge(x, y), z); }
+    inline int rank(int k) { return split(rt, k - 1, x, y), ret = siz[x] + 1, rt = merge(x, y), ret; }
+    inline int kth(int k) {
+        int cur = rt;
+        while (true) {
+            if (k == siz[ch[cur][0]] + 1) return val[cur];
+            cur = (k <= siz[ch[cur][0]]) ? ch[cur][0] : (k -= siz[ch[cur][0]] + 1, ch[cur][1]);
+        }
+    }
+    inline int prev(int k) { return split(rt, k - 1, x, y), ret = siz[x], rt = merge(x, y), kth(ret); }
+    inline int next(int k) { return split(rt, k, x, y), ret = siz[x] + 1, rt = merge(x, y), kth(ret); }
+} trp;
 ```
