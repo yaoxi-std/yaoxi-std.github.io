@@ -2,7 +2,6 @@
 title: 云剪贴板
 date: 2021-11-21 17:47:26
 type: clip-board
-password: sjcakioi
 tag: important
 comments: false
 ---
@@ -726,6 +725,39 @@ struct PAM {
         ++cnt[last];
     }
 } pam;
+```
+
+## 压过行的LCT
+比 Treap 短
+
+```cpp
+struct LCT {
+    int fa[MAXN], ch[MAXN][2], val[MAXN], sum[MAXN], tag[MAXN];
+    void pushup(int x) { sum[x] = sum[ch[x][0]] ^ sum[ch[x][1]] ^ val[x]; }
+    void connect(int x, int f, int w) { fa[x] = f, (~w) && (ch[f][w] = x); }
+    int get(int x) { return (ch[fa[x]][0] != x && ch[fa[x]][1] != x) ? -1 : (ch[fa[x]][1] == x); }
+    void pushdown(int x) {
+        if (tag[x]) {
+            swap(ch[x][0], ch[x][1]);
+            if (ch[x][0]) tag[ch[x][0]] ^= 1;
+            if (ch[x][1]) tag[ch[x][1]] ^= 1;
+            tag[x] = 0;
+        }
+    }
+    void pushall(int x) { (~get(x) ? pushall(fa[x]) : (void)0), pushdown(x); }
+    void rotate(int x) {
+        int y = fa[x], z = fa[y], w = get(x);
+        (~w) ? connect(ch[x][w ^ 1], y, w) : (void)0;
+        connect(x, z, get(y)), connect(y, x, w ^ 1), pushup(y), pushup(x);
+    }
+    void splay(int x) { pushall(x); for (int f = fa[x]; f = fa[x], ~get(x); rotate(x)) if (~get(f)) rotate(get(f) == get(x) ? f : x); }
+    void access(int x) { int pre = 0; while (x) splay(x), ch[x][1] = pre, pushup(x), pre = x, x = fa[x]; }
+    void makeroot(int x) { access(x), splay(x), tag[x] ^= 1; }
+    void split(int x, int y) { makeroot(x), access(y), splay(y); }
+    int findroot(int x) { access(x), splay(x); while (ch[x][0]) pushdown(x), x = ch[x][0]; return splay(x), x; }
+    bool link(int x, int y) { return makeroot(x), findroot(y) == x ? 0 : (fa[x] = y, 1); }
+    bool cut(int x, int y) { return findroot(x) != findroot(y) || (split(x, y), fa[x] != y || ch[x][1]) ? 0 : (fa[x] = ch[y][0] = 0, 1); }
+};
 ```
 
 ## Manacher
