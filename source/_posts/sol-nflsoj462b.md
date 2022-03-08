@@ -42,9 +42,9 @@ date: 2022-03-08 16:02:24
  * @author:         yaoxi-std
  * @url:            
 */
-// #pragma GCC optimize ("O2")
-// #pragma GCC optimize ("Ofast", "inline", "-ffast-math")
-// #pragma GCC target ("avx,sse2,sse3,sse4,mmx")
+#pragma GCC optimize ("O2")
+#pragma GCC optimize ("Ofast", "inline", "-ffast-math")
+#pragma GCC target ("avx,sse2,sse3,sse4,mmx")
 #include <bits/stdc++.h>
 using namespace std;
 #define resetIO(x) \
@@ -89,8 +89,8 @@ const int LOGN = 19;
 const int INF = 0x3f3f3f3f;
 int n, a[MAXN], fa[MAXN], pos[MAXN], lg2[MAXN * 2];
 int dfc1, dfc2, dfn1[MAXN], dfn2[MAXN], lst1[MAXN], lst2[MAXN];
-int cnto, dep[MAXN], ord[MAXN * 2], fir[MAXN], rmin[MAXN * 2][LOGN];
-int rdfn1[MAXN][LOGN], rdfn2[MAXN][LOGN], rlca[MAXN][LOGN];
+int cnto, dep[MAXN], ord[MAXN * 2], fir[MAXN], rmin[LOGN][MAXN * 2];
+int rdfn1[LOGN][MAXN], rdfn2[LOGN][MAXN], rlca[LOGN][MAXN];
 vector<int> g[MAXN];
 struct SegmentTree {
     struct Node {
@@ -140,34 +140,34 @@ void build2(int u, int f) {
 int lca(int x, int y) {
     int l = min(fir[x], fir[y]), r = max(fir[x], fir[y]);
     int k = lg2[r - l + 1];
-    return argmin(dep, rmin[l][k], rmin[r - (1 << k) + 1][k]);
+    return argmin(dep, rmin[k][l], rmin[k][r - (1 << k) + 1]);
 }
 int lcas(int l, int r) {
     int k = lg2[r - l + 1];
-    return lca(rlca[l][k], rlca[r - (1 << k) + 1][k]);
+    return lca(rlca[k][l], rlca[k][r - (1 << k) + 1]);
 }
 int maxdfn1(int l, int r) {
     int k = lg2[r - l + 1];
-    return argmax(dfn1, rdfn1[l][k], rdfn1[r - (1 << k) + 1][k]);
+    return argmax(dfn1, rdfn1[k][l], rdfn1[k][r - (1 << k) + 1]);
 }
 int maxdfn2(int l, int r) {
     int k = lg2[r - l + 1];
-    return argmax(dfn2, rdfn2[l][k], rdfn2[r - (1 << k) + 1][k]);
+    return argmax(dfn2, rdfn2[k][l], rdfn2[k][r - (1 << k) + 1]);
 }
 void init() {
     build0(1, 0), build1(1, 0), build2(1, 0);
     for (int i = 2; i <= cnto; ++i) lg2[i] = lg2[i >> 1] + 1;
-    for (int i = 1; i <= cnto; ++i) rmin[i][0] = ord[i];
+    for (int i = 1; i <= cnto; ++i) rmin[0][i] = ord[i];
     for (int j = 1; j < LOGN; ++j)
         for (int i = 1; i + (1 << j) - 1 <= cnto; ++i)
-            rmin[i][j] = argmin(dep, rmin[i][j - 1], rmin[i + (1 << (j - 1))][j - 1]);
+            rmin[j][i] = argmin(dep, rmin[j - 1][i], rmin[j - 1][i + (1 << (j - 1))]);
     for (int i = 0; i < n; ++i)
-        rdfn1[i][0] = rdfn2[i][0] = rlca[i][0] = pos[i];
+        rdfn1[0][i] = rdfn2[0][i] = rlca[0][i] = pos[i];
     for (int j = 1; j < LOGN; ++j)
         for (int i = 0; i + (1 << j) <= n; ++i) {
-            rdfn1[i][j] = argmax(dfn1, rdfn1[i][j - 1], rdfn1[i + (1 << (j - 1))][j - 1]);
-            rdfn2[i][j] = argmax(dfn2, rdfn2[i][j - 1], rdfn2[i + (1 << (j - 1))][j - 1]);
-            rlca[i][j] = lca(rlca[i][j - 1], rlca[i + (1 << (j - 1))][j - 1]);
+            rdfn1[j][i] = argmax(dfn1, rdfn1[j - 1][i], rdfn1[j - 1][i + (1 << (j - 1))]);
+            rdfn2[j][i] = argmax(dfn2, rdfn2[j - 1][i], rdfn2[j - 1][i + (1 << (j - 1))]);
+            rlca[j][i] = lca(rlca[j - 1][i], rlca[j - 1][i + (1 << (j - 1))]);
         }
 }
 int query(int u, int v, int t, int f, int l, int r) {
