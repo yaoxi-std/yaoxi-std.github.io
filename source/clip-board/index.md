@@ -801,22 +801,22 @@ struct HLPP {
         edge[++tot] = {u, 0}, nxt[tot] = head[v], head[v] = tot;
     }
     inline bool bfs() {
-        static int que[MAXN];
         int fr = 0, bk = 0;
+        static int que[MAXN];
         fill(h + 1, h + n + 1, INF);
-        h[t] = 0, que[bk++] = t;
+        h[t] = 0, que[++bk] = t;
         while (fr < bk) {
-            int u = que[fr++];
+            int u = que[++fr];
             for (int i = head[u]; i; i = nxt[i])
                 if (h[edge[i].v] > h[u] + 1 && edge[i ^ 1].flow)
-                    h[edge[i].v] = h[u] + 1, que[bk++] = edge[i].v;
+                    h[edge[i].v] = h[u] + 1, que[++bk] = edge[i].v;
         }
         return h[s] != INF;
     }
     inline void push(int u) {
         for (int i = head[u]; i; i = nxt[i])
             if (h[edge[i].v] + 1 == h[u] && edge[i].flow) {
-                ll tmp = min(e[u], edge[i].flow);
+                ll tmp = min(edge[i].flow, e[u]);
                 edge[i].flow -= tmp, edge[i ^ 1].flow += tmp;
                 e[u] -= tmp, e[edge[i].v] += tmp;
                 if (edge[i].v != s && edge[i].v != t && !inq[edge[i].v])
@@ -834,7 +834,6 @@ struct HLPP {
         this->s = s, this->t = t;
         if (!bfs()) return 0;
         h[s] = n;
-        fill(gap, gap + n + n + 1, 0);
         for (int i = 1; i <= n; ++i)
             if (h[i] < INF) ++gap[h[i]];
         for (int i = head[s]; i; i = nxt[i])
@@ -844,8 +843,9 @@ struct HLPP {
                 if (edge[i].v != s && edge[i].v != t && !inq[edge[i].v])
                     pq.push({h[edge[i].v], edge[i].v}), inq[edge[i].v] = 1;
             }
-        while (!pq.empty()) {
+        while (pq.size()) {
             int u = pq.top().second; pq.pop();
+            if (h[u] == INF) continue;
             inq[u] = 0, push(u);
             if (e[u]) {
                 if (!--gap[h[u]]) {
@@ -853,8 +853,7 @@ struct HLPP {
                         if (i != s && i != t && h[u] < h[i] && h[i] < n + 1)
                             h[i] = n + 1;
                 }
-                relabel(u), ++gap[h[u]];
-                pq.push({h[u], u});
+                relabel(u), ++gap[h[u]], pq.push({h[u], u});
             }
         }
         return e[t];
