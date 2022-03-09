@@ -139,11 +139,11 @@ struct Dinic {
 struct HLPP {
     struct Edge {
         int v; ll flow;
-    } edge[MAXM * 2];
+    } edge[MAXE * 2];
     int n, s, t, tot = 1;
-    int head[MAXN], nxt[MAXM * 2];
-    int h[MAXN], gap[MAXN * 2], inq[MAXN];
-    ll e[MAXN];
+    int head[MAXV], nxt[MAXE * 2];
+    int h[MAXV], gap[MAXV * 2], inq[MAXV];
+    ll e[MAXV];
     priority_queue<pair<int, int>> pq;
     inline void init(int n) { this->n = n; }
     inline void addedge(int u, int v, ll f) {
@@ -182,7 +182,7 @@ struct HLPP {
     }
     inline ll maxflow(int s, int t) {
         this->s = s, this->t = t;
-        if (!bfs()) return 0;
+        if (!bfs()) return e[t];
         h[s] = n;
         for (int i = 1; i <= n; ++i)
             if (h[i] < INF) ++gap[h[i]];
@@ -195,10 +195,9 @@ struct HLPP {
             }
         while (pq.size()) {
             int u = pq.top().second; pq.pop();
-            if (h[u] == INF) continue;
             inq[u] = 0, push(u);
             if (e[u]) {
-                if (!--gap[h[u]]) {
+                if (h[u] != INF && !--gap[h[u]]) {
                     for (int i = 1; i <= n; ++i)
                         if (i != s && i != t && h[u] < h[i] && h[i] < n + 1)
                             h[i] = n + 1;
