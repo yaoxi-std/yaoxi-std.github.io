@@ -13,6 +13,6 @@ comments: false
 
 [![luogu](https://statcard.vercel.app/shield?id=141573)](https://www.luogu.com.cn/user/141573)
 
-[![atcoder](https://atcoder.swift-zym.workers.dev/yaoxi_std)](https://atcoder.jp/users/yaoxi_std)
+[![atcoder](https://zym.pages.dev/at/yaoxi_std)](https://atcoder.jp/users/yaoxi_std)
 
 [![codeforces](https://codeforces-status.yaoxi-std.workers.dev/shields?handle=yaoxi)](https://codeforces.com/profile/yaoxi)
