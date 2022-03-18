@@ -6,7 +6,7 @@ top: 1000
 comments: false
 ---
 
-[![atcoder](https://atcoder.swift-zym.workers.dev/yaoxi_std)](https://atcoder.jp/users/yaoxi_std)
+[![atcoder](https://zym.pages.dev/at/yaoxi_std)](https://atcoder.jp/users/yaoxi_std)
 
 <!-- more -->
 ## AtCoder 上的比赛记录
