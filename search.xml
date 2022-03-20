@@ -67,6 +67,9 @@
 <p><del><a href="/2022/02/08/sol-p4719/" title="P4719">P4719</a></del></p>
 <h3 id="2022-3-3-Thur"><a href="#2022-3-3-Thur" class="headerlink" title="2022.3.3 (Thur)"></a>2022.3.3 (Thur)</h3><p>已经$(1+1)\times 4+5+1+4$天没更新了</p>
 <p>这两天在学校集训，模拟赛+专题的模式，找时间得把比赛总结迁过来了。</p>
+<h3 id="2022-3-20-Sun"><a href="#2022-3-20-Sun" class="headerlink" title="2022.3.20 (Sun)"></a>2022.3.20 (Sun)</h3><font color="white">因为没题做所以开始刷 ynoi 力！</font>
+
+<p><del><a href="/2022/03/20/sol-p5610/" title="P5610">P5610</a></del></p>
 <h3 id="待写的题解"><a href="#待写的题解" class="headerlink" title="待写的题解"></a>待写的题解</h3>]]></content>
       <tags>
         <tag>schedules</tag>
@@ -257,7 +260,7 @@ $\to$
     <url>/2022/03/20/top-ynoi/</url>
     <content><![CDATA[<h2 id="【专题】卡常数-YNOI"><a href="#【专题】卡常数-YNOI" class="headerlink" title="【专题】卡常数 YNOI"></a>【专题】<del>卡常数</del> YNOI</h2><p>lxl 毒瘤数据结构题的统称。</p>
 <span id="more"></span>
-<p>![bing][bing.png]</p>
+<p><img src="bing.png" alt="bing"></p>
 <p><del>真不知道 yuno 哪里可爱了</del></p>
 <p><del>反正我不太喜欢未来日记的画风</del></p>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><a href="/2022/03/20/sol-p5610/" title="P5610 [Ynoi2013] 大学">P5610 [Ynoi2013] 大学</a>
@@ -347,8 +350,8 @@ $\to$
         <category>题解</category>
       </categories>
       <tags>
-        <tag>solutions</tag>
         <tag>school</tag>
+        <tag>solutions</tag>
       </tags>
   </entry>
   <entry>
@@ -370,8 +373,8 @@ $\to$
         <category>题解</category>
       </categories>
       <tags>
-        <tag>solutions</tag>
         <tag>school</tag>
+        <tag>solutions</tag>
       </tags>
   </entry>
   <entry>
@@ -504,8 +507,8 @@ dp_{u,0} & dp_{u,1}
         <category>题解</category>
       </categories>
       <tags>
-        <tag>solutions</tag>
         <tag>school</tag>
+        <tag>solutions</tag>
       </tags>
   </entry>
   <entry>
