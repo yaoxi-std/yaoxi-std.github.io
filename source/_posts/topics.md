@@ -15,4 +15,6 @@ category: 专题
 
 {% post_link 'top-suffixarray' %} </br>
 
-{% post_link 'top-networkflow' %}
+{% post_link 'top-networkflow' %} </br>
+
+{% post_link 'top-ynoi' %}
