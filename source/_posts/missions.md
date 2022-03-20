@@ -136,6 +136,6 @@ LOJ6184
 
 <font color="white">因为没题做所以开始刷 ynoi 力！</font>
 
-~~{% post_link 'sol-p5610' 'P5610' %}~~
+~~{% post_link 'sol-p5610' 'P5610' %}~~ ~~{% post_link 'sol-p5309' 'P5309' %}~~ ~~{% post_link 'sol-p5355' 'P5355' %}~~ ~~{% post_link 'sol-p5607' 'P5607' %}~~
 
 ### 待写的题解
