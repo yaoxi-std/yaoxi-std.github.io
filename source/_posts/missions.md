@@ -138,4 +138,8 @@ LOJ6184
 
 ~~{% post_link 'sol-p5610' 'P5610' %}~~ ~~{% post_link 'sol-p5309' 'P5309' %}~~ ~~{% post_link 'sol-p5355' 'P5355' %}~~ ~~{% post_link 'sol-p5607' 'P5607' %}~~
 
+<font color="white">拿到新题目力！</font>
+
+~~{% post_link 'sol-p6018' 'P6018' %}~~ ~~{% post_link 'sol-p4189' 'P4189' %}~~
+
 ### 待写的题解
