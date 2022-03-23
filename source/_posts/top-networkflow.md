@@ -81,9 +81,9 @@ date: 2021-12-17 18:28:54
 struct Dinic {
     struct Edge {
         int v, flow;
-    } edge[MAXM];
+    } edge[MAXM * 2];
     int tot = 1, flow = 0;
-    int head[MAXN], nxt[MAXM], lev[MAXN], cur[MAXN];
+    int head[MAXN], nxt[MAXM * 2], lev[MAXN], cur[MAXN];
     void addedge(int u, int v, int flow) {
         edge[++tot] = {v, flow};
         nxt[tot] = head[u], head[u] = tot;

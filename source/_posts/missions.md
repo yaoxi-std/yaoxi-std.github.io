@@ -142,4 +142,6 @@ LOJ6184
 
 ~~{% post_link 'sol-p6018' 'P6018' %}~~ ~~{% post_link 'sol-p4189' 'P4189' %}~~
 
+~~{% post_link 'sol-p1912' 'P1912' %}~~
+
 ### 待写的题解
