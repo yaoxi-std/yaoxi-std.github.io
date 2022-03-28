@@ -266,7 +266,7 @@ $\to$
     <content><![CDATA[<h2 id="P5861-IOI2015-teams-分组"><a href="#P5861-IOI2015-teams-分组" class="headerlink" title="P5861 [IOI2015] teams 分组"></a>P5861 [IOI2015] teams 分组</h2><span id="more"></span>
 <p>挂的最惨的一次模拟赛了没有之一（$200$挂到$13$的那个就是我）</p>
 <h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a href="http://www.nfls.com.cn:20034/contest/483/problem/2">题目链接</a></p>
-<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>这是一个 $O((N+S) \log^2 N)$ 的方法，可能需要卡卡常才能过。<strong>不需要主席树</strong><del>只需要线段树套 vector 再进行一堆奇怪的操作</del></p>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>这是一个 $O(N \log N + S \log^2 N)$ 的方法，可能需要卡卡常才能过。<strong>不需要主席树</strong><del>只需要线段树套 vector 再进行一堆奇怪的操作</del></p>
 <p>容易想到贪心思路：先将 $K[i]$ 从小到大排序，每次取 $B[j]$ 最小的 $K[i]$ 个，这样显然是最优的。</p>
 <p>所以可以对于每个学生，在线段树的 $B[i]$ 处插入一个数 $A[i]$。在处理 $K[i]$ 时，在线段树上二分出最小的 $r$ 使得有 $\ge K$ 个 $A[i] \le K \le B[i] \le r$，然后将对应的 $K$ 个学生删除。</p>
 <p>思路很简单，下面是实现。因为在询问过程中不需要对学生进行修改，所以就可以在预处理阶段就构建出这个线段树套 vector 并排好序。</p>
@@ -494,8 +494,8 @@ dp[i] = \min_{j=0}^{i-1} dp[j] + |sum[i] - sum[j] - 1 - L|^P</script><p>其中 $
         <category>题解</category>
       </categories>
       <tags>
-        <tag>solutions</tag>
         <tag>school</tag>
+        <tag>solutions</tag>
       </tags>
   </entry>
   <entry>
@@ -517,8 +517,8 @@ dp[i] = \min_{j=0}^{i-1} dp[j] + |sum[i] - sum[j] - 1 - L|^P</script><p>其中 $
         <category>题解</category>
       </categories>
       <tags>
-        <tag>solutions</tag>
         <tag>school</tag>
+        <tag>solutions</tag>
       </tags>
   </entry>
   <entry>
@@ -651,8 +651,8 @@ dp_{u,0} & dp_{u,1}
         <category>题解</category>
       </categories>
       <tags>
-        <tag>solutions</tag>
         <tag>school</tag>
+        <tag>solutions</tag>
       </tags>
   </entry>
   <entry>
