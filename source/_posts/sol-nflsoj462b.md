@@ -1,5 +1,5 @@
 ---
-title: sol-nflsoj462b
+title: NFLSOJ-462B
 tags: [solutions, school]
 category: 题解
 date: 2022-03-08 16:02:24
