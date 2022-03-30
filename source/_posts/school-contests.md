@@ -9,5 +9,5 @@ comments: false
 ## 校内训练模拟赛
 <!-- more -->
 
-<script src="/dp/load.js"></script>
+<script src="/dp/load-nflsoj.js"></script>
 <table id="dp"></table>
