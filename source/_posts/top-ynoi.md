@@ -27,4 +27,8 @@ lxl 毒瘤数据结构题的统称。
 
 {% post_link 'sol-p5607' %} </br>
 
-{% post_link 'sol-p6018' %}
+{% post_link 'sol-p6018' %} </br>
+
+{% post_link 'sol-p5356' %} </br>
+
+{% post_link 'sol-p5048' %}
