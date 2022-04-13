@@ -255,27 +255,29 @@ void ntt(int* f, int len, int on) {
 ## 多项式全家桶
 
 ```cpp
+const int MAXN = 1 << 21;
+const int INF = 0x3f3f3f3f;
 const int MOD = 998244353;
 namespace polynomial {
-int add(int x, int y) {
+inline int add(int x, int y) {
     x += y;
     return x >= MOD ? x - MOD : x;
 }
-int sub(int x, int y) {
+inline int sub(int x, int y) {
     x -= y;
     return x < 0 ? x + MOD : x;
 }
-int qpow(int x, int y, int p = MOD) {
+inline int qpow(int x, int y, int p = MOD) {
     int ret = 1;
-    for (; y; y >>= 1, x = x * x % p)
+    for (; y; y >>= 1, x = 1ll * x * x % p)
         if (y & 1)
-            ret = ret * x % p;
+            ret = 1ll * ret * x % p;
     return ret;
 }
 template <class _Tp>
 void change(_Tp* f, int len) {
     static int rev[MAXN] = {};
-    for (int i = 0; i < len; ++i) {
+    for (int i = rev[0] = 0; i < len; ++i) {
         rev[i] = rev[i >> 1] >> 1;
         if (i & 1)
             rev[i] |= len >> 1;
@@ -291,9 +293,9 @@ void ntt(int* f, int len, int on) {
         for (int j = 0; j < len; j += h) {
             int g = 1;
             for (int k = j; k < j + h / 2; ++k) {
-                int u = f[k], t = g * f[k + h / 2] % MOD;
+                int u = f[k], t = 1ll * g * f[k + h / 2] % MOD;
                 f[k] = add(u, t), f[k + h / 2] = sub(u, t);
-                g = g * gn % MOD;
+                g = 1ll * g * gn % MOD;
             }
         }
     }
@@ -301,7 +303,7 @@ void ntt(int* f, int len, int on) {
         reverse(f + 1, f + len);
         int inv = qpow(len, MOD - 2);
         for (int i = 0; i < len; ++i)
-            f[i] = f[i] * inv % MOD;
+            f[i] = 1ll * f[i] * inv % MOD;
     }
 }
 int polymul(const int* f, int n, const int* g, int m, int* ans) {
@@ -316,7 +318,7 @@ int polymul(const int* f, int n, const int* g, int m, int* ans) {
     ntt(tf, len, 1);
     ntt(tg, len, 1);
     for (int i = 0; i < len; ++i)
-        tf[i] = tf[i] * tg[i] % MOD;
+        tf[i] = 1ll * tf[i] * tg[i] % MOD;
     ntt(tf, len, -1);
     copy(tf, tf + n + m - 1, ans);
     return n + m - 1;
@@ -334,7 +336,7 @@ int polyinv(const int* f, int n, int* ans) {
         ntt(tmp, h + h, 1);
         ntt(ans, h + h, 1);
         for (int i = 0; i < h + h; ++i)
-            ans[i] = ans[i] * (2 - ans[i] * tmp[i] % MOD + MOD) % MOD;
+            ans[i] = 1ll * ans[i] * (2 - 1ll * ans[i] * tmp[i] % MOD + MOD) % MOD;
         ntt(ans, h + h, -1);
         fill(ans + h, ans + h + h, 0);
     }
@@ -342,12 +344,12 @@ int polyinv(const int* f, int n, int* ans) {
 }
 int derivation(const int* f, int n, int* ans) {
     for (int i = 0; i < n - 1; ++i)
-        ans[i] = f[i + 1] * (i + 1) % MOD;
+        ans[i] = 1ll * f[i + 1] * (i + 1) % MOD;
     return ans[n - 1] = 0, n - 1;
 }
 int integral(const int* f, int n, int* ans) {
     for (int i = n; i >= 1; --i)
-        ans[i] = f[i - 1] * qpow(i, MOD - 2) % MOD;
+        ans[i] = 1ll * f[i - 1] * qpow(i, MOD - 2) % MOD;
     return ans[0] = 0, n + 1;
 }
 int ln(const int* f, int n, int* ans) {
@@ -371,6 +373,7 @@ int exp(const int* f, int n, int* ans) {
     return n;
 }
 };  // namespace polynomial
+using namespace polynomial;
 ```
 
 ## 虚树
