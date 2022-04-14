@@ -148,4 +148,6 @@ LOJ6184
 
 ~~{% post_link 'sol-p5356' 'P5356' %}~~ ~~{% post_link 'sol-p5048' 'P5048' %}~~
 
+~~{% post_link 'sol-p4119' 'P4119' %}~~ ~~{% post_link 'sol-p4117' 'P4117' %}~~
+
 ### 待写的题解
