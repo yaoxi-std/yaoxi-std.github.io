@@ -11,6 +11,4 @@ category: 游记
 
 {% post_link 'trip-wc2022' %}
 
-蜜蜂太好玩了（bushi
-
-![bee](bee.png)
+{% post_link 'trip-jsoi2022' %}
