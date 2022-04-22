@@ -107,3 +107,5 @@ Day2 期望得分 $144$，而且很可能实际得分比 Day1 高。
 滚回去学文化课喽！
 
 $\text{NOIp}$ $2022$ $\text{Rp}++$
+
+<a href="/2022/04/22/rnmtq-jsoi2022"><img src="/2022/04/17/trip-jsoi2022/rnm.png"/></a>
