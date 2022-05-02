@@ -5,7 +5,7 @@ top: 10000
 comments: false
 ---
 
-![](https://api.xecades.xyz/api?bg=255%2C255%2C255%2C1&date=2022-04-04&str=JSOI2022&quote=&img=1&codeforces=yaoxi&luogu=yaoxi&github=yaoxi-std&email=yaoxi20061225%40126.com&site=yaoxi-std.github.io)
+![](https://api.xecades.xyz/api?bg=255%2C255%2C255%2C1&str=+NOIP+2022+&date=2022-11-19&quote=&img=1&codeforces=yaoxi&luogu=yaoxi&github=yaoxi-std&email=yaoxi20061225%40126.com&site=yaoxi-std.github.io)
 
 [![luogu-info](https://luogu-card-qinyihao.vercel.app/about?id=141573&card_width=800)](https://www.luogu.com.cn/user/141573)
 
