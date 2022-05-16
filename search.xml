@@ -714,8 +714,8 @@ dp[i] = \min_{j=0}^{i-1} dp[j] + |sum[i] - sum[j] - 1 - L|^P</script><p>其中 $
         <category>题解</category>
       </categories>
       <tags>
-        <tag>school</tag>
         <tag>solutions</tag>
+        <tag>school</tag>
       </tags>
   </entry>
   <entry>
@@ -737,8 +737,8 @@ dp[i] = \min_{j=0}^{i-1} dp[j] + |sum[i] - sum[j] - 1 - L|^P</script><p>其中 $
         <category>题解</category>
       </categories>
       <tags>
-        <tag>school</tag>
         <tag>solutions</tag>
+        <tag>school</tag>
       </tags>
   </entry>
   <entry>
@@ -871,8 +871,8 @@ dp_{u,0} & dp_{u,1}
         <category>题解</category>
       </categories>
       <tags>
-        <tag>school</tag>
         <tag>solutions</tag>
+        <tag>school</tag>
       </tags>
   </entry>
   <entry>
@@ -2228,7 +2228,7 @@ ans_s &= \sum_{1 \le i \lt j \le n}{|lcp(suf_i, suf_j)|} \\
 <a href="/2021/12/03/sol-cf639f/" title="CF639F Bear and Chemistry 题解">CF639F Bear and Chemistry 题解</a> </br>
 
 <a href="/2021/12/17/sol-loj6184/" title="sol-loj6184">sol-loj6184</a>
-<h3 id="模版代码"><a href="#模版代码" class="headerlink" title="模版代码"></a>模版代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">build_vtr</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">sort</span>(s + <span class="number">1</span>, s + k + <span class="number">1</span>, [](<span class="type">int</span> x, <span class="type">int</span> y) &#123;</span><br><span class="line">        <span class="keyword">return</span> id[x] &lt; id[y];</span><br><span class="line">    &#125;);</span><br><span class="line">    sta[top = <span class="number">1</span>] = <span class="number">1</span>, vtr.head[<span class="number">1</span>] = <span class="number">-1</span>, vtr.tot = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= k; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="type">int</span> l = <span class="built_in">lca</span>(sta[top], s[i]);</span><br><span class="line">        <span class="keyword">if</span> (l &lt; <span class="number">1</span> || l &gt; bcc)</span><br><span class="line">            <span class="built_in">lca</span>(sta[top], s[i]);</span><br><span class="line">        <span class="keyword">while</span> (id[l] &lt;= id[sta[top - <span class="number">1</span>]])</span><br><span class="line">            <span class="built_in">add_vedge</span>(sta[top - <span class="number">1</span>], sta[top]), --top;</span><br><span class="line">        <span class="keyword">if</span> (sta[top] != l)</span><br><span class="line">            vtr.head[l] = <span class="number">-1</span>, <span class="built_in">add_vedge</span>(l, sta[top]), sta[top] = l;</span><br><span class="line">        vtr.head[s[i]] = <span class="number">-1</span>, sta[++top] = s[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; top; ++i)</span><br><span class="line">        <span class="built_in">add_vedge</span>(sta[i], sta[i + <span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<h3 id="模版代码"><a href="#模版代码" class="headerlink" title="模版代码"></a>模版代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">buildvtr</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">sort</span>(s + <span class="number">1</span>, s + k + <span class="number">1</span>, [](<span class="type">int</span> x, <span class="type">int</span> y) &#123; <span class="keyword">return</span> id[x] &lt; id[y]; &#125;);</span><br><span class="line">    sta[top = <span class="number">1</span>] = <span class="number">1</span>, vtr.head[<span class="number">1</span>] = <span class="number">-1</span>, vtr.tot = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= k; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="type">int</span> l = <span class="built_in">lca</span>(sta[top], s[i]);</span><br><span class="line">        <span class="keyword">while</span> (id[l] &lt;= id[sta[top - <span class="number">1</span>]]) <span class="built_in">add_vedge</span>(sta[top - <span class="number">1</span>], sta[top]), --top;</span><br><span class="line">        <span class="keyword">if</span> (sta[top] != l) vtr.head[l] = <span class="number">-1</span>, <span class="built_in">add_vedge</span>(l, sta[top]), sta[top] = l;</span><br><span class="line">        vtr.head[s[i]] = <span class="number">-1</span>, sta[++top] = s[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; top; ++i)</span><br><span class="line">        <span class="built_in">add_vedge</span>(sta[i], sta[i + <span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>专题</category>
       </categories>
