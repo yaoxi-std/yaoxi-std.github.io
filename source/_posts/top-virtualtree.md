@@ -32,21 +32,14 @@ date: 2021-12-17 18:29:26
 
 ### 模版代码
 ```cpp
-void build_vtr() {
-    sort(s + 1, s + k + 1, [](int x, int y) {
-        return id[x] < id[y];
-    });
+void buildvtr() {
+    sort(s + 1, s + k + 1, [](int x, int y) { return id[x] < id[y]; });
     sta[top = 1] = 1, vtr.head[1] = -1, vtr.tot = 0;
     for (int i = 1; i <= k; ++i) {
-        if (s[i] == 1)
-            continue;
+        if (s[i] == 1) continue;
         int l = lca(sta[top], s[i]);
-        if (l < 1 || l > bcc)
-            lca(sta[top], s[i]);
-        while (id[l] <= id[sta[top - 1]])
-            add_vedge(sta[top - 1], sta[top]), --top;
-        if (sta[top] != l)
-            vtr.head[l] = -1, add_vedge(l, sta[top]), sta[top] = l;
+        while (id[l] <= id[sta[top - 1]]) add_vedge(sta[top - 1], sta[top]), --top;
+        if (sta[top] != l) vtr.head[l] = -1, add_vedge(l, sta[top]), sta[top] = l;
         vtr.head[s[i]] = -1, sta[++top] = s[i];
     }
     for (int i = 1; i < top; ++i)
