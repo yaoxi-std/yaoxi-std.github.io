@@ -173,7 +173,7 @@ namespace fastio {
 const int MAXBUF = 1 << 23;
 char buf[MAXBUF], *p1 = buf, *p2 = buf;
 char pbuf[MAXBUF], *pp = pbuf;
-inline char getc() { return (p1 == p2) && (p2 = (p1 = buf) + fread(buf, 1, MAXBUF, stdin)), *p1++; }
+inline char getc() { return (p1 == p2) && (p2 = (p1 = buf) + fread(buf, 1, MAXBUF, stdin)), p1 == p2 ? EOF : *p1++; }
 inline void putc(char c) { (pp == pbuf + MAXBUF) && (fwrite(pbuf, 1, MAXBUF, stdout), pp = pbuf), *pp++ = c; }
 inline void print_final() { fwrite(pbuf, 1, pp - pbuf, stdout), pp = pbuf; }
 };  // namespace fastio
