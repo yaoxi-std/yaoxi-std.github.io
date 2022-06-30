@@ -742,8 +742,8 @@ dp[i] = \min_{j=0}^{i-1} dp[j] + |sum[i] - sum[j] - 1 - L|^P</script><p>其中 $
         <category>题解</category>
       </categories>
       <tags>
-        <tag>solutions</tag>
         <tag>school</tag>
+        <tag>solutions</tag>
       </tags>
   </entry>
   <entry>
@@ -765,8 +765,8 @@ dp[i] = \min_{j=0}^{i-1} dp[j] + |sum[i] - sum[j] - 1 - L|^P</script><p>其中 $
         <category>题解</category>
       </categories>
       <tags>
-        <tag>solutions</tag>
         <tag>school</tag>
+        <tag>solutions</tag>
       </tags>
   </entry>
   <entry>
@@ -899,8 +899,8 @@ dp_{u,0} & dp_{u,1}
         <category>题解</category>
       </categories>
       <tags>
-        <tag>solutions</tag>
         <tag>school</tag>
+        <tag>solutions</tag>
       </tags>
   </entry>
   <entry>
