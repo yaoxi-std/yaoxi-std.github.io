@@ -24,24 +24,15 @@ using namespace std;
     fprintf(stderr, "[%s:%d] " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__)
 template <class _Tp>
 inline _Tp& read(_Tp& x) {
-    bool sign = false;
-    char ch = getchar();
-    long double tmp = 1;
-    for (; !isdigit(ch); ch = getchar())
-        sign |= (ch == '-');
-    for (x = 0; isdigit(ch); ch = getchar())
-        x = x * 10 + (ch ^ 48);
-    if (ch == '.')
-        for (ch = getchar(); isdigit(ch); ch = getchar())
-            tmp /= 10.0, x += tmp * (ch ^ 48);
+    bool sign = false; char ch = getchar();
+    for (; !isdigit(ch); ch = getchar()) sign |= (ch == '-');
+    for (x = 0; isdigit(ch); ch = getchar()) x = x * 10 + (ch ^ 48);
     return sign ? (x = -x) : x;
 }
 template <class _Tp>
 inline void write(_Tp x) {
-    if (x < 0)
-        putchar('-'), x = -x;
-    if (x > 9)
-        write(x / 10);
+    if (x < 0) putchar('-'), x = -x;
+    if (x > 9) write(x / 10);
     putchar((x % 10) ^ 48);
 }
 using ll = long long;
@@ -76,32 +67,26 @@ signed main() {
         "    fprintf(stderr, \"[%s:%d] \" fmt \"\\n\", __FILE__, __LINE__, ##__VA_ARGS__)",
         "template <class _Tp>",
         "inline _Tp& read(_Tp& x) {",
-        "    bool sign = false;",
-        "    char ch = getchar();",
-        "    long double tmp = 1;",
-        "    for (; !isdigit(ch); ch = getchar())",
-        "        sign |= (ch == '-');",
-        "    for (x = 0; isdigit(ch); ch = getchar())",
-        "        x = x * 10 + (ch ^ 48);",
-        "    if (ch == '.')",
-        "        for (ch = getchar(); isdigit(ch); ch = getchar())",
-        "            tmp /= 10.0, x += tmp * (ch ^ 48);",
+        "    bool sign = false; char ch = getchar();",
+        "    for (; !isdigit(ch); ch = getchar()) sign |= (ch == '-');",
+        "    for (x = 0; isdigit(ch); ch = getchar()) x = x * 10 + (ch ^ 48);",
         "    return sign ? (x = -x) : x;",
         "}",
         "template <class _Tp>",
         "inline void write(_Tp x) {",
-        "    if (x < 0)",
-        "        putchar('-'), x = -x;",
-        "    if (x > 9)",
-        "        write(x / 10);",
+        "    if (x < 0) putchar('-'), x = -x;",
+        "    if (x > 9) write(x / 10);",
         "    putchar((x % 10) ^ 48);",
         "}",
+        "bool m_be;",
         "using ll = long long;",
         "const int MAXN = 1e5 + 10;",
         "const int INF = 0x3f3f3f3f;",
         "",
+        "bool m_ed;",
         "signed main() {",
         "    // resetIO();",
+        "    // debug(\"Mem %.5lfMB.\", fabs(&m_ed - &m_be) / 1048576);",
         "    $0",
         "    return 0;",
         "}"
@@ -196,9 +181,14 @@ const int MOD = 998244353;
 // const int MOD = 1004535809;
 // const int MOD = 469762049;
 const double PI = acos(-1);
-int add(int x, int y);
-int sub(int x, int y);
-int qpow(int x, int y, int p = MOD);
+inline int add(int x, int y) { return x += y, x >= MOD ? x - MOD : x; }
+inline int sub(int x, int y) { return x -= y, x < 0 ? x + MOD : x; }
+inline int qpow(int x, int y, int p = MOD) {
+    int ret = 1;
+    for (; y; y >>= 1, x = 1ll * x * x % p)
+        if (y & 1) ret = 1ll * ret * x % p;
+    return ret;
+}
 template <class _Tp>
 void change(_Tp* f, int len) {
     static int rev[MAXN];
@@ -226,65 +216,8 @@ void fft(comp* f, int len, int on) {
     }
     if (on == -1) {
         reverse(f + 1, f + len);
-        for (int i = 0; i < len; ++i)
-            f[i] /= len;
+        for (int i = 0; i < len; ++i) f[i] /= len;
     }
-}
-void ntt(int* f, int len, int on) {
-    change(f, len);
-    for (int h = 2; h <= len; h <<= 1) {
-        int gn = qpow(3, (MOD - 1) / h);
-        for (int j = 0; j < len; j += h) {
-            int g = 1;
-            for (int k = j; k < j + h / 2; ++k) {
-                int u = f[k], t = g * f[k + h / 2] % MOD;
-                f[k] = add(u, t), f[k + h / 2] = sub(u, t);
-                g = g * gn % MOD;
-            }
-        }
-    }
-    if (on == -1) {
-        reverse(f + 1, f + len);
-        int inv = qpow(len, MOD - 2);
-        for (int i = 0; i < len; ++i)
-            f[i] = (f[i] * inv) % MOD;
-    }
-}
-```
-
-## 多项式全家桶
-
-```cpp
-const int MAXN = 1 << 21;
-const int INF = 0x3f3f3f3f;
-const int MOD = 998244353;
-namespace polynomial {
-inline int add(int x, int y) {
-    x += y;
-    return x >= MOD ? x - MOD : x;
-}
-inline int sub(int x, int y) {
-    x -= y;
-    return x < 0 ? x + MOD : x;
-}
-inline int qpow(int x, int y, int p = MOD) {
-    int ret = 1;
-    for (; y; y >>= 1, x = 1ll * x * x % p)
-        if (y & 1)
-            ret = 1ll * ret * x % p;
-    return ret;
-}
-template <class _Tp>
-void change(_Tp* f, int len) {
-    static int rev[MAXN] = {};
-    for (int i = rev[0] = 0; i < len; ++i) {
-        rev[i] = rev[i >> 1] >> 1;
-        if (i & 1)
-            rev[i] |= len >> 1;
-    }
-    for (int i = 0; i < len; ++i)
-        if (i < rev[i])
-            swap(f[i], f[rev[i]]);
 }
 void ntt(int* f, int len, int on) {
     change(f, len);
@@ -302,23 +235,62 @@ void ntt(int* f, int len, int on) {
     if (on == -1) {
         reverse(f + 1, f + len);
         int inv = qpow(len, MOD - 2);
-        for (int i = 0; i < len; ++i)
-            f[i] = 1ll * f[i] * inv % MOD;
+        for (int i = 0; i < len; ++i) f[i] = 1ll * f[i] * inv % MOD;
+    }
+}
+```
+
+## 多项式全家桶
+
+```cpp
+const int MAXN = 1 << 20;
+const int MOD = 998244353;
+namespace polynomial {
+inline int add(int x, int y) { return x += y, x >= MOD ? x - MOD : x; }
+inline int sub(int x, int y) { return x -= y, x < 0 ? x + MOD : x; }
+inline int qpow(int x, int y, int p = MOD) {
+    int ret = 1;
+    for (; y; y >>= 1, x = 1ll * x * x % p)
+        if (y & 1) ret = 1ll * ret * x % p;
+    return ret;
+}
+template <class _Tp>
+void change(_Tp* f, int len) {
+    static int rev[MAXN] = {};
+    for (int i = rev[0] = 0; i < len; ++i) {
+        rev[i] = rev[i >> 1] >> 1;
+        if (i & 1) rev[i] |= len >> 1;
+    }
+    for (int i = 0; i < len; ++i)
+        if (i < rev[i]) swap(f[i], f[rev[i]]);
+}
+void ntt(int* f, int len, int on) {
+    change(f, len);
+    for (int h = 2; h <= len; h <<= 1) {
+        int gn = qpow(3, (MOD - 1) / h);
+        for (int j = 0; j < len; j += h) {
+            int g = 1;
+            for (int k = j; k < j + h / 2; ++k) {
+                int u = f[k], t = 1ll * g * f[k + h / 2] % MOD;
+                f[k] = add(u, t), f[k + h / 2] = sub(u, t);
+                g = 1ll * g * gn % MOD;
+            }
+        }
+    }
+    if (on == -1) {
+        reverse(f + 1, f + len);
+        int inv = qpow(len, MOD - 2);
+        for (int i = 0; i < len; ++i) f[i] = 1ll * f[i] * inv % MOD;
     }
 }
 int polymul(const int* f, int n, const int* g, int m, int* ans) {
     static int tf[MAXN] = {}, tg[MAXN] = {};
     int len = 1;
-    while (len < n + m - 1)
-        len <<= 1;
-    copy(f, f + n, tf);
-    fill(tf + n, tf + len, 0);
-    copy(g, g + m, tg);
-    fill(tg + m, tg + len, 0);
-    ntt(tf, len, 1);
-    ntt(tg, len, 1);
-    for (int i = 0; i < len; ++i)
-        tf[i] = 1ll * tf[i] * tg[i] % MOD;
+    while (len < n + m - 1) len <<= 1;
+    copy(f, f + n, tf), fill(tf + n, tf + len, 0);
+    copy(g, g + m, tg), fill(tg + m, tg + len, 0);
+    ntt(tf, len, 1), ntt(tg, len, 1);
+    for (int i = 0; i < len; ++i) tf[i] = 1ll * tf[i] * tg[i] % MOD;
     ntt(tf, len, -1);
     copy(tf, tf + n + m - 1, ans);
     return n + m - 1;
@@ -326,19 +298,16 @@ int polymul(const int* f, int n, const int* g, int m, int* ans) {
 int polyinv(const int* f, int n, int* ans) {
     static int tmp[MAXN] = {};
     int len = 1;
-    while (len < n)
-        len <<= 1;
+    while (len < n) len <<= 1;
     fill(ans, ans + len + len, 0);
     ans[0] = qpow(f[0], MOD - 2);
     for (int h = 2; h <= len; h <<= 1) {
         copy(f, f + h, tmp);
         fill(tmp + h, tmp + h + h, 0);
-        ntt(tmp, h + h, 1);
-        ntt(ans, h + h, 1);
+        ntt(tmp, h + h, 1), ntt(ans, h + h, 1);
         for (int i = 0; i < h + h; ++i)
             ans[i] = 1ll * ans[i] * (2 - 1ll * ans[i] * tmp[i] % MOD + MOD) % MOD;
-        ntt(ans, h + h, -1);
-        fill(ans + h, ans + h + h, 0);
+        ntt(ans, h + h, -1), fill(ans + h, ans + h + h, 0);
     }
     return n;
 }
@@ -380,22 +349,16 @@ using namespace polynomial;
 
 ```cpp
 void build_vtr() {
-    sort(s + 1, s + k + 1, [](int x, int y) {
-        return id[x] < id[y];
-    });
+    sort(s + 1, s + k + 1, [](int x, int y) { return id[x] < id[y]; });
     sta[top = 1] = 1, vtr.head[1] = -1, vtr.tot = 0;
     for (int i = 1; i <= k; ++i) {
-        if (s[i] == 1)
-            continue;
+        if (s[i] == 1) continue;
         int l = lca(sta[top], s[i]);
-        while (id[l] <= id[sta[top - 1]])
-            add_vedge(sta[top - 1], sta[top]), --top;
-        if (sta[top] != l)
-            vtr.head[l] = -1, add_vedge(l, sta[top]), sta[top] = l;
+        while (id[l] <= id[sta[top - 1]]) add_vedge(sta[top - 1], sta[top]), --top;
+        if (sta[top] != l) vtr.head[l] = -1, add_vedge(l, sta[top]), sta[top] = l;
         vtr.head[s[i]] = -1, sta[++top] = s[i];
     }
-    for (int i = 1; i < top; ++i)
-        add_vedge(sta[i], sta[i + 1]);
+    for (int i = 1; i < top; ++i) add_vedge(sta[i], sta[i + 1]);
 }
 ```
 
@@ -403,8 +366,7 @@ void build_vtr() {
 
 ```cpp
 void tarjan(int u) {
-    dfn[u] = low[u] = ++dfc;
-    sta[++top] = u;
+    dfn[u] = low[u] = ++dfc, sta[++top] = u;
     for (int i = g.head[u]; ~i; i = g.nxt[i]) {
         int v = g.edge[i].v;
         if (!dfn[v]) {
@@ -412,13 +374,9 @@ void tarjan(int u) {
             low[u] = min(low[u], low[v]);
             if (dfn[u] == low[v]) {
                 ++bcc;
-                for (int x = 0; x != v; --top) {
-                    x = sta[top];
-                    tr.addedge(bcc, x);
-                    tr.addedge(x, bcc);
-                }
-                tr.addedge(bcc, u);
-                tr.addedge(u, bcc);
+                for (int x = 0; x != v; --top)
+                    x = sta[top], tr.addedge(bcc, x), tr.addedge(x, bcc);
+                tr.addedge(bcc, u), tr.addedge(u, bcc);
             }
         } else {
             low[u] = min(low[u], dfn[v]);
@@ -553,53 +511,28 @@ struct Splay {
 ```cpp
 struct SuffixArray {
     int n, sa[MAXN], rk[MAXN], tp[MAXN], ht[MAXN], he[MAXN];
-    void clear() {
-        fill(sa, sa + n + 1, 0);
-        fill(rk, rk + n + 1, 0);
-        fill(tp, tp + n + 1, 0);
-        fill(ht, ht + n + 1, 0);
-        fill(he, he + n + 1, 0);
-        n = 0;
-    }
     void radix_sort(int m) {
         static int buc[MAXN];
-        for (int i = 0; i <= m; ++i)
-            buc[i] = 0;
-        for (int i = 1; i <= n; ++i)
-            buc[rk[i]]++;
-        for (int i = 1; i <= m; ++i)
-            buc[i] += buc[i - 1];
-        for (int i = n; i >= 1; --i)
-            sa[buc[rk[tp[i]]]--] = tp[i];
+        for (int i = 0; i <= m; ++i) buc[i] = 0;
+        for (int i = 1; i <= n; ++i) buc[rk[i]]++;
+        for (int i = 1; i <= m; ++i) buc[i] += buc[i - 1];
+        for (int i = n; i >= 1; --i) sa[buc[rk[tp[i]]]--] = tp[i];
     }
     void init(int n, char* s) {
-        this->n = n;
-        int m = 200;
-        for (int i = 1; i <= n; ++i)
-            rk[i] = s[i] + 1, tp[i] = i;
+        this->n = n; int m = 200;
+        for (int i = 1; i <= n; ++i) rk[i] = s[i] + 1, tp[i] = i;
         radix_sort(m);
         for (int w = 1, p = 0; p < n; m = p, w <<= 1) {
             p = 0;
-            for (int i = 1; i <= w; ++i)
-                tp[++p] = n - w + i;
-            for (int i = 1; i <= n; ++i)
-                if (sa[i] > w)
-                    tp[++p] = sa[i] - w;
-            radix_sort(m);
-            copy(rk + 1, rk + n + 1, tp + 1);
-            rk[sa[1]] = p = 1;
-            for (int i = 2; i <= n; ++i) {
-                if (tp[sa[i - 1]] == tp[sa[i]] && tp[sa[i - 1] + w] == tp[sa[i] + w])
-                    rk[sa[i]] = p;
-                else
-                    rk[sa[i]] = ++p;
-            }
+            for (int i = 1; i <= w; ++i) tp[++p] = n - w + i;
+            for (int i = 1; i <= n; ++i) if (sa[i] > w) tp[++p] = sa[i] - w;
+            radix_sort(m), copy(rk + 1, rk + n + 1, tp + 1), rk[sa[1]] = p = 1;
+            for (int i = 2; i <= n; ++i)
+                rk[sa[i]] = (tp[sa[i - 1]] == tp[sa[i]] && tp[sa[i - 1] + w] == tp[sa[i] + w]) ? p : ++p;
         }
         for (int i = 1, k = 0; i <= n; ++i) {
-            if (k)
-                k--;
-            while (s[i + k] == s[sa[rk[i] - 1] + k])
-                k++;
+            if (k) k--;
+            while (s[i + k] == s[sa[rk[i] - 1] + k]) k++;
             ht[i] = he[rk[i]] = k;
         }
     }
@@ -610,88 +543,65 @@ struct SuffixArray {
 居然比Splay短！
 ```cpp
 struct LCT {
-    int fa[MAXN], ch[MAXN][2];
-    int val[MAXN], sum[MAXN], tag[MAXN];
+    int fa[MAXN], ch[MAXN][2], val[MAXN], sum[MAXN], tag[MAXN];
     void pushup(int x) { sum[x] = sum[ch[x][0]] ^ sum[ch[x][1]] ^ val[x]; }
     void connect(int x, int f, int w) { fa[x] = f, (~w) && (ch[f][w] = x); }
     int get(int x) {
-        if (ch[fa[x]][0] == x)
-            return 0;
-        if (ch[fa[x]][1] == x)
-            return 1;
+        if (ch[fa[x]][0] == x) return 0;
+        if (ch[fa[x]][1] == x) return 1;
         return -1;
     }
     void pushdown(int x) {
         if (tag[x]) {
             swap(ch[x][0], ch[x][1]);
-            if (ch[x][0])
-                tag[ch[x][0]] ^= 1;
-            if (ch[x][1])
-                tag[ch[x][1]] ^= 1;
+            if (ch[x][0]) tag[ch[x][0]] ^= 1;
+            if (ch[x][1]) tag[ch[x][1]] ^= 1;
             tag[x] = 0;
         }
     }
     void pushall(int x) {
-        if (~get(x))
-            pushall(fa[x]);
+        if (~get(x)) pushall(fa[x]);
         pushdown(x);
     }
     void rotate(int x) {
         int y = fa[x], z = fa[y], w = get(x);
-        if (~w)
-            connect(ch[x][w ^ 1], y, w);
+        if (~w) connect(ch[x][w ^ 1], y, w);
         connect(x, z, get(y));
         connect(y, x, w ^ 1);
-        pushup(y);
-        pushup(x);
+        pushup(y), pushup(x);
     }
     void splay(int x) {
         pushall(x);
         for (int f = fa[x]; f = fa[x], ~get(x); rotate(x))
-            if (~get(f))
-                rotate(get(f) == get(x) ? f : x);
+            if (~get(f)) rotate(get(f) == get(x) ? f : x);
     }
     void access(int x) {
         int pre = 0;
         while (x) {
-            splay(x);
-            ch[x][1] = pre;
-            pushup(x);
-            pre = x;
-            x = fa[x];
+            splay(x), ch[x][1] = pre;
+            pushup(x), pre = x, x = fa[x];
         }
     }
     void makeroot(int x) {
-        access(x);
-        splay(x);
-        tag[x] ^= 1;
+        access(x), splay(x), tag[x] ^= 1;
     }
     void split(int x, int y) {
-        makeroot(x);
-        access(y);
-        splay(y);
+        makeroot(x), access(y), splay(y);
     }
     int findroot(int x) {
-        access(x);
-        splay(x);
-        while (ch[x][0])
-            pushdown(x), x = ch[x][0];
-        splay(x);
-        return x;
+        access(x), splay(x);
+        while (ch[x][0]) pushdown(x), x = ch[x][0];
+        return splay(x), x;
     }
     bool link(int x, int y) {
         makeroot(x);
-        if (findroot(y) == x)
-            return false;
-        fa[x] = y;
-        return true;
+        if (findroot(y) == x) return false;
+        return fa[x] = y, true;
     }
     bool cut(int x, int y) {
-        if (findroot(x) != findroot(y))
-            return false;
+        if (findroot(x) != findroot(y)) return false;
         split(x, y);
-        if (fa[x] != y || ch[x][1])
-            return false;
+        if (fa[x] != y || ch[x][1]) return false;
         fa[x] = ch[y][0] = 0;
         return true;
     }
@@ -712,8 +622,7 @@ struct PAM {
         fail[0] = 1;
     }
     int getfail(int x) {
-        while (str[tot - len[x] - 1] != str[tot])
-            x = fail[x];
+        while (str[tot - len[x] - 1] != str[tot]) x = fail[x];
         return x;
     }
     void insert(char c) {
@@ -724,8 +633,7 @@ struct PAM {
             fail[x] = nxt[getfail(fail[now])][c - 'a'];
             nxt[now][c - 'a'] = x;
         }
-        last = nxt[now][c - 'a'];
-        ++cnt[last];
+        ++cnt[last = nxt[now][c - 'a']];
     }
 } pam;
 ```
@@ -776,10 +684,8 @@ int manacher(char* s, int tlen) {
     int mx = 0, id = 0, ans = 0;
     for (int i = 1; i <= len; ++i) {
         d[i] = mx > i ? min(d[id * 2 - i], mx - i) : 1;
-        while (t[i + d[i]] == t[i - d[i]])
-            ++d[i];
-        if (i + d[i] > mx)
-            mx = i + d[i], id = i;
+        while (t[i + d[i]] == t[i - d[i]]) ++d[i];
+        if (i + d[i] > mx) mx = i + d[i], id = i;
         ans = max(ans, d[i] - 1);
     }
     return ans;
@@ -895,4 +801,66 @@ struct FHQ_Treap {
     inline int prev(int k) { return split(rt, k - 1, x, y), ret = siz[x], rt = merge(x, y), kth(ret); }
     inline int next(int k) { return split(rt, k, x, y), ret = siz[x] + 1, rt = merge(x, y), kth(ret); }
 } trp;
+```
+
+## 可持久化 FHQ-Treap
+
+```cpp
+mt19937 rng(19260817);
+struct Treap {
+    struct Node {
+        int ls, rs, siz, val, rnd;
+    } nd[MAXN * 120];
+    int tot, rt[MAXN];
+    int& operator[](int i) { return rt[i]; }
+    int newnode(int p) { return nd[++tot] = nd[p], tot; }
+    void pushup(int p) { nd[p].siz = nd[nd[p].ls].siz + nd[nd[p].rs].siz + 1; }
+    int init(int k) { return nd[++tot] = {0, 0, 1, k, (int)rng()}, tot; }
+    void split(int p, int k, int& x, int& y) {
+        if (!p) return void(x = y = 0);
+        p = newnode(p);
+        if (k <= nd[p].val) {
+            y = p, split(nd[p].ls, k, x, nd[y].ls), pushup(p);
+        } else {
+            x = p, split(nd[p].rs, k, nd[x].rs, y), pushup(p);
+        }
+    }
+    int merge(int x, int y) {
+        if (!x || !y) return x | y;
+        if (nd[x].rnd < nd[y].rnd) {
+            return x = newnode(x), nd[x].rs = merge(nd[x].rs, y), pushup(x), x;
+        } else {
+            return y = newnode(y), nd[y].ls = merge(x, nd[y].ls), pushup(y), y;
+        }
+    }
+    void insert(int& rt, int k) {
+        int x, y;
+        split(rt, k, x, y);
+        rt = merge(merge(x, init(k)), y);
+    }
+    void erase(int& rt, int k) {
+        int x, y, z;
+        split(rt, k, x, y), split(y, k + 1, y, z);
+        rt = merge(merge(x, nd[y].ls), merge(nd[y].rs, z));
+    }
+    int rank(int& rt, int k) {
+        int x, y, ret;
+        split(rt, k, x, y), ret = nd[x].siz + 1;
+        return rt = merge(x, y), ret;
+    }
+    int kth(int& rt, int k) {
+        int cur = rt;
+        while (true) {
+            if (k == nd[nd[cur].ls].siz + 1)
+                return nd[cur].val;
+            if (k <= nd[nd[cur].ls].siz) {
+                cur = nd[cur].ls;
+            } else {
+                k -= nd[nd[cur].ls].siz + 1, cur = nd[cur].rs;
+            }
+        }
+    }
+    int prev(int& rt, int k) { return kth(rt, rank(rt, k) - 1); }
+    int next(int& rt, int k) { return kth(rt, rank(rt, k + 1)); }
+};
 ```
