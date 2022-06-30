@@ -864,3 +864,24 @@ struct Treap {
     int next(int& rt, int k) { return kth(rt, rank(rt, k + 1)); }
 };
 ```
+
+## Miller-Rabin 素数测试
+
+```cpp
+
+bool miller_rabin(int n) {
+    if (n < 3 || !(n & 1)) return n == 2;
+    int t = n - 1, k = 0;
+    while (!(t & 1)) ++k, t >>= 1;
+    for (int i = 0; i < 4; ++i) {
+        int v = qpow(rand() % (n - 2) + 2, t, n);
+        for (int j = 0; j < k; ++j) {
+            int nxt = 1ll * v * v % n;
+            if (nxt == 1 && v != 1 && v != n - 1) return 0;
+            v = nxt;
+        }
+        if (v != 1) return 0;
+    }
+    return 1;
+}
+```
